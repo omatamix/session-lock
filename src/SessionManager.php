@@ -54,13 +54,13 @@ final class SessionManager
     /**
      * Get or set the ID of the current session.
      *
-     * @param string|null The session ID to create.
+     * @param string The session ID to create.
      *
      * @return string Returns the session ID or an empty string.
      *
      * @see <https://www.php.net/manual/en/function.session-id.php>.
      */
-    public static function id(string $id = \null): string
+    public static function id(string $id = ""): string
     {
         return (string) \session_id($id);
     }
