@@ -5,7 +5,11 @@ php:
 cache:
   directories:
     - $HOME/.composer/cache
+before_install:
+  - if [[ $DISABLE_XDEBUG == "true" ]]; then phpenv config-rm xdebug.ini; fi
 install:
   - composer install
 script:
   - ./vendor/bin/psalm
+  - if [[ $STATIC_ANALYSIS != "" ]]; then composer check-cs; fi
+  - if [[ $STATIC_ANALYSIS != "" ]]; then composer phpstan; fi
