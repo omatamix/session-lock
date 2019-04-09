@@ -12,7 +12,8 @@
         }
     },
     "require-dev": {
-        "vimeo/psalm": "^3"
+        "vimeo/psalm": "^3",
+        "phpstan/phpstan": "^0.11"
     },
     "config": {
         "optimize-autoloader": true
