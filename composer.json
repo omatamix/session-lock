@@ -1,5 +1,5 @@
 {
-    "name": "kooser\session",
+    "name": "kooser/session",
     "description": "Securely manage and preserve session data.",
     "keywords": [],
     "license": "MIT",
@@ -16,7 +16,7 @@
         "vimeo/psalm": "^3"
     },
     "suggest": {
-        "symfony/filesystem": "If you plan on using the 'Kooser\Session\FileSessionHandler'.",
+        "symfony/filesystem": "If you plan on using the 'Kooser/Session/FileSessionHandler'.",
         "paragonie/halite": "If you plan on encrypting your sessions."
     },
     "config": {
