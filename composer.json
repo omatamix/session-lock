@@ -16,7 +16,7 @@
     },
     "suggest": {
         "symfony/filesystem": "If you plan on using the 'Kooser/Session/FileSessionHandler'.",
-        "ext-pdo": "If you plan on using the 'Kooser/Session/DatabaseSessionHandler'."
+        "ext-pdo": "If you plan on using the 'Kooser/Session/DatabaseSessionHandler'.",
         "paragonie/halite": "If you plan on encrypting your sessions."
     },
     "config": {
