@@ -33,8 +33,7 @@ final class SessionManager
      */
     public static function start(array $sessionConfig): bool {
         $this->sessionConfig = $sessionConfig;
-        $result = \session_start($sessionConfig);
-        return $result;
+        return (bool) \session_start($sessionConfig);
     }
 
     /**
