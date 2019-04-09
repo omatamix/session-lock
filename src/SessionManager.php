@@ -20,7 +20,7 @@ final class SessionManager
 {
 
     /** @var array $sessionConfig The session configuration. */
-    private $sessionConfig = [];
+    private static $sessionConfig = [];
 
     /**
      * Starts or resumes a session in a way compatible to PHP's built-in `session_start()` function
@@ -31,8 +31,8 @@ final class SessionManager
      *
      * @see <https://www.php.net/manual/en/function.session-start.php>.
      */
-    public static function start(array $sessionConfig): bool {
-        $this->sessionConfig = $sessionConfig;
+    public static function start(array $sessionConfig = ['use_cookies' => \true]): bool {
+        self::$sessionConfig = $sessionConfig;
         return (bool) \session_start($sessionConfig);
     }
 
@@ -77,7 +77,7 @@ final class SessionManager
     public static function destroy(bool $deleteCookie = \true): bool
     {
         $_SESSION = array();
-        if (isset($this->sessionConfig["use_cookies"]) && $this->sessionConfig["use_cookies"] == \true) {
+        if (self::$sessionConfig["use_cookies"]) {
             $params = \session_get_cookie_params();
             \setcookie(\session_name(), '', \time() - 42000, $params["path"], $params["domain"], $params["secure"], $params["httponly"]);
         }
