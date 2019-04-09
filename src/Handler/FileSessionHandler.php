@@ -84,7 +84,7 @@ class FileSessionHandler implements \SessionHandlerInterface
      *
      * @return bool Returns TRUE on success and FALSE on faliure.
      */
-    public function write(string $id, $data): string
+    public function write(string $id, string $data): bool
     {
         $id = \basename(\realpath($id));
         return (bool) (\file_put_contents("$this->savePath/sess_$id", $data) === \false) ? \false : \true;
