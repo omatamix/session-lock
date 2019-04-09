@@ -4,7 +4,8 @@
     "keywords": [],
     "license": "MIT",
     "require": {
-        "php": ">=7.2"
+        "php": ">=7.2",
+        "psr/http-message": "*"
     },
     "autoload": {
         "psr-4": {
