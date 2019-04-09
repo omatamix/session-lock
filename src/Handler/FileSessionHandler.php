@@ -24,7 +24,7 @@ class FileSessionHandler implements \SessionHandlerInterface
     private $savePath = "";
 
     /** @var mixed The filesystem handler. */
-    private $filesystem = null;
+    private $filesystem = \null;
 
     /**
      * Construct the file session handler.
@@ -50,7 +50,7 @@ class FileSessionHandler implements \SessionHandlerInterface
         if (!is_dir($this->savePath)) {
             $this->filesystem->mkdir($this->savePath, 0777);
         }
-        return (bool) true;
+        return (bool) \true;
     }
 
     /**
@@ -60,7 +60,7 @@ class FileSessionHandler implements \SessionHandlerInterface
      */
     public function close(): bool
     {
-        return (bool) true;
+        return (bool) \true;
     }
 
     /**
@@ -121,6 +121,6 @@ class FileSessionHandler implements \SessionHandlerInterface
                 $this->filesystem->remove($file);
             }
         }
-        return true;
+        return \true;
     }
 }
