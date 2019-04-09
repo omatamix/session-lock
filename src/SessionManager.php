@@ -28,6 +28,8 @@ final class SessionManager
      * @param array $sessionConfig The session configuration.
      *
      * @return bool Returns TRUE on success or FALSE on failure.
+     *
+     * @see <https://www.php.net/manual/en/function.session-start.php>.
      */
     public static function start(array $sessionConfig): bool {
         $this->sessionConfig = $sessionConfig;
@@ -42,6 +44,8 @@ final class SessionManager
      * @param bool                     $registerShutdown Should we use the register shutdown function.
      *
      * @return bool Returns TRUE on success or FALSE on failure.
+     *
+     * @see <https://www.php.net/manual/en/function.session-set-save-handler.php>.
      */
     public static function setSaveHandler(\SessionHandlerInterface $handler, bool $registerShutdown = \true): bool
     {
@@ -54,6 +58,8 @@ final class SessionManager
      * @param string|null The session ID to create.
      *
      * @return string Returns the session ID or an empty string.
+     *
+     * @see <https://www.php.net/manual/en/function.session-id.php>.
      */
     public static function id(string $id = \null): string
     {
@@ -66,6 +72,8 @@ final class SessionManager
      * @param bool $deleteCookie Should we delete the cookie header.
      *
      * @return bool Returns TRUE on success or FALSE on failure.
+     *
+     * @see <https://www.php.net/manual/en/function.session-destroy.php>.
      */
     public static function destroy(bool $deleteCookie = \true): bool
     {
@@ -81,10 +89,63 @@ final class SessionManager
      * Perform session data garbage collection.
      *
      * @return void Returns nothing.
+     *
+     * @see <https://www.php.net/manual/en/function.session-gc.php>.
      */
     public static function gc(): void
     {
         \session_gc();
+    }
+
+    /**
+     * Abort the session and discard any changes.
+     *
+     * @return bool Returns TRUE on success or FALSE on failure.
+     *
+     * @see <https://www.php.net/manual/en/function.session-abort.php>.
+     */
+    public static function abort(): bool
+    {
+        return (bool) \session_abort();
+    }
+
+    /**
+     * Check to see if a session already exists.
+     *
+     * @return bool Returns TRUE if one exists and FALSE if not.
+     *
+     * @see <https://www.php.net/manual/en/function.session-status.php>.
+     */
+    public static function exists(): bool
+    {
+        if (\php_sapi_name() !== 'cli' ) {
+            return (bool) \session_status() === \PHP_SESSION_ACTIVE ? \true : \false;
+        }
+        return (bool) \false;
+    }
+
+    /**
+     * Write session data and end session.
+     *
+     * @return bool Returns TRUE on success or FALSE on failure.
+     *
+     * @see <https://www.php.net/manual/en/function.session-write-close.php>.
+     */
+    public static function commit(): bool
+    {
+        return (bool) \session_write_close();
+    }
+
+    /**
+     * Re-initialize session array with original values.
+     *
+     * @return bool Returns TRUE on success or FALSE on failure.
+     *
+     * @see <https://www.php.net/manual/en/function.session-reset.php>.
+     */
+    public static function reset(): bool
+    {
+        return (bool) \session_reset();
     }
 
     /**
@@ -98,6 +159,8 @@ final class SessionManager
      *                                    en empty string.)
      *
      * @return bool Returns TRUE on success or FALSE on failure.
+     *
+     * @see <https://www.php.net/manual/en/function.session-regenerate-id.php>.
      */
     public static function regenerate(bool $deleteOldSession = \true, string $sameSiteRestriction = "") {
         $result = \session_regenerate_id($deleteOldSession);
