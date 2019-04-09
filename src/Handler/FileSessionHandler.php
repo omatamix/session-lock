@@ -14,6 +14,8 @@ use Symfony\Component\Filesystem\Filesystem;
  * File session storage.
  *
  * @class FileSessionHandler.
+ *
+ * @see <https://www.php.net/manual/en/class.sessionhandlerinterface.php>.
  */
 class FileSessionHandler implements \SessionHandlerInterface
 {
