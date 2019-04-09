@@ -1,2 +1,2 @@
-includes:
-  - vendor/phpstan/phpstan-strict-rules/rules.neon
+# includes:
+#   - vendor/phpstan/phpstan-strict-rules/rules.neon
