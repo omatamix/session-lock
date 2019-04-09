@@ -19,6 +19,9 @@
         "symplify/easy-coding-standard": "^5.1",
         "nikic/php-parser": "^4.2"
     },
+    "suggest": {
+        "symfony/filesystem": "If you plan on using `Kooser/Session/Handler/FileSessionHandler`."
+    }
     "config": {
         "optimize-autoloader": true
     },
