@@ -7,5 +7,5 @@ Securely manage and preserve session data.
 ## Installation
 via Composer:
 ```sh
-composer require kooser/session
+C:\project\dir>composer require kooser/session
 ```
