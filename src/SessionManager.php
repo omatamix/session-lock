@@ -152,19 +152,14 @@ final class SessionManager
      * Re-generates the session ID in a way compatible to PHP's built-in
      * `session_regenerate_id()` function.
      *
-     * @param bool   $deleteOldSession    Whether to delete the old session or not.
-     * @param string $sameSiteRestriction Indicates that the cookie should not
-     *                                    be sent along with cross-site
-     *                                    requests (either `Lax`, `Strict`, or
-     *                                    en empty string.)
+     * @param bool $deleteOldSession Whether to delete the old session or not.
      *
      * @return bool Returns TRUE on success or FALSE on failure.
      *
      * @see <https://www.php.net/manual/en/function.session-regenerate-id.php>.
      */
-    public static function regenerate(bool $deleteOldSession = \true, string $sameSiteRestriction = "") {
-        $result = \session_regenerate_id($deleteOldSession);
-        return $result;
+    public static function regenerate(bool $deleteOldSession = \true): bool {
+        return (bool) \session_regenerate_id($deleteOldSession);
     }
 
     /**
