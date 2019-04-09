@@ -9,4 +9,3 @@ install:
   - composer install
 script:
   - ./vendor/bin/psalm
-  - ./vendor/bin/phpstan analyse src
