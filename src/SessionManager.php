@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Kooser Session - Secure manage and preserve session data.
+ * Kooser Session - Securely manage and preserve session data.
  * 
  * @package Kooser\Session.
  */
