@@ -6,7 +6,7 @@
 Securely manage and preserve session data.
 ## Installation
 via Composer:
-The best way to install this cache library is through composer. If you do not have composer installed you can install it directly from thier website (https://getcomposer.org/). After composer is successfully install run the command line code below.
+The best way to install this library is through composer. If you do not have composer installed you can install it directly from thier website (https://getcomposer.org/). After composer is successfully install run the command line code below.
 ```sh
 composer require kooser/session
 ```
