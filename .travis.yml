@@ -18,4 +18,6 @@ before_script:
   - sudo cp -f .travis-ci-apache /etc/apache2/sites-available/default
   - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/default
   - sudo service apache2 restart
-script: test_result="$(curl -s http://localhost/tests/)" && echo "$test_result" && echo "$test_result" | grep -q 'ALL TESTS PASSED' || exit 1
+script:
+  - test_result="$(curl -s http://localhost/tests/)" && echo "$test_result" && echo "$test_result" | grep -q 'ALL TESTS PASSED' || exit 1
+  - ./vendor/bin/psalm
