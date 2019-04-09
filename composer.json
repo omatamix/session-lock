@@ -21,7 +21,7 @@
     },
     "suggest": {
         "symfony/filesystem": "If you plan on using `Kooser/Session/Handler/FileSessionHandler`."
-    }
+    },
     "config": {
         "optimize-autoloader": true
     },
