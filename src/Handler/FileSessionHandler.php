@@ -80,11 +80,11 @@ class FileSessionHandler implements \SessionHandlerInterface
      * Write session data to a file.
      *
      * @param string $id   The session id.
-     * @param mixed  $data The session data.
+     * @param string $data The session data.
      *
      * @return bool Returns TRUE on success and FALSE on faliure.
      */
-    public function write(string $id, $data): bool
+    public function write(string $id, $data): string
     {
         $id = \basename(\realpath($id));
         return (bool) (\file_put_contents("$this->savePath/sess_$id", $data) === \false) ? \false : \true;
