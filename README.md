@@ -1,13 +1,7 @@
 ![Packagist Lang](https://img.shields.io/badge/PHP-%3E%3D7.2-blue.svg)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Kooser/Session.svg)
-![Packagist](https://img.shields.io/packagist/l/Kooser/Session.svg)
+[![License](https://poser.pugx.org/kooser/session/license)](https://packagist.org/packages/kooser/session)
+[![Latest Stable Version](https://poser.pugx.org/kooser/session/v/stable)](https://packagist.org/packages/kooser/session)
 [![Build Status](https://travis-ci.org/Kooser6/Session.svg?branch=master)](https://travis-ci.org/Kooser6/Session)
+[![composer.lock](https://poser.pugx.org/kooser/session/composerlock)](https://packagist.org/packages/kooser/session)
 # Session
 Securely manage and preserve session data.
-## Installation
-via Composer:<br />
-
-The best way to install this library is through composer. If you do not have composer installed you can install it directly from thier website (https://getcomposer.org/). After composer is successfully install run the command line code below.
-```sh
-composer require kooser/session
-```
