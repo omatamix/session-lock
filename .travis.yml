@@ -8,7 +8,10 @@ cache:
 before_install:
   - if [[ $DISABLE_XDEBUG == "true" ]]; then phpenv config-rm xdebug.ini; fi
 install:
-  - composer install
+    - travis_retry composer install --no-interaction
+    - wget -c -nc --retry-connrefused --tries=0 https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/php-coveralls.phar
+    - chmod +x php-coveralls.phar
+    - php php-coveralls.phar --version
 script:
   - ./vendor/bin/psalm
   - if [[ $STATIC_ANALYSIS != "" ]]; then composer check-cs; fi
