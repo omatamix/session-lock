@@ -1,25 +1,28 @@
-    
-<?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
+<phpunit backupGlobals="true"
+         backupStaticAttributes="false"
          bootstrap="./vendor/autoload.php"
-         colors="true">
-    <testsuites>
-        <testsuite name="Kooser Session Test Suite">
-            <directory>./tests/</directory>
-        </testsuite>
-    </testsuites>
-    <groups>
-        <exclude>
-            <group>disable</group>
-        </exclude>
-    </groups>
+         cacheTokens="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         forceCoversAnnotation="false"
+         processIsolation="false"
+         stopOnError="false"
+         stopOnFailure="false"
+         stopOnIncomplete="false"
+         stopOnSkipped="false"
+         stopOnRisky="false"
+         timeoutForSmallTests="1"
+         timeoutForMediumTests="10"
+         timeoutForLargeTests="60"
+         verbose="false">
     <filter>
-        <whitelist addUncoveredFilesFromWhitelist="true">
+        <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./src</directory>
         </whitelist>
     </filter>
-    <php>
-        <ini name="date.timezone" value="UTC"/>
-    </php>
+    <logging>
+        <log type="coverage-clover" target="./build/logs/clover.xml"/>
+    </logging>
 </phpunit>
