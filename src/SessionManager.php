@@ -77,10 +77,12 @@ final class SessionManager
     public static function destroy(bool $deleteCookie = \true): bool
     {
         $_SESSION = array();
+        // @codeCoverageIgnoreStart
         if (self::$sessionConfig["use_cookies"]) {
             $params = \session_get_cookie_params();
             \setcookie(\session_name(), '', \time() - 42000, $params["path"], $params["domain"], $params["secure"], $params["httponly"]);
         }
+        // @codeCoverageIgnoreEnd
         return (bool) \session_destroy();
     }
 
@@ -120,7 +122,9 @@ final class SessionManager
         if (\php_sapi_name() !== 'cli' ) {
             return (bool) (\session_status() === \PHP_SESSION_ACTIVE) ? \true : \false;
         }
+        // @codeCoverageIgnoreStart
         return (bool) \false;
+        // @codeCoverageIgnoreEnd
     }
 
     /**
