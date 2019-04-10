@@ -3,7 +3,7 @@ use PHPUnit\Framework\TestCase;
 
 class SessionManagerTest extends TestCase
 {
-    public function testPushAndPop()
+    public function testSessionStart()
     {
         $sessionConfig = ['use_cookies' => \false];
         Kooser\Session\SessionManager::start($sessionConfig);
