@@ -11,6 +11,5 @@ class SessionManagerTest extends TestCase
         $sessionConfig = ['use_cookies' => \false, 'runningTests' => \true];
         $result = Kooser\Session\SessionManager::start($sessionConfig);
         $this->assertTrue($result);
-        $this->assertTrue(Kooser\Session\SessionManager::exists());
     }
 }
