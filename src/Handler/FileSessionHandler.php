@@ -44,7 +44,7 @@ class FileSessionHandler implements \SessionHandlerInterface
      *
      * @return bool Returns TRUE after function execution.
      */
-    public function open(string $savePath, string $sessionName)
+    public function open($savePath, $sessionName)
     {
         $this->savePath = $savePath;
         if (!is_dir($this->savePath)) {
@@ -70,7 +70,7 @@ class FileSessionHandler implements \SessionHandlerInterface
      *
      * @return string Returns the data.
      */
-    public function read(string $id)
+    public function read($id)
     {
         $id = \basename(\realpath($id));
         return (string) @\file_get_contents("$this->savePath/sess_$id");
@@ -84,7 +84,7 @@ class FileSessionHandler implements \SessionHandlerInterface
      *
      * @return bool Returns TRUE on success and FALSE on faliure.
      */
-    public function write(string $id, string $data)
+    public function write($id, $data)
     {
         $id = \basename(\realpath($id));
         return (bool) (\file_put_contents("$this->savePath/sess_$id", $data) === \false) ? \false : \true;
@@ -114,7 +114,7 @@ class FileSessionHandler implements \SessionHandlerInterface
      *
      * @return bool Returns TRUE once garbage collection has finished.
      */
-    public function gc(int $maxlifetime)
+    public function gc($maxlifetime)
     {
         foreach (\glob("$this->savePath/sess_*") as $file) {
             if (\filemtime($file) + $maxlifetime < \time() && $this->filesystem->exists($file)) {
