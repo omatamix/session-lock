@@ -119,7 +119,7 @@ final class SessionManager
      */
     public static function exists(): bool
     {
-        if (\php_sapi_name() !== 'cli' || self::$sessionConfig['runningTests'] == \true) {
+        if (\php_sapi_name() !== 'cli') {
             return (bool) (\session_status() === \PHP_SESSION_ACTIVE) ? \true : \false;
         }
         // @codeCoverageIgnoreStart
