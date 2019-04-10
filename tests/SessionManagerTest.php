@@ -11,7 +11,7 @@ class SessionManagerTest extends TestCase
         $sessionConfig = ['use_cookies' => \false];
         $handler = new Kooser\Session\Handler\FileSessionHandler();
         Kooser\Session\SessionManager::setSaveHandler($handler, \true);
-        \session_save_path(\realpath(\dirname($_SERVER['DOCUMENT_ROOT'] . '/../session')));
+        \session_save_path(\realpath(\dirname(__DIR__ . '/session')));
         $result = Kooser\Session\SessionManager::start($sessionConfig);
         $this->assertTrue($result);
         $id = Kooser\Session\SessionManager::id();
