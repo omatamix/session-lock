@@ -44,7 +44,7 @@ class FileSessionHandler implements \SessionHandlerInterface
      *
      * @return bool Returns TRUE after function execution.
      */
-    public function open(string $savePath, string $sessionName): bool
+    public function open(string $savePath, string $sessionName)
     {
         $this->savePath = $savePath;
         if (!is_dir($this->savePath)) {
@@ -70,7 +70,7 @@ class FileSessionHandler implements \SessionHandlerInterface
      *
      * @return string Returns the data.
      */
-    public function read(string $id): string
+    public function read(string $id)
     {
         $id = \basename(\realpath($id));
         return (string) @\file_get_contents("$this->savePath/sess_$id");
@@ -84,7 +84,7 @@ class FileSessionHandler implements \SessionHandlerInterface
      *
      * @return bool Returns TRUE on success and FALSE on faliure.
      */
-    public function write(string $id, string $data): bool
+    public function write(string $id, string $data)
     {
         $id = \basename(\realpath($id));
         return (bool) (\file_put_contents("$this->savePath/sess_$id", $data) === \false) ? \false : \true;
@@ -97,7 +97,7 @@ class FileSessionHandler implements \SessionHandlerInterface
      *
      * @return bool Returns TRUE once the session has been destroyed.
      */
-    public function destroy($id): bool
+    public function destroy($id)
     {
         $id = \basename(\realpath($id));
         $file = "$this->savePath/sess_$id";
@@ -114,7 +114,7 @@ class FileSessionHandler implements \SessionHandlerInterface
      *
      * @return bool Returns TRUE once garbage collection has finished.
      */
-    public function gc(int $maxlifetime): bool
+    public function gc(int $maxlifetime)
     {
         foreach (\glob("$this->savePath/sess_*") as $file) {
             if (\filemtime($file) + $maxlifetime < \time() && $this->filesystem->exists($file)) {
