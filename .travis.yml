@@ -18,7 +18,7 @@ before_script:
   - mkdir -p build/logs
   - ls -al
 script:
-  - ./vendor/bin/phpunit --coverage-clover ./build/logs/clover.xml
+  - ./vendor/bin/phpunit --coverage-clover --stderr ./build/logs/clover.xml
   - ./vendor/bin/psalm
   - if [[ $STATIC_ANALYSIS != "" ]]; then composer check-cs; fi
   - if [[ $STATIC_ANALYSIS != "" ]]; then composer phpstan; fi
