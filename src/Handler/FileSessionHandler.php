@@ -72,7 +72,7 @@ class FileSessionHandler implements \SessionHandlerInterface
      */
     public function read($id)
     {
-        $id = \basename(\realpath($id));
+        $id = (string) \basename((string) \realpath($id));
         return (string) @\file_get_contents("$this->savePath/sess_$id");
     }
 
@@ -86,7 +86,7 @@ class FileSessionHandler implements \SessionHandlerInterface
      */
     public function write($id, $data)
     {
-        $id = \basename(\realpath($id));
+        $id = (string) \basename((string) \realpath($id));
         return (bool) (\file_put_contents("$this->savePath/sess_$id", $data) === \false) ? \false : \true;
     }
 
@@ -99,7 +99,7 @@ class FileSessionHandler implements \SessionHandlerInterface
      */
     public function destroy($id)
     {
-        $id = \basename(\realpath($id));
+        $id = (string) \basename((string) \realpath($id));
         $file = "$this->savePath/sess_$id";
         if ($this->filesystem->exists($file)) {
             $this->filesystem->remove($file);
