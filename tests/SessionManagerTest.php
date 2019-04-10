@@ -6,9 +6,12 @@ class SessionManagerTest extends TestCase
     /**
      * @runInSeparateProcess
      */
-    public function testSessionStart()
+    public function testSessions()
     {
-        $sessionConfig = ['use_cookies' => \false];
-        Kooser\Session\SessionManager::start($sessionConfig);
+        $sessionConfig = ['use_cookies' => \true];
+        $result = Kooser\Session\SessionManager::start($sessionConfig);
+        $this->assertTrue($result);
+        $this->assertTrue(Kooser\Session\SessionManager::exists());
+        
     }
 }
