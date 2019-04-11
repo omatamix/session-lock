@@ -53,6 +53,8 @@ class SessionManagerTest extends TestCase
         $this->assertTrue(($result5 === \null));
         $this->assertTrue(($result6 === \null));
         Kooser\Session\SessionManager::commit();
+        $result = Kooser\Session\SessionManager::start($sessionConfig);
+        $this->assertTrue($result);
         $result = Kooser\Session\SessionManager::destroy(\false);
         $this->assertTrue($result);
     }
