@@ -124,10 +124,10 @@ final class SessionManager
      */
     public static function exists(): bool
     {
+        // @codeCoverageIgnoreStart
         if (\php_sapi_name() !== 'cli') {
             return (bool) (\session_status() === \PHP_SESSION_ACTIVE) ? \true : \false;
         }
-        // @codeCoverageIgnoreStart
         return (bool) \false;
         // @codeCoverageIgnoreEnd
     }
