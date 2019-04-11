@@ -62,6 +62,9 @@ final class SessionManager
      */
     public static function id(string $id = ""): string
     {
+        if ($id == "") {
+            return (string) \session_id();
+        }
         return (string) \session_id($id);
     }
 
