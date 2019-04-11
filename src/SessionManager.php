@@ -65,7 +65,9 @@ final class SessionManager
         if ($id == "") {
             return (string) \session_id();
         }
+        // @codeCoverageIgnoreStart
         return (string) \session_id($id);
+        // @codeCoverageIgnoreEnd
     }
 
     /**
