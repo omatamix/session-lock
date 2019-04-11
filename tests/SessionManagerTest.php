@@ -16,5 +16,12 @@ class SessionManagerTest extends TestCase
         $this->assertTrue($result);
         $id = Kooser\Session\SessionManager::id();
         $this->assertTrue(\is_string($id));
+        Kooser\Session\SessionManager::gc();
+        Kooser\Session\SessionManager::regenerate();
+        $newId = Kooser\Session\SessionManager::id();
+        $this->assertTrue(($id != $newId));
+        Kooser\Session\SessionManager::abort();
+        Kooser\Session\SessionManager::reset();
+        
     }
 }
