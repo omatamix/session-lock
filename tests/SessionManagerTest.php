@@ -30,5 +30,9 @@ class SessionManagerTest extends TestCase
         $this->assertTrue(($data1 == 'Kooser6'));
         $this->assertTrue(($data2 != null));
         $this->assertTrue(($data2 == 'Kooser6Session'));
+        $result = Kooser\Session\SessionManager::exists();
+        $data3 = Kooser\Session\SessionManager::get('key3', null);
+        $this->assertTrue(($data3 === null));
+        $this->assertTrue($result);
     }
 }
