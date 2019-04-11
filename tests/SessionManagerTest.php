@@ -30,9 +30,27 @@ class SessionManagerTest extends TestCase
         $this->assertTrue(($data1 == 'Kooser6'));
         $this->assertTrue(($data2 != null));
         $this->assertTrue(($data2 == 'Kooser6Session'));
-        $result = Kooser\Session\SessionManager::exists();
         $data3 = Kooser\Session\SessionManager::get('key3', null);
+        $data4 = Kooser\Session\SessionManager::get('key4', null);
         $this->assertTrue(($data3 === null));
-        $this->assertTrue($result);
+        $this->assertTrue(($data4 === null));
+        Kooser\Session\SessionManager::delete('key1');
+        Kooser\Session\SessionManager::delete('key2');
+        Kooser\Session\SessionManager::set('key1', 'Kooser6');
+        Kooser\Session\SessionManager::set('key2', 'Kooser6Session');
+        $result1 = Kooser\Session\SessionManager::flash('key1', null);
+        $result2 = Kooser\Session\SessionManager::flash('key2', null);
+        $this->assertTrue(($result1 != null));
+        $this->assertTrue(($result1 == 'Kooser6'));
+        $this->assertTrue(($result2 != null));
+        $this->assertTrue(($result2 == 'Kooser6Session'));
+        $result3 = Kooser\Session\SessionManager::has('key1');
+        $result4 = Kooser\Session\SessionManager::has('key2');
+        $this->assertTrue(!$result3);
+        $this->assertTrue(!$result4);
+        $result5 = Kooser\Session\SessionManager::flash('key3', null);
+        $result6 = Kooser\Session\SessionManager::flash('key4', null);
+        $this->assertTrue(($result5 === null));
+        $this->assertTrue(($result6 === null));
     }
 }
