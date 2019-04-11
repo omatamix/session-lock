@@ -16,7 +16,7 @@ class SessionManagerTest extends TestCase
         $this->assertTrue($result);
         $id = Kooser\Session\SessionManager::id();
         $this->assertTrue(\is_string($id));
-        $result = Kooser\Session\SessionManager::destroy($sessionConfig);
+        $result = Kooser\Session\SessionManager::destroy();
         $this->assertTrue($result);
         $id = \session_create_id();
         Kooser\Session\SessionManager::id($id);
