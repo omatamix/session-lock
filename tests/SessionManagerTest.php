@@ -22,6 +22,13 @@ class SessionManagerTest extends TestCase
         $this->assertTrue(($id != $newId));
         Kooser\Session\SessionManager::abort();
         Kooser\Session\SessionManager::reset();
-        
+        Kooser\Session\SessionManager::set('key1', 'Kooser6');
+        Kooser\Session\SessionManager::set('key2', 'Kooser6Session');
+        $data1 = Kooser\Session\SessionManager::get('key1', null);
+        $data2 = Kooser\Session\SessionManager::get('key2', null);
+        $this->assertTrue(($data1 != null));
+        $this->assertTrue(($data1 == 'Kooser6'));
+        $this->assertTrue(($data2 != null));
+        $this->assertTrue(($data2 == 'Kooser6Session'));
     }
 }
