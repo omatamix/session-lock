@@ -48,7 +48,9 @@ class FileSessionHandler implements \SessionHandlerInterface
     {
         $this->savePath = $savePath;
         if (!is_dir($this->savePath)) {
+            // @codeCoverageIgnoreStart
             $this->filesystem->mkdir($this->savePath, 0777);
+            // @codeCoverageIgnoreEnd
         }
         return (bool) \true;
     }
@@ -86,8 +88,10 @@ class FileSessionHandler implements \SessionHandlerInterface
      */
     public function write($id, $data)
     {
+        // @codeCoverageIgnoreStart
         $id = \str_replace(['/','\\'], '', $id);
         return (bool) (\file_put_contents("$this->savePath/sess_$id", $data) === \false) ? \false : \true;
+        // @codeCoverageIgnoreEnd
     }
 
     /**
@@ -117,10 +121,12 @@ class FileSessionHandler implements \SessionHandlerInterface
     public function gc($maxlifetime)
     {
         foreach (\glob("$this->savePath/sess_*") as $file) {
+            // @codeCoverageIgnoreStart
             \clearstatcache(\true, $file);
             if (\filemtime($file) + $maxlifetime < \time() && $this->filesystem->exists($file)) {
                 $this->filesystem->remove($file);
             }
+            // @codeCoverageIgnoreEnd
         }
         return \true;
     }
