@@ -57,7 +57,7 @@ final class SessionManager
      * @param string $path Session data path. If specified, the path to which data is saved will be changed.
      *                     session_save_path() needs to be called before session_start() for that purpose.
      *
-     * @return bool Returns the path of the current directory used for data storage.
+     * @return string Returns the path of the current directory used for data storage.
      *
      * @see <https://www.php.net/manual/en/function.session-save-path.php>.
      */
