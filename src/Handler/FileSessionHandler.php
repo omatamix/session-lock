@@ -60,7 +60,7 @@ class FileSessionHandler implements \SessionHandlerInterface
      *
      * @return bool Always return true.
      */
-    public function close(): bool
+    public function close()
     {
         return (bool) \true;
     }
