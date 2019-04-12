@@ -208,7 +208,7 @@ final class SessionManager
      * @return mixed Returns the requested value or the default
      *               value.
      */
-    public static function get(string $key, $defaultValue = null)
+    public static function get(string $key, $defaultValue = \null)
     {
         if (isset($_SESSION[$key])) {
             return $_SESSION[$key];
@@ -228,7 +228,7 @@ final class SessionManager
      *
      * @return mixed The requested value or the default value.
      */
-    public static function flash(string $key, $defaultValue = null)
+    public static function flash(string $key, $defaultValue = \null)
     {
         if (isset($_SESSION[$key])) {
             $value = $_SESSION[$key];
