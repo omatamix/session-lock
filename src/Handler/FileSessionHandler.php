@@ -72,7 +72,7 @@ class FileSessionHandler implements \SessionHandlerInterface
      */
     public function read($id)
     {
-        $id = (string) \basename((string) \realpath($id));
+        
         return (string) @\file_get_contents("$this->savePath/sess_$id");
     }
 
@@ -86,7 +86,7 @@ class FileSessionHandler implements \SessionHandlerInterface
      */
     public function write($id, $data)
     {
-        $id = (string) \basename((string) \realpath($id));
+        
         return (bool) (\file_put_contents("$this->savePath/sess_$id", $data) === \false) ? \false : \true;
     }
 
@@ -99,12 +99,12 @@ class FileSessionHandler implements \SessionHandlerInterface
      */
     public function destroy($id)
     {
-        $id = (string) \basename((string) \realpath($id));
+        
         $file = "$this->savePath/sess_$id";
         if ($this->filesystem->exists($file)) {
             $this->filesystem->remove($file);
         }
-        return true;
+        return \true;
     }
 
     /**
@@ -117,6 +117,7 @@ class FileSessionHandler implements \SessionHandlerInterface
     public function gc($maxlifetime)
     {
         foreach (\glob("$this->savePath/sess_*") as $file) {
+            clearstatcache(\true, $file);
             if (\filemtime($file) + $maxlifetime < \time() && $this->filesystem->exists($file)) {
                 $this->filesystem->remove($file);
             }
