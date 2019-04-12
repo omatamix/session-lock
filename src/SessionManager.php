@@ -11,7 +11,7 @@ namespace Kooser\Session;
 /**
  * Secure session management.
  *
- * You can start a session using the static method `Session::start(...)` which
+ * You can start a session using the static method `SessionManager::start(...)` which
  * is compatible to PHP's built-in `session_start()` function.
  *
  * @class SessionManager.
@@ -49,6 +49,21 @@ final class SessionManager
     public static function setSaveHandler(\SessionHandlerInterface $handler, bool $registerShutdown = \true): bool
     {
         return (bool) \session_set_save_handler($handler, $registerShutdown);
+    }
+
+    /**
+     * Get and/or set the current session save path.
+     *
+     * @param string $path Session data path. If specified, the path to which data is saved will be changed.
+     *                     session_save_path() needs to be called before session_start() for that purpose.
+     *
+     * @return bool Returns the path of the current directory used for data storage.
+     *
+     * @see <https://www.php.net/manual/en/function.session-save-path.php>.
+     */
+    public static function setSavePath(string $path): string
+    {
+        return (string) \session_save_path(string $path);
     }
 
     /**
