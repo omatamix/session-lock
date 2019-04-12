@@ -117,7 +117,7 @@ class FileSessionHandler implements \SessionHandlerInterface
     public function gc($maxlifetime)
     {
         foreach (\glob("$this->savePath/sess_*") as $file) {
-            clearstatcache(\true, $file);
+            \clearstatcache(\true, $file);
             if (\filemtime($file) + $maxlifetime < \time() && $this->filesystem->exists($file)) {
                 $this->filesystem->remove($file);
             }
