@@ -63,7 +63,7 @@ final class SessionManager
      */
     public static function setSavePath(string $path): string
     {
-        return (string) \session_save_path(string $path);
+        return (string) \session_save_path($path);
     }
 
     /**
