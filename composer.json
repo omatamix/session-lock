@@ -5,7 +5,7 @@
     "license": "MIT",
     "require": {
         "php": ">=7.2",
-        "symfony/filesystem": "^4.2"
+        "symfony/filesystem": "^4.2",
         "psr/http-message": "*"
     },
     "autoload": {
