@@ -120,3 +120,5 @@ SessionManager::start($sessionConfig);
 var_dump(SessionManager::exists());
 
 ```
+
+### Session Variables
