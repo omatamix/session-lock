@@ -45,8 +45,8 @@ class MySqlSessionHandler implements \SessionHandlerInterface
     public function __construct(string $databaseDns, string $username = "", string $password = "", string $tableName = "sessions")
     {
         $this->databaseDns = $databaseDns;
-        $this->username = $username;
-        $this->password = $password;
+        $this->username    = $username;
+        $this->password    = $password;
     }
 
     /**
