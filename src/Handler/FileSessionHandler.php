@@ -106,7 +106,9 @@ class FileSessionHandler implements \SessionHandlerInterface
         $id = \str_replace(['/','\\'], '', $id);
         $file = "$this->savePath/sess_$id";
         if ($this->filesystem->exists($file)) {
+            // @codeCoverageIgnoreStart
             $this->filesystem->remove($file);
+            // @codeCoverageIgnoreEnd
         }
         return (bool) \true;
     }
