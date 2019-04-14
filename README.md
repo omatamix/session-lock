@@ -85,3 +85,41 @@ var_dump(SessionManager::exists());
 
 ```
 
+If you rather store your sessions in a mysql database that is easy too. Here is an example of that below.
+
+
+```php
+
+use Kooser\Session\SessionManager;
+
+// Require the composer autoloader.
+require_once __DIR__ . '/vendor/autoload.php';
+
+// Define our session config.
+$sessionConfig = [
+    "use_cookies"      => \true,
+    "use_only_cookies" => \true,
+    "cookie_samesite"  => "Lax",
+];
+
+// Set the path where the session files will be stored.
+SessionManager::setSavePath(__DIR__ . '/sessions');
+
+// Construct the handler.
+$handler = new Kooser\Session\Handler\MySqlSessionHandler(
+    'mysql:host=localhost;dbname=test',
+    'db_username',
+    'db_password',
+    'tablename'
+); 
+
+// Set the mysql session handler.
+SessionManager::setSaveHandler($handler);
+
+// Start the session.
+SessionManager::start($sessionConfig);
+
+// Check to see if we are active.
+var_dump(SessionManager::exists());
+
+```
