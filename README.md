@@ -122,3 +122,7 @@ var_dump(SessionManager::exists());
 ```
 
 ### Session Variables
+
+Session variables are the key reason why we use sessions. We provide an easy to use session api to make variable management as easy as possible.
+
+* `Kooser\Session\SessionManager::set`([`HiddenString`](doc/Classes/HiddenString.md), [`EncryptionSecretKey`]
