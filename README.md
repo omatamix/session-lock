@@ -125,16 +125,16 @@ var_dump(SessionManager::exists());
 
 Session variables are the key reason why we use sessions. We provide an easy to use session api to make variable management as easy as possible. The set method is self-explanatory, on the get method the default return value is the default value to return if no variable is foundm on the flash method it is the same as get but deltes the variable once you retrive the variable, and the delete method is also self-explanatory. We recommend you use the api over the reguar `$_SESSION` array.
 
-> Setting a session variable.
+> Setting a session variable. <br />
 `Kooser\Session\SessionManager::set(string variableName, mixed variableValue): void`
 
-> Getting a session variable.
+> Getting a session variable. <br />
 `Kooser\Session\SessionManager::get(string variableName, mixed defaultReturnValue): mixed`
 
-> Flashing a session variable.
+> Flashing a session variable. <br />
 `Kooser\Session\SessionManager::flash(string variableName, mixed defaultReturnValue): mixed`
 
-> Deleting a session variable.
+> Deleting a session variable. <br />
 `Kooser\Session\SessionManager::delete(string variableName): void`
 
 
