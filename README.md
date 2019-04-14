@@ -125,7 +125,7 @@ var_dump(SessionManager::exists());
 
 Session variables are the key reason why we use sessions. We provide an easy to use session api to make variable management as easy as possible. The has method check to see if the variable exists, the set method is self-explanatory, the get method is self-explanatory, the flash method is the same as the get method except it deletes the variable after use, and the delete method is self-explanatory. We recommend you use the api over the reguar `$_SESSION` array.
 
-Checking if a session variable exists. <br />
+* Checking if a session variable exists. <br />
 `Kooser\Session\SessionManager::has(string variableName): bool`
 
 * Setting a session variable. <br />
@@ -140,4 +140,8 @@ Checking if a session variable exists. <br />
 * Deleting a session variable. <br />
 `Kooser\Session\SessionManager::delete(string variableName): void`
 
+## Contributing
+All contributions are welcome! If you wish to contribute, create an issue first so that your feature, problem or question can be discussed.
 
+## License
+This project is licensed under the terms of the [MIT License](https://opensource.org/licenses/MIT).
