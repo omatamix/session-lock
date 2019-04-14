@@ -23,6 +23,8 @@ composer require kooser/session
 
 ## Usage
 
+### Basic usage
+
 Our session api is easy to use static methods that replace the native session function. You ultimately control the session using the `SessionManager` class. Here is a small example of starting a secure session with same-site cookies. Also the session config is the session runtime config which can be found here (https://www.php.net/manual/en/session.configuration.php). You can use them in the session config array just remove the `session.` prefix.
 
 ```php
@@ -48,4 +50,6 @@ var_dump(SessionManager::exists());
 
 ```
 
-### Session Variable Management.
+### Session Handlers
+
+This session library comes with its own custom session handlers which can be implemented and used with complete ease. We have a lot of session handlers to choose from here is an example of using the filesystem and mysql session handler. Also when using the mysql session handler it will create the table for you, all you have to do is set the name of the table.
