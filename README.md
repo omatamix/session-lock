@@ -22,3 +22,5 @@ composer require kooser/session
 ```
 
 ## Usage
+
+Our session api is easy to use static methods that replace the native session function. You ultimately control the session using the `SessionManager` class.
