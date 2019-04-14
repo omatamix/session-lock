@@ -60,17 +60,16 @@ class MySqlSessionHandler implements \SessionHandlerInterface
     public function open($savePath, $sessionName)
     {
         $this->connection = \ParagonIE\EasyDB\Factory::fromArray([
-            $databaseDns,
-            $username,
-            $password,
+            $this->databaseDns,
+            $this->username,
+            $this->password,
         ]);
         $pdo = $this->connection->getPdo();
         $query = "CREATE TABLE IF NOT EXISTS `$this->tableName` (";
         $query .= "`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,";
         $query .= "`sess_time` CHAR(10) NOT NULL,";
-        $query .= "`sess_data` varchar(255) NOT NULL";
+        $query .= "`sess_data` varchar(255) NOT NULL,";
         $query .= "`sess_id` varchar(255) NOT NULL";
-        $query .= "PRIMARY KEY (`id`)";
         $query .= ") ENGINE=InnoDB DEFAULT CHARSET=latin1;";
         $pdo->query($query);
         $pdo = \null;
@@ -104,7 +103,7 @@ class MySqlSessionHandler implements \SessionHandlerInterface
         if (!empty($sessInfo)) {
             return $sessInfo['sess_data'];
         }
-        return "";
+        return (string) "";
     }
 
     /**
@@ -164,6 +163,6 @@ class MySqlSessionHandler implements \SessionHandlerInterface
         $pdo->prepare("DELETE FROM $this->tableName WHERE set_time < ?");
         $this->pdo->bind_param('s', $old);
         $this->pdo->execute();
-        return \true;
+        return (bool) \true;
     }
 }
