@@ -47,7 +47,7 @@ class FileSessionHandler implements \SessionHandlerInterface
     public function open($savePath, $sessionName)
     {
         $this->savePath = $savePath;
-        if (!is_dir($this->savePath)) {
+        if (!\is_dir($this->savePath)) {
             // @codeCoverageIgnoreStart
             $this->filesystem->mkdir($this->savePath, 0777);
             // @codeCoverageIgnoreEnd
