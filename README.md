@@ -102,9 +102,6 @@ $sessionConfig = [
     "cookie_samesite"  => "Lax",
 ];
 
-// Set the path where the session files will be stored.
-SessionManager::setSavePath(__DIR__ . '/sessions');
-
 // Construct the handler.
 $handler = new Kooser\Session\Handler\MySqlSessionHandler(
     'mysql:host=localhost;dbname=test',
