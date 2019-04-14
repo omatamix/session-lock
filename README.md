@@ -52,4 +52,36 @@ var_dump(SessionManager::exists());
 
 ### Session Handlers
 
-This session library comes with its own custom session handlers which can be implemented and used with complete ease. We have a lot of session handlers to choose from here is an example of using the filesystem and mysql session handler. Also when using the mysql session handler it will create the table for you, all you have to do is set the name of the table.
+This session library comes with its own custom session handlers which can be implemented and used with complete ease. We have a lot of session handlers to choose from here is an example of using the filesystem handler. Also when using the mysql session handler it will create the table for you, all you have to do is set the name of the table.
+
+```php
+
+use Kooser\Session\SessionManager;
+
+// Require the composer autoloader.
+require_once __DIR__ . '/vendor/autoload.php';
+
+// Define our session config.
+$sessionConfig = [
+    "use_cookies"      => \true,
+    "use_only_cookies" => \true,
+    "cookie_samesite"  => "Lax",
+];
+
+// Set the path where the session files will be stored.
+SessionManager::setSavePath(__DIR__ . '/sessions');
+
+// Construct the handler.
+$handler = new Kooser\Session\Handler\FileSessionHandler();
+
+// Set the filesystem session handler.
+SessionManager::setSaveHandler($handler);
+
+// Start the session.
+SessionManager::start($sessionConfig);
+
+// Check to see if we are active.
+var_dump(SessionManager::exists());
+
+```
+
