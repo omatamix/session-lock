@@ -108,7 +108,7 @@ class FileSessionHandler implements \SessionHandlerInterface
         if ($this->filesystem->exists($file)) {
             $this->filesystem->remove($file);
         }
-        return \true;
+        return (bool) \true;
     }
 
     /**
@@ -128,6 +128,6 @@ class FileSessionHandler implements \SessionHandlerInterface
             }
             // @codeCoverageIgnoreEnd
         }
-        return \true;
+        return (bool) \true;
     }
 }
