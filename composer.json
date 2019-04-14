@@ -4,7 +4,7 @@
     "keywords": [],
     "license": "MIT",
     "require": {
-        "php": ">=7.2",
+        "php": ">=7.3",
         "symfony/filesystem": "^4.2",
         "paragonie/easydb": "^2.9",
         "psr/http-message": "*"
