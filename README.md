@@ -8,7 +8,7 @@ Securely manage and preserve session data.
 
 ## Requirements
 
-> pdo php extension
+> pdo php extension <br />
 > php 7.2 and up
 
 ## Installation
