@@ -126,4 +126,4 @@ var_dump(SessionManager::exists());
 Session variables are the key reason why we use sessions. We provide an easy to use session api to make variable management as easy as possible.
 
 > Setting a session variable.
-* `Kooser\Session\SessionManager::set`(`string`, [`AuthenticationKey`](doc/Classes/Symmetric/AuthenticationKey.md)): `string`
+* `Kooser\Session\SessionManager::set`(`string` variableName, `mixed` variableValue): `void`
