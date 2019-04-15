@@ -148,14 +148,14 @@ Session variables are the key reason why we use sessions. We provide an easy to 
 
 Regenerating the session id is important when dealing with different access levels.
 
-* Regenerate the session id.
+* Regenerate the session id. <br />
 `Kooser\Session\SessionManager::regenerate(bool deleteOldSession): bool`
 
 ### Garbage Collection
 
 You can preform the session garbage collection manually using the simple api.
 
-* Preform the session garbage collection.
+* Preform the session garbage collection. <br />
 `Kooser\Session\SessionManager::gc(): void`
 
 ## Contributing
