@@ -67,7 +67,7 @@ class FingerprintManager
             $ip,
             $ua
         );
-        return \hash($hashAlgo, $fp);
+        return (string) \hash($hashAlgo, $fp);
     }
 
     /**
