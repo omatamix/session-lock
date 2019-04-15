@@ -222,7 +222,10 @@ Some avaliable api methods that you can use.
 `Kooser\Session\SessionManager::reset(): bool` <br />
 
 * Abort the session and discard any changes. <br />
-`Kooser\Session\SessionManager::abort(): bool`
+`Kooser\Session\SessionManager::abort(): bool` <br />
+
+* Write session data and end session. <br />
+`Kooser\Session\SessionManager::commit(): bool`
 
 ## Contributing
 
