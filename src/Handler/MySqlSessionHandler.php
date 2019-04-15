@@ -44,9 +44,12 @@ class MySqlSessionHandler implements \SessionHandlerInterface
      */
     public function __construct(string $databaseDns, string $username = "", string $password = "", string $tableName = "sessions")
     {
+        // @codeCoverageIgnoreStart
         $this->databaseDns = $databaseDns;
         $this->username    = $username;
         $this->password    = $password;
+        $this->tableName   = $tableName;
+        // @codeCoverageIgnoreEnd
     }
 
     /**
@@ -72,8 +75,10 @@ class MySqlSessionHandler implements \SessionHandlerInterface
         $query .= "`sess_id` varchar(255) NOT NULL";
         $query .= ") ENGINE=InnoDB DEFAULT CHARSET=latin1;";
         $pdo->query($query);
+        // @codeCoverageIgnoreStart
         $pdo = \null;
         return (bool) \true;
+        // @codeCoverageIgnoreEnd
     }
 
     /**
@@ -83,11 +88,13 @@ class MySqlSessionHandler implements \SessionHandlerInterface
      */
     public function close()
     {
+        // @codeCoverageIgnoreStart
         $this->connection = \null;
         $this->databaseDns = \null;
         $this->username = \null;
         $this->password = \null;
         return (bool) \true;
+        // @codeCoverageIgnoreEnd
     }
 
     /**
@@ -103,7 +110,9 @@ class MySqlSessionHandler implements \SessionHandlerInterface
         if (!empty($sessInfo)) {
             return $sessInfo['sess_data'];
         }
+        // @codeCoverageIgnoreStart
         return (string) "";
+        // @codeCoverageIgnoreEnd
     }
 
     /**
@@ -131,7 +140,9 @@ class MySqlSessionHandler implements \SessionHandlerInterface
                 'sess_time' => \time(),
             ]);
         }
+        // @codeCoverageIgnoreStart
         return (bool) \true;
+        // @codeCoverageIgnoreEnd
     }
 
     /**
@@ -146,7 +157,9 @@ class MySqlSessionHandler implements \SessionHandlerInterface
         $this->connection->delete($this->tableName, [
             'sess_id' => $id
         ]);
+        // @codeCoverageIgnoreStart
         return (bool) \true;
+        // @codeCoverageIgnoreEnd
     }
 
     /**
@@ -163,6 +176,8 @@ class MySqlSessionHandler implements \SessionHandlerInterface
         $pdo->prepare("DELETE FROM $this->tableName WHERE set_time < ?");
         $pdo->bind_param('s', $old);
         $pdo->execute();
+        // @codeCoverageIgnoreStart
         return (bool) \true;
+        // @codeCoverageIgnoreEnd
     }
 }
