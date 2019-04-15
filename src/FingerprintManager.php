@@ -13,7 +13,7 @@ namespace Kooser\Session;
  *
  * @class FingerprintManager.
  */
-final class FingerprintManager
+class FingerprintManager
 {
 
     /** @var bool $ipValidate Should we validate fingerprint with the ip address. */
