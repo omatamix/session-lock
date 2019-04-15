@@ -33,7 +33,7 @@ final class SessionManager
      */
     public static function start(array $sessionConfig = [
         'use_cookies' => \true,
-        'use_fingerprint' => \true
+        'use_fingerprint' => \true,
         'fingerprint_validators' => []
     ]): bool {
         self::$sessionConfig = $sessionConfig;
