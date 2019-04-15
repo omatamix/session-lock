@@ -160,6 +160,39 @@ Session variables are the key reason why we use sessions. We provide an easy to 
 
 We recommend you use the api over the regular `$_SESSION` array.
 
+### Destroying Sessions.
+
+Destroying a session is useful for authentication systems. Here is an example of destroying a session.
+
+```php
+<?php
+
+use Kooser\Session\SessionManager;
+
+// Require the composer autoloader.
+require_once __DIR__ . '/vendor/autoload.php';
+
+// Define our session config.
+$sessionConfig = [
+    "use_cookies"      => \true,
+    "use_only_cookies" => \true,
+    "cookie_samesite"  => "Lax",
+];
+
+// Start the session.
+SessionManager::start($sessionConfig);
+
+// Check to see if we are active.
+var_dump(SessionManager::exists());
+
+// Destroy the session.
+SessionManager::destroy();
+
+// Check to see if we are active.
+var_dump(SessionManager::exists());
+
+```
+
 ## Contributing
 
 All contributions are welcome! If you wish to contribute, create an issue first so that your feature, problem or question can be discussed.
