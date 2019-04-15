@@ -166,19 +166,19 @@ var_dump(SessionManager::exists());
 Session variables are the key reason why we use sessions. We provide an easy to use session api to make variable management as easy as possible. The has method check to see if the variable exists, the set method is self-explanatory, the get method is self-explanatory, the flash method is the same as the get method except it deletes the variable after use, and the delete method is self-explanatory.
 
 * Checking if a session variable exists. <br />
-`Kooser\Session\SessionManager::has(string variableName): bool`
+`Kooser\Session\SessionManager::has(string variableName): bool` <br />
 
 * Setting a session variable. <br />
-`Kooser\Session\SessionManager::set(string variableName, mixed variableValue): void`
+`Kooser\Session\SessionManager::set(string variableName, mixed variableValue): void` <br />
 
 * Getting a session variable. <br />
-`Kooser\Session\SessionManager::get(string variableName, mixed defaultReturnValue): mixed`
+`Kooser\Session\SessionManager::get(string variableName, mixed defaultReturnValue): mixed` <br />
 
 * Flashing a session variable. <br />
-`Kooser\Session\SessionManager::flash(string variableName, mixed defaultReturnValue): mixed`
+`Kooser\Session\SessionManager::flash(string variableName, mixed defaultReturnValue): mixed` <br />
 
 * Deleting a session variable. <br />
-`Kooser\Session\SessionManager::delete(string variableName): void`
+`Kooser\Session\SessionManager::delete(string variableName): void` <br />
 
 We recommend you use the api over the regular `$_SESSION` array.
 
@@ -213,6 +213,16 @@ SessionManager::destroy();
 var_dump(SessionManager::exists());
 
 ```
+
+### Session Helpers
+
+Some avaliable api methods that you can use.
+
+* Re-initialize session array with original values. <br />
+`Kooser\Session\SessionManager::reset(): bool` <br />
+
+* Abort the session and discard any changes. <br />
+`Kooser\Session\SessionManager::abort(): bool`
 
 ## Contributing
 
