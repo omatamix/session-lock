@@ -27,7 +27,7 @@ composer require kooser/session
 
 ### Basic usage
 
-Our session api is easy to use static methods that replace the native session function. You ultimately control the session using the `SessionManager` class. Here is a small example of starting a secure session with same-site cookies. Also the session config is the session runtime config which can be found here (https://www.php.net/manual/en/session.configuration.php). You can use them in the session config array just remove the `session.` prefix.
+Our session api is easy to use static methods that replace the native session function. You ultimately control the session using the `SessionManager` class. Here is a small example of starting a secure session. Also the session config is the session runtime config which can be found here (https://www.php.net/manual/en/session.configuration.php). You can use them in the session config array just remove the `session.` prefix.
 
 ```php
 <?php
@@ -41,7 +41,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 $sessionConfig = [
     "use_cookies"      => \true,
     "use_only_cookies" => \true,
-    "cookie_samesite"  => "Lax",
 ];
 
 // Start the session.
@@ -82,7 +81,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 $sessionConfig = [
     "use_cookies"      => \true,
     "use_only_cookies" => \true,
-    "cookie_samesite"  => "Lax",
 ];
 
 // Set the path where the session files will be stored.
@@ -117,7 +115,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 $sessionConfig = [
     "use_cookies"      => \true,
     "use_only_cookies" => \true,
-    "cookie_samesite"  => "Lax",
 ];
 
 // Construct the handler.
@@ -176,7 +173,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 $sessionConfig = [
     "use_cookies"      => \true,
     "use_only_cookies" => \true,
-    "cookie_samesite"  => "Lax",
 ];
 
 // Start the session.
@@ -195,7 +191,28 @@ var_dump(SessionManager::exists());
 
 ### Same-Site Session Cookies
 
-Using same-site session cookies can increase session security. The two supported vaules are `Lax` or `Strict`.
+Using same-site session cookies can increase session security. The two supported vaules are `Lax` or `Strict`. Here is an example below.
+
+```php
+<?php
+
+use Kooser\Session\SessionManager;
+
+// Require the composer autoloader.
+require_once __DIR__ . '/vendor/autoload.php';
+
+// Define our session config.
+$sessionConfig = [
+    "cookie_samesite"  => "Lax",
+];
+
+// Start the session.
+SessionManager::start($sessionConfig);
+
+// Check to see if we are active.
+var_dump(SessionManager::exists());
+
+```
 
 ## Contributing
 
