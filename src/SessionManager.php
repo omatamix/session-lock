@@ -31,9 +31,26 @@ final class SessionManager
      *
      * @see <https://www.php.net/manual/en/function.session-start.php>.
      */
-    public static function start(array $sessionConfig = ['use_cookies' => \true]): bool {
+    public static function start(array $sessionConfig = [
+        'use_cookies' => \true,
+        'use_fingerprint' => \true
+        'fingerprint_validators' => []
+    ]): bool {
         self::$sessionConfig = $sessionConfig;
-        return (bool) \session_start($sessionConfig);
+        if ($sessionConfig['use_fingerprint']) {
+            $fpManager = new FingerprintManager($sessionConfig['fingerprint_validators']);
+        }
+        $result = \session_start($sessionConfig);
+        if (self::has("session_fingerprint")) {
+            $fp = $fpManager->generate();
+            if (!\hash_equals(self::get("session_fingerprint"), $fp)) {
+                self::destory();
+            }
+        } else {
+            self::set("session_fingerprint", $fpManager->generate());
+        }
+        $fpManager->clear();
+        return (bool) $result;
     }
 
     /**
