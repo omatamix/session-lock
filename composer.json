@@ -5,8 +5,6 @@
     "license": "MIT",
     "require": {
         "php": ">=7.3",
-        "symfony/filesystem": "^4.2",
-        "paragonie/easydb": "^2.9",
         "psr/http-message": "*"
     },
     "autoload": {
@@ -22,7 +20,13 @@
         "symplify/coding-standard": "^5.1",
         "symplify/easy-coding-standard": "^5.1",
         "symfony/filesystem": "^4.2",
+        "paragonie/easydb": "^2.9",
         "nikic/php-parser": "^4.2"
+    },
+    "suggest": {
+        "paragonie/easydb": "If you want to use the MySql Session Handler.",
+        "symfony/filesystem": "If you want to use the File Session Handler.",
+        "ext-mongodb": "If you want to use the MongoDB Session Handler."
     },
     "config": {
         "optimize-autoloader": true
