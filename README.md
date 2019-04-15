@@ -144,8 +144,24 @@ Session variables are the key reason why we use sessions. We provide an easy to 
 * Deleting a session variable. <br />
 `Kooser\Session\SessionManager::delete(string variableName): void`
 
+### Regeneration
+
+Regenerating the session id is important when dealing with different access levels.
+
+* Regenerate the session id.
+`Kooser\Session\SessionManager::regenerate(bool deleteOldSession): bool`
+
+### Garbage Collection
+
+You can preform the session garbage collection manually using the simple api.
+
+* Preform the session garbage collection.
+`Kooser\Session\SessionManager::gc(): void`
+
 ## Contributing
+
 All contributions are welcome! If you wish to contribute, create an issue first so that your feature, problem or question can be discussed.
 
 ## License
+
 This project is licensed under the terms of the [MIT License](https://opensource.org/licenses/MIT).
