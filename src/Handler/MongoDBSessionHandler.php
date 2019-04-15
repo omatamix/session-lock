@@ -18,13 +18,19 @@ namespace Kooser\Session\Handler;
 class MongoDBSessionHandler implements \SessionHandlerInterface
 {
 
+    /** @var mixed $client The mongodb client. */
+    private $client = \null;
+
     /**
      * Construct the mongodb session handler.
      *
+     * @param mixed $client The mongodb client.
+     *
      * @return void Returns nothing.
      */
-    public function __construct()
+    public function __construct($client)
     {
+        $this->client = $client;
     }
 
     /**
