@@ -26,7 +26,7 @@
     "suggest": {
         "paragonie/easydb": "If you want to use the MySql Session Handler.",
         "symfony/filesystem": "If you want to use the File Session Handler.",
-        "ext-mongodb": "If you want to use the MongoDB Session Handler."
+        "alcaeus/mongo-php-adapter": "If you want to use the MongoDB Session Handler."
     },
     "config": {
         "optimize-autoloader": true
