@@ -58,6 +58,29 @@ Regenerating the session id is important when dealing with different access leve
 * Regenerate the session id. <br />
 `Kooser\Session\SessionManager::regenerate(bool deleteOldSession): bool`
 
+### Same-Site Session Cookies
+
+Using same-site session cookies can increase session security. The two supported vaules are `Lax` or `Strict`. Here is an example below.
+
+```php
+<?php
+
+use Kooser\Session\SessionManager;
+
+// Require the composer autoloader.
+require_once __DIR__ . '/vendor/autoload.php';
+
+// Define our session config.
+$sessionConfig = [
+    "cookie_samesite"  => "Lax",
+];
+
+// Start the session.
+SessionManager::start($sessionConfig);
+
+// Check to see if we are active.
+var_dump(SessionManager::exists());
+
 ### Garbage Collection
 
 You can preform the session garbage collection manually using the simple api.
@@ -183,31 +206,6 @@ var_dump(SessionManager::exists());
 
 // Destroy the session.
 SessionManager::destroy();
-
-// Check to see if we are active.
-var_dump(SessionManager::exists());
-
-```
-
-### Same-Site Session Cookies
-
-Using same-site session cookies can increase session security. The two supported vaules are `Lax` or `Strict`. Here is an example below.
-
-```php
-<?php
-
-use Kooser\Session\SessionManager;
-
-// Require the composer autoloader.
-require_once __DIR__ . '/vendor/autoload.php';
-
-// Define our session config.
-$sessionConfig = [
-    "cookie_samesite"  => "Lax",
-];
-
-// Start the session.
-SessionManager::start($sessionConfig);
 
 // Check to see if we are active.
 var_dump(SessionManager::exists());
