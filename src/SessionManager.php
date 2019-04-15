@@ -38,7 +38,10 @@ final class SessionManager
     ]): bool {
         self::$sessionConfig = $sessionConfig;
         $result = \session_start($sessionConfig);
-        if ($sessionConfig['use_fingerprint']) {
+        if (!isset($sessionConfig['use_fingerprint']) || $sessionConfig['use_fingerprint']) {
+            if (!isset($sessionConfig['fingerprint_validators'])) {
+               $sessionConfig['fingerprint_validators'] = [];
+            }
             $fpManager = new FingerprintManager($sessionConfig['fingerprint_validators']);
             if (self::has("session_fingerprint")) {
                 $fp = $fpManager->generate();
