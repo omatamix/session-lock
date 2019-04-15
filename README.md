@@ -52,6 +52,20 @@ var_dump(SessionManager::exists());
 
 ```
 
+### Regeneration
+
+Regenerating the session id is important when dealing with different access levels.
+
+* Regenerate the session id. <br />
+`Kooser\Session\SessionManager::regenerate(bool deleteOldSession): bool`
+
+### Garbage Collection
+
+You can preform the session garbage collection manually using the simple api.
+
+* Preform the session garbage collection. <br />
+`Kooser\Session\SessionManager::gc(): void`
+
 ### Session Handlers
 
 This session library comes with its own custom session handlers which can be implemented and used with complete ease. We have a lot of session handlers to choose from here is an example of using the filesystem handler. Also when using the mysql session handler it will create the table for you, all you have to do is set the name of the table.
@@ -143,20 +157,6 @@ Session variables are the key reason why we use sessions. We provide an easy to 
 
 * Deleting a session variable. <br />
 `Kooser\Session\SessionManager::delete(string variableName): void`
-
-### Regeneration
-
-Regenerating the session id is important when dealing with different access levels.
-
-* Regenerate the session id. <br />
-`Kooser\Session\SessionManager::regenerate(bool deleteOldSession): bool`
-
-### Garbage Collection
-
-You can preform the session garbage collection manually using the simple api.
-
-* Preform the session garbage collection. <br />
-`Kooser\Session\SessionManager::gc(): void`
 
 ## Contributing
 
