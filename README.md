@@ -81,6 +81,8 @@ SessionManager::start($sessionConfig);
 // Check to see if we are active.
 var_dump(SessionManager::exists());
 
+```
+
 ### Garbage Collection
 
 You can preform the session garbage collection manually using the simple api.
