@@ -158,7 +158,7 @@ Session variables are the key reason why we use sessions. We provide an easy to 
 * Deleting a session variable. <br />
 `Kooser\Session\SessionManager::delete(string variableName): void`
 
-We recommend you use the api over the reguar `$_SESSION` array.
+We recommend you use the api over the regular `$_SESSION` array.
 
 ## Contributing
 
