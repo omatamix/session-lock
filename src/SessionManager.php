@@ -46,7 +46,7 @@ final class SessionManager
             if (self::has("session_fingerprint")) {
                 $fp = $fpManager->generate();
                 if (!\hash_equals(self::get("session_fingerprint"), $fp)) {
-                    self::destory();
+                    self::destroy();
                 }
             } else {
                 self::set("session_fingerprint", $fpManager->generate());
