@@ -160,7 +160,7 @@ Session variables are the key reason why we use sessions. We provide an easy to 
 
 We recommend you use the api over the regular `$_SESSION` array.
 
-### Destroying Sessions.
+### Destroying Sessions
 
 Destroying a session is useful for authentication systems. Here is an example of destroying a session.
 
@@ -192,6 +192,10 @@ SessionManager::destroy();
 var_dump(SessionManager::exists());
 
 ```
+
+### Same-Site Session Cookies
+
+Using same-site session cookies can increase session security. The two supported vaules are `Lax` or `Strict`.
 
 ## Contributing
 
