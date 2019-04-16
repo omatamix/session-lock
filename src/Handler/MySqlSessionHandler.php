@@ -65,7 +65,7 @@ class MySqlSessionHandler implements \SessionHandlerInterface
         $this->connection = \ParagonIE\EasyDB\Factory::fromArray([
             $this->databaseDns,
             $this->username,
-            $this->password,
+            $this->password
         ]);
         $pdo = $this->connection->getPdo();
         $query = "CREATE TABLE IF NOT EXISTS `$this->tableName` (";
@@ -89,10 +89,10 @@ class MySqlSessionHandler implements \SessionHandlerInterface
     public function close()
     {
         // @codeCoverageIgnoreStart
-        $this->connection = \null;
+        $this->connection  = \null;
         $this->databaseDns = \null;
-        $this->username = \null;
-        $this->password = \null;
+        $this->username    = \null;
+        $this->password    = \null;
         return (bool) \true;
         // @codeCoverageIgnoreEnd
     }
