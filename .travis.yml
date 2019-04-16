@@ -16,7 +16,7 @@ services:
     - mysql
 before_install:
     - if [[ $DISABLE_XDEBUG == "true" ]]; then phpenv config-rm xdebug.ini; fi
-    - mysql -e 'CREATE DATABASE IF NOT EXISTS SessionTest;'
+    - mysql -e 'CREATE DATABASE IF NOT EXISTS test_db;'
 install:
     - echo "extension = mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
     - travis_retry composer install --no-interaction
