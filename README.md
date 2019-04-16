@@ -68,7 +68,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 // Define our session config.
 $sessionConfig = [
-    "cookie_samesite"  => "Lax",
+    "cookie_samesite" => "Lax",
 ];
 
 // Start the session.
