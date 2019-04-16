@@ -30,16 +30,18 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
      * @param \MongoCollection $collection The mongodb client.
      *
      * @return void Returns nothing.
+     *
+     * @psalm-suppress PossiblyNullReference
      */
     public function __construct(\MongoCollection $collection)
     {
         $this->collection = $collection;
-        $this->options = \array_merge(array(
+        $this->options = array(
             'id_field'     => '_id',
             'data_field'   => 'data',
             'time_field'   => 'time',
             'expiry_field' => 'expires_at',
-        ), $options);
+        );
     }
 
     /**
@@ -73,6 +75,7 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
      * @return string Returns the data.
      *
      * @psalm-suppress PossiblyNullReference
+     * @psalm-suppress DocblockTypeContradiction
      */
     public function read($id)
     {
@@ -82,7 +85,7 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
                 '$gte' => new \MongoDate(),
             ),
         ));
-        return (string) \null === $sessInfo ? '' : $sessInfo[$this->options['data_field']]->bin;
+        return (string) (\null === $sessInfo) ? '' : $sessInfo[$this->options['data_field']]->bin;
     }
 
     /**
@@ -92,6 +95,8 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
      * @param string $data The session data.
      *
      * @return bool Returns TRUE on success and FALSE on faliure.
+     *
+     * @psalm-suppress PossiblyNullReference
      */
     public function write($id, $data)
     {
