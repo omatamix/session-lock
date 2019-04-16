@@ -21,14 +21,14 @@ class MySqlSessionHandler implements \SessionHandlerInterface
     /** @var mixed $connection The database connection link. */
     private $connection = \null;
 
-    /** @var string|null $databaseDns The database dns. */
-    private $databaseDns = \null;
+    /** @var string $databaseDns The database dns. */
+    private $databaseDns = "";
 
-    /** @var string|null $username The database username. */
-    private $username = \null;
+    /** @var string $username The database username. */
+    private $username = "";
 
-    /** @var string|null $password The database password. */
-    private $password = \null;
+    /** @var string $password The database password. */
+    private $password = "";
 
     /** @var string $tableName The sessions table name. */
     private $tableName = "sessions";
@@ -63,9 +63,9 @@ class MySqlSessionHandler implements \SessionHandlerInterface
     public function open($savePath, $sessionName)
     {
         $this->connection = \ParagonIE\EasyDB\Factory::fromArray([
-            \strval($this->databaseDns),
-            \strval($this->username),
-            \strval($this->password)
+            $this->databaseDns,
+            $this->username,
+            $this->password
         ]);
         $pdo = $this->connection->getPdo();
         $query = "CREATE TABLE IF NOT EXISTS `$this->tableName` (";
