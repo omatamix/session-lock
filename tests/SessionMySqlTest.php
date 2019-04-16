@@ -13,7 +13,7 @@ class SessionMySqlTest extends TestCase
         $handler = new \Kooser\Session\Handler\MySqlSessionHandler(
             'mysql:host=localhost;dbname=test',
             'root',
-            ''
+            'new_password'
         );
         \Kooser\Session\SessionManager::setSaveHandler($handler, \true);
         $result = \Kooser\Session\SessionManager::start($sessionConfig);
