@@ -44,10 +44,12 @@ final class SessionManager
             }
             $fpManager = new SessionFingerprintManager($sessionConfig['fingerprint_validators']);
             if (self::has("session_fingerprint")) {
+                // @codeCoverageIgnoreStart
                 $fp = $fpManager->generate();
                 if (!\hash_equals(self::get("session_fingerprint"), $fp)) {
                     self::destroy();
                 }
+                // @codeCoverageIgnoreEnd
             } else {
                 self::set("session_fingerprint", $fpManager->generate());
             }
@@ -60,6 +62,8 @@ final class SessionManager
      * Get the session config.
      *
      * @return array The session config.
+     *
+     * @codeCoverageIgnore
      */
     public static function getSessionConfig(): array
     {
