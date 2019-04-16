@@ -187,7 +187,7 @@ Session variables are the key reason why we use sessions. We provide an easy to 
 * Deleting a session variable. <br />
 `Kooser\Session\SessionManager::delete(string variableName): void` <br />
 
-We recommend you use the api over the regular `$_SESSION` array.
+We recommend you use the API over the regular `$_SESSION` array.
 
 ### Destroying Sessions
 
@@ -223,7 +223,7 @@ var_dump(SessionManager::exists());
 
 ### Session Helpers
 
-Some avaliable api methods that you can use.
+Some avaliable API methods that you can use.
 
 * Re-initialize session array with original values. <br />
 `Kooser\Session\SessionManager::reset(): bool` <br />
