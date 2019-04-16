@@ -173,9 +173,9 @@ class MySqlSessionHandler implements \SessionHandlerInterface
     {
         $old = \time() - $maxlifetime;
         $pdo = $this->connection->getPdo();
-        $pdo->prepare("DELETE FROM $this->tableName WHERE sess_time < ?");
-        $pdo->bindParam('s', $old);
-        $pdo->execute();
+        $sth = $pdo->prepare("DELETE FROM $this->tableName WHERE sess_time < ?");
+        $sth->bindParam('s', $old);
+        $sth->execute();
         // @codeCoverageIgnoreStart
         return (bool) \true;
         // @codeCoverageIgnoreEnd
