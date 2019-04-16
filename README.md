@@ -166,7 +166,10 @@ If you have another session storage handler in mind here is a list of avaliable 
 `Kooser\Session\Handler\MongoDBSessionHandler(\MongoCollection $collection): self`
 
 > Create a Memcached session handler. <br />
-`Kooser\Session\Handler\MemcachedSessionHandler(string $saveLocation): self`
+`Kooser\Session\Handler\MemcachedSessionHandler(string $memoryStore): self`
+
+> Create a Redis Session Handler. <br />
+`Kooser\Session\Handler\RedisSessionHandler(string $redisServer): self`
 
 ### Session Variables
 
