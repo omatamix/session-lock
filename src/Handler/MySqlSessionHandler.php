@@ -89,10 +89,7 @@ class MySqlSessionHandler implements \SessionHandlerInterface
     public function close()
     {
         // @codeCoverageIgnoreStart
-        $this->connection  = \null;
-        $this->databaseDns = \null;
-        $this->username    = \null;
-        $this->password    = \null;
+        $this->connection = \null;
         return (bool) \true;
         // @codeCoverageIgnoreEnd
     }
