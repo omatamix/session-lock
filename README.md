@@ -159,10 +159,10 @@ var_dump(SessionManager::exists());
 
 If you have another session storage handler in mind here is a list of avaliable session handlers below.
 
-Create a null session handler.
+Create a null session handler. <br />
 `Kooser\Session\Handler\NullSessionHandler(): self` <br />
 
-Create a mongodb session handler.
+Create a MongoDB session handler. <br />
 `Kooser\Session\Handler\MongoDBSessionHandler(\MongoCollection $collection): self`
 
 ### Session Variables
