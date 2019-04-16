@@ -18,6 +18,7 @@ before_install:
     - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('Kooser6Session') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
     - sudo mysql_upgrade -u root -pnew_password
     - sudo service mysql restart
+    - mysql -e 'CREATE DATABASE IF NOT EXISTS SessionTest;'
 install:
     - echo "extension = mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
     - travis_retry composer install --no-interaction
