@@ -35,10 +35,14 @@ class SessionFingerprintManager
     public function __construct(array $validators = [], string $hashAlgo = 'sha512')
     {
         if (isset($validators['ipValidate'])) {
+            // @codeCoverageIgnoreStart
             $this->ipValidate = $validators['ipValidate'];
+            // @codeCoverageIgnoreEnd
         }
         if (isset($validators['uaValidate'])) {
+            // @codeCoverageIgnoreStart
             $this->uaValidate = $validators['uaValidate'];
+            // @codeCoverageIgnoreEnd
         }
         $this->hashAlgo = $hashAlgo;
     }
@@ -53,13 +57,17 @@ class SessionFingerprintManager
         $ip = "null";
         if ($this->ipValidate) {
             if (isset($_SERVER['REMOTE_ADDR'])) {
+                // @codeCoverageIgnoreStart
                 $ip = $_SERVER['REMOTE_ADDR'];
+                // @codeCoverageIgnoreEnd
             }
         }
         $ua = "null";
         if ($this->uaValidate) {
             if (isset($_SERVER['HTTP_USER_AGENT'])) {
+                // @codeCoverageIgnoreStart
                 $ua = $_SERVER['HTTP_USER_AGENT'];
+                // @codeCoverageIgnoreEnd
             }
         }
         $fp = \sprintf(
