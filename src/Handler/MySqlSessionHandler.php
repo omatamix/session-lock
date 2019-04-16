@@ -63,9 +63,9 @@ class MySqlSessionHandler implements \SessionHandlerInterface
     public function open($savePath, $sessionName)
     {
         $this->connection = \ParagonIE\EasyDB\Factory::fromArray([
-            (string) $this->databaseDns,
-            (string) $this->username,
-            (string) $this->password
+            \strval($this->databaseDns),
+            \strval($this->username),
+            \strval($this->password)
         ]);
         $pdo = $this->connection->getPdo();
         $query = "CREATE TABLE IF NOT EXISTS `$this->tableName` (";
