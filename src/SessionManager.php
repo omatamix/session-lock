@@ -82,6 +82,11 @@ final class SessionManager
      */
     public static function setSaveHandler(\SessionHandlerInterface $handler, bool $registerShutdown = \true): bool
     {
+        if (($handler instanceof \Kooser\Session\Handler\MemcachedSessionHandler)) {
+            \ini_set('session.save_handler', 'memcached');
+            \ini_set('session.save_path', $handler->getSavePath())
+            return (bool) \true;
+        }
         return (bool) \session_set_save_handler($handler, $registerShutdown);
     }
 
