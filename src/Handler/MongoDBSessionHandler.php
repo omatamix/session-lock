@@ -18,26 +18,35 @@ namespace Kooser\Session\Handler;
 class MongoDBSessionHandler implements \SessionHandlerInterface
 {
 
-    /** @var mixed $collection The mongodb collection. */
+    /** @var \MongoCollection|null $collection The mongodb collection. */
     private $collection = \null;
+
+    /** @var array $options The collection options. */
+    private $options = [];
 
     /**
      * Construct the mongodb session handler.
      *
-     * @param mixed $client The mongodb client.
+     * @param \MongoCollection $client The mongodb client.
      *
      * @return void Returns nothing.
      */
-    public function __construct($collection)
+    public function __construct(\MongoCollection $collection)
     {
         $this->collection = $collection;
+        $this->options = \array_merge(array(
+            'id_field'     => '_id',
+            'data_field'   => 'data',
+            'time_field'   => 'time',
+            'expiry_field' => 'expires_at',
+        ), $options);
     }
 
     /**
      * Opens the session storage.
      *
-     * @param string $savePath    The location where the session files will be stored.
-     * @param string $sessionName The session namespace.
+     * @param string $savePath    The location where the session files will be stored. <VOID>
+     * @param string $sessionName The session namespace.                               <VOID>
      *
      * @return bool Returns TRUE after function execution.
      */
@@ -65,7 +74,13 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
      */
     public function read($id)
     {
-        return (string) "";
+        $sessInfo = $this->collection->findOne(array(
+            $this->options['id_field']     => $id,
+            $this->options['expiry_field'] => array(
+                '$gte' => new \MongoDate(),
+            ),
+        ));
+        return null === $sessInfo ? '' : $sessInfo[$this->options['data_field']]->bin;
     }
 
     /**
@@ -78,6 +93,23 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
      */
     public function write($id, $data)
     {
+        $sessionConfig = SessionManager::getSessionConfig();
+        $maxlifetime   = $sessionConfig['gc_maxlifetime'];
+        $expiry = new \MongoDate(\time() + (int) $maxlifetime);
+        $fields = array(
+            $this->options['data_field']   => new \MongoBinData($data, \MongoBinData::BYTE_ARRAY),
+            $this->options['time_field']   => new \MongoDate(),
+            $this->options['expiry_field'] => $expiry,
+        );
+        $this->collection->update(array(
+            $this->options['id_field'] => $id,
+            ), array(
+                '$set' => $fields,
+            ), array(
+                'upsert'   => \true,
+                'multiple' => \false,
+            )
+        );
         return (bool) \true;
     }
 
@@ -90,6 +122,9 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
      */
     public function destroy($id)
     {
+        $this->collection->remove(array(
+            $this->options['id_field'] => $id,
+        ));
         return (bool) \true;
     }
 
@@ -102,6 +137,11 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
      */
     public function gc($maxlifetime)
     {
+        $this->collection->remove(array(
+            $this->options['expiry_field'] => array(
+                '$lt' => new \MongoDate(),
+            ),
+        ));
         return (bool) \true;
     }
 }
