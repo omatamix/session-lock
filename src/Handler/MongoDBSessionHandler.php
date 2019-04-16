@@ -71,6 +71,8 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
      * @param string $id The session id.
      *
      * @return string Returns the data.
+     *
+     * @psalm-suppress PossiblyNullReference
      */
     public function read($id)
     {
@@ -80,7 +82,7 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
                 '$gte' => new \MongoDate(),
             ),
         ));
-        return null === $sessInfo ? '' : $sessInfo[$this->options['data_field']]->bin;
+        return (string) \null === $sessInfo ? '' : $sessInfo[$this->options['data_field']]->bin;
     }
 
     /**
@@ -93,7 +95,7 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
      */
     public function write($id, $data)
     {
-        $sessionConfig = SessionManager::getSessionConfig();
+        $sessionConfig = \Kooser\Session\SessionManager::getSessionConfig();
         $maxlifetime   = $sessionConfig['gc_maxlifetime'];
         $expiry = new \MongoDate(\time() + (int) $maxlifetime);
         $fields = array(
@@ -119,6 +121,8 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
      * @param string $id The session id.
      *
      * @return bool Returns TRUE once the session has been destroyed.
+     *
+     * @psalm-suppress PossiblyNullReference
      */
     public function destroy($id)
     {
@@ -134,6 +138,8 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
      * @param int $maxlifetime The max amount of time the session can be stored.
      *
      * @return bool Returns TRUE once garbage collection has finished.
+     *
+     * @psalm-suppress PossiblyNullReference
      */
     public function gc($maxlifetime)
     {
