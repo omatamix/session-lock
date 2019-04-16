@@ -103,11 +103,12 @@ class MySqlSessionHandler implements \SessionHandlerInterface
      */
     public function read($id)
     {
+        
         $sessInfo = $this->connection->row("SELECT * FROM $this->tableName WHERE sess_id = ?", $id);
+        // @codeCoverageIgnoreStart
         if (!empty($sessInfo)) {
             return $sessInfo['sess_data'];
         }
-        // @codeCoverageIgnoreStart
         return (string) "";
         // @codeCoverageIgnoreEnd
     }
@@ -122,6 +123,7 @@ class MySqlSessionHandler implements \SessionHandlerInterface
      */
     public function write($id, $data)
     {
+        // @codeCoverageIgnoreStart
         $sessInfo = $this->connection->row("SELECT * FROM $this->tableName WHERE sess_id = ?", $id);
         if (!empty($sessInfo)) {
             $this->connection->update($this->tableName, [
@@ -137,7 +139,6 @@ class MySqlSessionHandler implements \SessionHandlerInterface
                 'sess_time' => \time(),
             ]);
         }
-        // @codeCoverageIgnoreStart
         return (bool) \true;
         // @codeCoverageIgnoreEnd
     }
