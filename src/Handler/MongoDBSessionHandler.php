@@ -76,6 +76,7 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
      *
      * @psalm-suppress PossiblyNullReference
      * @psalm-suppress DocblockTypeContradiction
+     * @psalm-suppress PossiblyNullArrayAccess
      */
     public function read($id)
     {
