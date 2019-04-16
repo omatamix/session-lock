@@ -11,9 +11,9 @@ namespace Kooser\Session;
 /**
  * Session fingerprint management.
  *
- * @class FingerprintManager.
+ * @class SessionFingerprintManager.
  */
-class FingerprintManager
+class SessionFingerprintManager
 {
 
     /** @var bool $ipValidate Should we validate fingerprint with the ip address. */
