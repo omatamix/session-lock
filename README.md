@@ -225,6 +225,19 @@ Some avaliable api methods that you can use.
 * Abort the session and discard any changes. <br />
 `Kooser\Session\SessionManager::abort(): bool` <br />
 
+### Session Fingerprint
+
+The session fingerprint system is enabled by default using the connecting users IP and user agent. In your session config, you would put this to disable or enable a validator which is the IP or user agent. From the example below, set the array values to either true or false to disable and enable them.
+
+```php
+$sessionConifg = [
+    'fingerprint_validators' => [
+        'ipValidate' => \true,
+        'uaValidate' => \true,
+    ],
+];
+```
+
 ## Contributing
 
 All contributions are welcome! If you wish to contribute, create an issue first so that your feature, problem or question can be discussed.
