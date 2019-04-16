@@ -87,6 +87,11 @@ final class SessionManager
             \ini_set('session.save_path', $handler->getSavePath());
             return (bool) \true;
         }
+        if (($handler instanceof \Kooser\Session\Handler\RedisSessionHandler)) {
+            \ini_set('session.save_handler', 'redis');
+            \ini_set('session.save_path', $handler->getSavePath());
+            return (bool) \true;
+        }
         return (bool) \session_set_save_handler($handler, $registerShutdown);
     }
 
