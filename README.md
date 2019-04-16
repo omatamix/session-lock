@@ -165,6 +165,9 @@ If you have another session storage handler in mind here is a list of avaliable 
 > Create a MongoDB session handler. <br />
 `Kooser\Session\Handler\MongoDBSessionHandler(\MongoCollection $collection): self`
 
+> Create a Memcached session handler. <br />
+`Kooser\Session\Handler\MemcachedSessionHandler(string $saveLocation): self`
+
 ### Session Variables
 
 Session variables are the key reason why we use sessions. We provide an easy to use session API to make variable management as easy as possible. The has method check to see if the variable exists, the set method is self-explanatory, the get method is self-explanatory, the flash method is the same as the get method except it deletes the variable after use, and the delete method is self-explanatory.
