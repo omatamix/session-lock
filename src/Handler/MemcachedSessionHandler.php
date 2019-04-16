@@ -19,6 +19,7 @@ namespace Kooser\Session\Handler;
  */
 class MemcachedSessionHandler implements \SessionHandlerInterface
 {
+
     /**
      * Construct the null session handler.
      *
@@ -27,6 +28,7 @@ class MemcachedSessionHandler implements \SessionHandlerInterface
     public function __construct()
     {
     }
+
     /**
      * Opens the session storage.
      *
@@ -39,6 +41,7 @@ class MemcachedSessionHandler implements \SessionHandlerInterface
     {
         return (bool) \true;
     }
+
     /**
      * Close the session storage.
      *
@@ -48,6 +51,7 @@ class MemcachedSessionHandler implements \SessionHandlerInterface
     {
         return (bool) \true;
     }
+
     /**
      * Read session data.
      *
@@ -59,6 +63,7 @@ class MemcachedSessionHandler implements \SessionHandlerInterface
     {
         return (string) "";
     }
+
     /**
      * Write session data.
      *
@@ -71,6 +76,7 @@ class MemcachedSessionHandler implements \SessionHandlerInterface
     {
         return (bool) \true;
     }
+
     /**
      * Destroy the session.
      *
@@ -82,6 +88,7 @@ class MemcachedSessionHandler implements \SessionHandlerInterface
     {
         return (bool) \true;
     }
+
     /**
      * Deletes old sessions.
      *
