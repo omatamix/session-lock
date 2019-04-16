@@ -232,6 +232,8 @@ Some avaliable api methods that you can use.
 
 The session fingerprint system is enabled by default using the connecting users IP and user agent. In your session config, you would put this to disable or enable a validator which is the IP or user agent. From the example below, set the array values to either true or false to disable and enable them.
 
+> When using the session fingerprint the session key `session_fingerprint` is reserved.
+
 ```php
 $sessionConifg = [
     'fingerprint_validators' => [
