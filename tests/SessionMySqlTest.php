@@ -1,3 +1,4 @@
+<?php
 use PHPUnit\Framework\TestCase;
 
 class SessionManagerTest extends TestCase
