@@ -30,7 +30,7 @@ class MemcachedSessionHandler implements \SessionHandlerInterface
      *
      * @return void Returns nothing.
      */
-    public function __construct(string $savePath = "")
+    public function __construct(string $savePath = "localhost:11211")
     {
         $this->savePath = $savePath;
     }
