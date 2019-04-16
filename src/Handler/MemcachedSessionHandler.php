@@ -20,13 +20,29 @@ namespace Kooser\Session\Handler;
 class MemcachedSessionHandler implements \SessionHandlerInterface
 {
 
+    /** @var string $savePath The memcached save path. */
+    private $savePath = "";
+
     /**
-     * Construct the null session handler.
+     * Construct the memcached session handler.
+     *
+     * @param string $savePath The memcached save path.
      *
      * @return void Returns nothing.
      */
-    public function __construct()
+    public function __construct(string $savePath = "")
     {
+        $this->savePath = $savePath;
+    }
+
+    /**
+     * Get the current memcached save path.
+     *
+     * @return string The memcached save path.
+     */
+    public function getSavePath(): string
+    {
+        return (string) $this->savePath;
     }
 
     /**
