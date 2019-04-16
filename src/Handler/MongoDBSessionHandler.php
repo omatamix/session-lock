@@ -27,7 +27,7 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
     /**
      * Construct the mongodb session handler.
      *
-     * @param \MongoCollection $client The mongodb client.
+     * @param \MongoCollection $collection The mongodb client.
      *
      * @return void Returns nothing.
      */
