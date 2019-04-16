@@ -11,7 +11,7 @@ class SessionMySqlTest extends TestCase
     {
         $sessionConfig = ['use_cookies' => \false];
         $handler = new \Kooser\Session\Handler\MySqlSessionHandler(
-            'mysql:host=localhost;dbname=test_db',
+            'mysql:host=127.0.0.1;dbname=test_db',
             'travis',
             ''
         );
