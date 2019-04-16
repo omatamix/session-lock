@@ -57,6 +57,16 @@ final class SessionManager
     }
 
     /**
+     * Get the session config.
+     *
+     * @return array The session config.
+     */
+    public static function getSessionConfig(): array
+    {
+        return self::$sessionConfig;
+    }
+
+    /**
      * Sets user-level session storage functions.
      *
      * @param \SessionHandlerInterface $handler          The session handler to use.
