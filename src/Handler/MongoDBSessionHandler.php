@@ -98,6 +98,8 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
      * @return bool Returns TRUE on success and FALSE on faliure.
      *
      * @psalm-suppress PossiblyNullReference
+     *
+     * @codeCoverageIgnore
      */
     public function write($id, $data)
     {
