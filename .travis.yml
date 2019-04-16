@@ -14,6 +14,7 @@ addons:
 env:
     - HANDLER=mysql
 services:
+    - redis-server
     - mongodb
     - mysql
 before_install:
