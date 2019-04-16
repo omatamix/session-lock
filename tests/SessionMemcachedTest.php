@@ -1,7 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-class SessionMongoDBTest extends TestCase
+class SessionMemcachedTest extends TestCase
 {
 
     /**
