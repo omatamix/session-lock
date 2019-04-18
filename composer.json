@@ -24,6 +24,7 @@
         "nikic/php-parser": "^4.2"
     },
     "suggest": {
+        "paragonie/halite": "If you want the ability to encrypt sessions.",
         "paragonie/easydb": "If you want to use the MySql Session Handler.",
         "symfony/filesystem": "If you want to use the File Session Handler.",
         "alcaeus/mongo-php-adapter": "If you want to use the MongoDB Session Handler.",
