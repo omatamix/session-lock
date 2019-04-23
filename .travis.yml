@@ -1,25 +1,16 @@
 language: php
 php:
     - 7.3
-cache:
-    directories:
-        - $HOME/.composer/cache
-addons:
-    apt:
-        sources:
-            - mysql-5.7-trusty
-    packages:
-        - mysql-server
-        - mysql-client
-env:
-    - HANDLER=mysql
+    - nightly
+matrix:
+    fast_finish: true
+    allow_failures:
+        - php: nightly
 services:
     - redis-server
     - mongodb
-    - mysql
 before_install:
     - if [[ $DISABLE_XDEBUG == "true" ]]; then phpenv config-rm xdebug.ini; fi
-    - if [[ "$HANDLER" == "mysql" ]]; then mysql -e "create database IF NOT EXISTS test_db;" -uroot; fi
     - sudo redis-server /etc/redis/redis.conf --port 6379 --requirepass 'kooser'
 install:
     - echo "extension = mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
@@ -37,5 +28,7 @@ before_script:
 script:
     - ./vendor/bin/phpunit --coverage-clover ./build/logs/clover.xml
     - ./vendor/bin/psalm
-    - if [[ $STATIC_ANALYSIS != "" ]]; then composer check-cs; fi
-    - if [[ $STATIC_ANALYSIS != "" ]]; then composer phpstan; fi
+cache:
+    directories:
+        - vendor
+        - $HOME/.cache/composer
