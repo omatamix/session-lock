@@ -1,6 +1,9 @@
-<phpunit backupGlobals="true"
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/8.1/phpunit.xsd"
+         backupGlobals="true"
          backupStaticAttributes="false"
          bootstrap="./vendor/autoload.php"
+         cacheResult="false"
          cacheTokens="false"
          colors="true"
          convertErrorsToExceptions="true"
@@ -13,14 +16,13 @@
          stopOnIncomplete="false"
          stopOnSkipped="false"
          stopOnRisky="false"
-         timeoutForSmallTests="1"
+         timeoutForSmallTests="5"
          timeoutForMediumTests="10"
-         timeoutForLargeTests="60"
-         stderr="true"
+         timeoutForLargeTests="15"
          verbose="false">
     <testsuites>
-        <testsuite name="Kooser/Session Test Suite">
-            <directory>./tests</directory>
+        <testsuite name="Kooser6/Session Test Suite">
+            <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -29,6 +31,6 @@
         </whitelist>
     </filter>
     <logging>
-        <log type="coverage-clover" target="./build/logs/clover.xml"/>
+        <log type="coverage-clover" target="clover.xml" />
     </logging>
 </phpunit>
