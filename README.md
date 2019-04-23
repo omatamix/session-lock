@@ -84,7 +84,7 @@ You can preform the session garbage collection manually using the simple API.
 
 ### Session Handlers
 
-This session library comes with its own custom session handlers which can be implemented and used with complete ease. We have a lot of session handlers to choose from here is an example of using the filesystem handler. Also when using the MySQL session handler it will create the table for you, all you have to do is set the name of the table.
+This session library comes with its own custom session handlers which can be implemented and used with complete ease. We have a lot of session handlers to choose from here is an example of using the filesystem handler.
 
 ```php
 <?php
