@@ -17,7 +17,6 @@
         "vimeo/psalm": "^3",
         "phpunit/phpunit": "^8.1",
         "symfony/filesystem": "^4.2",
-        "kooser/directory": "^1.0",
         "alcaeus/mongo-php-adapter": "^1.1"
     },
     "suggest": {
