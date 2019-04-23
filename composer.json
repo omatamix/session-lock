@@ -4,7 +4,9 @@
     "keywords": [],
     "license": "MIT",
     "require": {
-        "php": ">=7.3"
+        "php": ">=7.3",
+        "symfony/polyfill-php72": "^1.11",
+        "symfony/polyfill-php73": "^1.11"
     },
     "autoload": {
         "psr-4": {
@@ -13,19 +15,14 @@
     },
     "require-dev": {
         "vimeo/psalm": "^3",
-        "phpunit/phpunit": "^8.0",
-        "phpstan/phpstan": "^0.11",
-        "phpstan/phpstan-strict-rules": "^0.11",
-        "symplify/coding-standard": "^5.1",
-        "symplify/easy-coding-standard": "^5.1",
+        "phpunit/phpunit": "^8.1",
         "symfony/filesystem": "^4.2",
-        "paragonie/easydb": "^2.9",
-        "alcaeus/mongo-php-adapter": "^1.1",
-        "nikic/php-parser": "^4.2"
+        "kooser/directory": "^1.0",
+        "alcaeus/mongo-php-adapter": "^1.1"
     },
     "suggest": {
         "paragonie/halite": "If you want the ability to encrypt sessions.",
-        "paragonie/easydb": "If you want to use the MySql Session Handler.",
+        "kooser/directory": "If you want to use the MySql Session Handler.",
         "symfony/filesystem": "If you want to use the File Session Handler.",
         "alcaeus/mongo-php-adapter": "If you want to use the MongoDB Session Handler.",
         "ext-memcached": "If you want to use the Memcached Session Handler.",
@@ -33,11 +30,6 @@
     },
     "config": {
         "optimize-autoloader": true
-    },
-    "scripts": {
-        "check-cs": "vendor/bin/ecs check src bin",
-        "fix-cs": "vendor/bin/ecs check src bin --fix",
-        "phpstan": "vendor/bin/phpstan.phar analyse src bin --level max --configuration phpstan.neon"
     },
     "prefer-stable": true
 }
