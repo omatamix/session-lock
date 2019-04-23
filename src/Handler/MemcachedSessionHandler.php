@@ -22,7 +22,7 @@ class MemcachedSessionHandler implements \SessionHandlerInterface
 
     /** @var string $savePath The memcached save path. */
     private $savePath = "";
-
+    
     /**
      * Construct the memcached session handler.
      *
