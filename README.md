@@ -1,19 +1,15 @@
-[![Build Status](https://travis-ci.org/Kooser6/Session.svg?branch=master)](https://travis-ci.org/Kooser6/Session)
-[![Coverage Status](https://coveralls.io/repos/github/Kooser6/Session/badge.svg?branch=master)](https://coveralls.io/github/Kooser6/Session?branch=master)
+[![Travis (.org) branch](https://img.shields.io/travis/Kooser6/Session/master.svg?style=flat-square)](https://travis-ci.org/Kooser6/Session)
+[![Coveralls github branch](https://img.shields.io/coveralls/github/Kooser6/Session/master.svg?style=flat-square)](https://coveralls.io/github/Kooser6/Session?branch=master)
 
 # Session
 
 Securely manage and preserve session data.
 
-## Requirements
-
-The only thing we require is PHP 7.3 and up.
-
 ## Installation
 
 via Composer:
 
-The best way to install this session library is through composer. If you do not have composer installed you can install it directly from thier website (https://getcomposer.org/). After composer is successfully install run the command line code below.
+The best way to install this php component is through composer. If you do not have composer installed you can install it directly from the [composer website](https://getcomposer.org/). After composer is successfully installed run the command line code below.
 
 ```sh
 composer require kooser/session
@@ -23,7 +19,7 @@ composer require kooser/session
 
 ### Basic usage
 
-Our session API is easy to use static methods that replace the native session function. You ultimately control the session using the `SessionManager` class. Here is a small example of starting a secure session. Also, the session config is the session runtime config which can be found here (https://www.php.net/manual/en/session.configuration.php). You can use them in the session config array just remove the `session.` prefix.
+Our session API is easy to use static methods that replace the native session function. You ultimately control the session using the `SessionManager` class. Here is a small example of starting a secure session. Also, the session config is the session runtime config which can be found [here](https://www.php.net/manual/en/session.configuration.php). You can use them in the session config array just remove the `session.` prefix.
 
 ```php
 <?php
@@ -251,7 +247,7 @@ $sessionConifg = [
 
 ## Contributing
 
-All contributions are welcome! If you wish to contribute, create an issue first so that your feature, problem or question can be discussed.
+All contributions are welcome! If you wish to contribute.
 
 ## License
 
