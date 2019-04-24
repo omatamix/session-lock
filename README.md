@@ -117,20 +117,6 @@ var_dump(SessionManager::exists());
 
 ```
 
-If you have another session storage handler in mind here is a list of avaliable session handlers below excluding the ones above.
-
-> Create a Null session handler. <br />
-`Kooser\Session\Handler\NullSessionHandler(): self` <br />
-
-> Create a MongoDB session handler. <br />
-`Kooser\Session\Handler\MongoDBSessionHandler(\MongoCollection $collection): self`
-
-> Create a Memcached session handler. <br />
-`Kooser\Session\Handler\MemcachedSessionHandler(string $memoryStore): self`
-
-> Create a Redis Session Handler. <br />
-`Kooser\Session\Handler\RedisSessionHandler(string $redisServer): self`
-
 ### Session Variables
 
 Session variables are the key reason why we use sessions. We provide an easy to use session API to make variable management as easy as possible.
