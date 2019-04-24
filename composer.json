@@ -20,9 +20,9 @@
         "alcaeus/mongo-php-adapter": "^1.1"
     },
     "suggest": {
-        "paragonie/halite": "If you want the ability to encrypt sessions.",
         "symfony/filesystem": "If you want to use the File Session Handler.",
         "alcaeus/mongo-php-adapter": "If you want to use the MongoDB Session Handler.",
+        "ext-mongodb": "If you want to use the MongoDB Session Handler.",
         "ext-memcached": "If you want to use the Memcached Session Handler.",
         "ext-redis": "If you want to use the Redis Session Handler."
     },
