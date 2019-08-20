@@ -117,6 +117,8 @@ var_dump(SessionManager::exists());
 
 ```
 
+We support other session handlers like 'database', 'mongodb', `memcached`, and `redis`.
+
 ### Session Variables
 
 Session variables are the key reason why we use sessions. We provide an easy to use session API to make variable management as easy as possible.
