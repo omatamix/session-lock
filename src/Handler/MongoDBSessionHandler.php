@@ -81,7 +81,7 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
     public function read($id)
     {
         $dbData = $this->collection->findOne([
-            $this->options['id_field'] => $sessionId,
+            $this->options['id_field'] => $id,
             $this->options['expiry_field'] => ['$gte' => new \MongoDB\BSON\UTCDateTime()],
         ]);
         if (null === $dbData) {
