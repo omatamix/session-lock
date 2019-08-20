@@ -16,9 +16,12 @@
     },
     "require-dev": {
         "vimeo/psalm": "^3",
-        "phpunit/phpunit": "^8.2"
+        "phpunit/phpunit": "^8.2",
+        "alcaeus/mongo-php-adapter": "^1.1"
     },
     "suggest": {
+        "alcaeus/mongo-php-adapter": "If you want to use the MongoDB Session Handler.",
+        "ext-mongodb": "If you want to use the MongoDB Session Handler.",
         "ext-redis": "If you want to use the Redis Session Handler."
     },
     "config": {
