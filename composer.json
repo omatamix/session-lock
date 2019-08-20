@@ -16,7 +16,7 @@
     },
     "require-dev": {
         "vimeo/psalm": "^3",
-        "phpunit/phpunit": "^8.2",
+        "phpunit/phpunit": "^8.2"
     },
     "suggest": {
         "ext-redis": "If you want to use the Redis Session Handler."
