@@ -8,9 +8,8 @@ class SessionRedisTest extends TestCase
      */
     public function testSessions()
     {
-        $sessionConfig = ['use_cookies' => \false];
-        $handler = new \Kooser\Session\Handler\RedisSessionHandler("tcp://localhost:6379");
-        \Kooser\Session\SessionManager::setSaveHandler($handler, \true);
+        $sessionConfig = ['use_cookies' => \false, 'session_handler' => 'redis'];
+        \Kooser\Session\SessionManager::setSavePath("tcp://localhost:6379");
         $result = \Kooser\Session\SessionManager::start($sessionConfig);
         $this->assertTrue($result);
         $id = \Kooser\Session\SessionManager::id();
