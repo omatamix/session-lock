@@ -5,6 +5,7 @@
     "license": "MIT",
     "require": {
         "php": ">=7.3",
+        "symfony/filesystem": "^4.3",
         "symfony/polyfill-php72": "^1.11",
         "symfony/polyfill-php73": "^1.11"
     },
@@ -16,13 +17,8 @@
     "require-dev": {
         "vimeo/psalm": "^3",
         "phpunit/phpunit": "^8.2",
-        "symfony/filesystem": "^4.2",
-        "alcaeus/mongo-php-adapter": "^1.1"
     },
     "suggest": {
-        "symfony/filesystem": "If you want to use the File Session Handler.",
-        "alcaeus/mongo-php-adapter": "If you want to use the MongoDB Session Handler.",
-        "ext-mongodb": "If you want to use the MongoDB Session Handler.",
         "ext-redis": "If you want to use the Redis Session Handler."
     },
     "config": {
