@@ -18,7 +18,7 @@ namespace Kooser\Session\Handler;
 class MongoDBSessionHandler implements \SessionHandlerInterface
 {
 
-    /** @var \MongoCollection|null $collection The mongodb collection. */
+    /** @var mixed $collection The mongodb collection. */
     private $collection = \null;
 
     /** @var array $options The collection options. */
