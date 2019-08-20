@@ -10,8 +10,8 @@ class SessionMongoDBTest extends TestCase
     public function testSessions()
     {
         $sessionConfig = ['use_cookies' => \false];
-        $mongo = new MongoClient();
-        $collection = $mongo->test_db->sessions;
+        $mongodb = new MongoDB\Client("mongodb://localhost:27017");
+        $collection = $mongodb->test_db->sessions;
         $handler = new \Kooser\Session\Handler\MongoDBSessionHandler($collection);
         \Kooser\Session\SessionManager::setSaveHandler($handler, \true);
         $result = \Kooser\Session\SessionManager::start($sessionConfig);
