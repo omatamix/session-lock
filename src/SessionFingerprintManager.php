@@ -79,8 +79,6 @@ class SessionFingerprintManager
     }
 
     /**
-     * Clear the class.
-     *
      * @return void Returns nothing.
      */
     public function clear(): void
