@@ -1,6 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
-class SessionNullTest extends TestCase
+
+class SessionDatabaseTest extends TestCase
 {
     /**
      * @runInSeparateProcess
