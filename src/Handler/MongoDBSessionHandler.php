@@ -36,12 +36,12 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
     public function __construct(\MongoCollection $collection)
     {
         $this->collection = $collection;
-        $this->options = array(
-            'id_field'     => '_id',
-            'data_field'   => 'data',
-            'time_field'   => 'time',
+        $this->options = [
+            'id_field' => '_id',
+            'data_field' => 'data',
+            'time_field' => 'time',
             'expiry_field' => 'expires_at',
-        );
+        ];
     }
 
     /**
@@ -80,13 +80,14 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
      */
     public function read($id)
     {
-        $sessInfo = $this->collection->findOne(array(
-            $this->options['id_field']     => $id,
-            $this->options['expiry_field'] => array(
-                '$gte' => new \MongoDate(),
-            ),
-        ));
-        return (string) (\null === $sessInfo) ? '' : $sessInfo[$this->options['data_field']]->bin;
+        $dbData = $this->collection->findOne([
+            $this->options['id_field'] => $sessionId,
+            $this->options['expiry_field'] => ['$gte' => new \MongoDB\BSON\UTCDateTime()],
+        ]);
+        if (null === $dbData) {
+            return "";
+        }
+        return $dbData[$this->options['data_field']]->getData();
     }
 
     /**
@@ -104,21 +105,16 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
     public function write($id, $data)
     {
         $sessionConfig = \Kooser\Session\SessionManager::getSessionConfig();
-        $maxlifetime   = $sessionConfig['gc_maxlifetime'];
-        $expiry = new \MongoDate(\time() + (int) $maxlifetime);
-        $fields = array(
-            $this->options['data_field']   => new \MongoBinData($data, \MongoBinData::BYTE_ARRAY),
-            $this->options['time_field']   => new \MongoDate(),
+        $expiry = new \MongoDB\BSON\UTCDateTime((time() + (int) $sessionConfig['gc_maxlifetime']) * 1000);
+        $fields = [
+            $this->options['time_field'] => new \MongoDB\BSON\UTCDateTime(),
             $this->options['expiry_field'] => $expiry,
-        );
-        $this->collection->update(array(
-            $this->options['id_field'] => $id,
-            ), array(
-                '$set' => $fields,
-            ), array(
-                'upsert'   => \true,
-                'multiple' => \false,
-            )
+            $this->options['data_field'] => new \MongoDB\BSON\Binary($data, \MongoDB\BSON\Binary::TYPE_OLD_BINARY),
+        ];
+        $this->collection->updateOne(
+            [$this->options['id_field'] => $id],
+            ['$set' => $fields],
+            ['upsert' => \true]
         );
         return (bool) \true;
     }
@@ -134,9 +130,9 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
      */
     public function destroy($id)
     {
-        $this->collection->remove(array(
+        $this->collection->deleteOne([
             $this->options['id_field'] => $id,
-        ));
+        ]);
         return (bool) \true;
     }
 
@@ -151,11 +147,9 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
      */
     public function gc($maxlifetime)
     {
-        $this->collection->remove(array(
-            $this->options['expiry_field'] => array(
-                '$lt' => new \MongoDate(),
-            ),
-        ));
+        $this->collection->deleteMany([
+            $this->options['expiry_field'] => ['$lt' => new \MongoDB\BSON\UTCDateTime()],
+        ]);
         return (bool) \true;
     }
 }
