@@ -9,7 +9,7 @@ class SessionDatabaseTest extends TestCase
     public function testSessions()
     {
         $sessionConfig = ['use_cookies' => \false];
-        $handler = new \Kooser\Session\Handler\MySqlSessionHandler(
+        $handler = new \Kooser\Session\Handler\DatabaseSessionHandler(
             'mysql:host=127.0.0.1;dbname=test_db',
             'travis',
             ''
