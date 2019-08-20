@@ -33,7 +33,7 @@ class MongoDBSessionHandler implements \SessionHandlerInterface
      *
      * @psalm-suppress PossiblyNullReference
      */
-    public function __construct(\MongoCollection $collection)
+    public function __construct($collection)
     {
         $this->collection = $collection;
         $this->options = [
