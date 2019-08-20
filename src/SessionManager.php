@@ -33,8 +33,7 @@ final class SessionManager
      */
     public static function start(array $sessionConfig = [
         'use_cookies' => \true,
-        'use_fingerprint' => \true,
-        'fingerprint_validators' => []
+        'use_only_cookies' => \true,
     ]): bool {
         self::$sessionConfig = $sessionConfig;
         $result = \session_start($sessionConfig);
@@ -82,11 +81,6 @@ final class SessionManager
      */
     public static function setSaveHandler(\SessionHandlerInterface $handler, bool $registerShutdown = \true): bool
     {
-        if (($handler instanceof \Kooser\Session\Handler\RedisSessionHandler)) {
-            \ini_set('session.save_handler', 'redis');
-            \ini_set('session.save_path', $handler->getSavePath());
-            return (bool) \true;
-        }
         return (bool) \session_set_save_handler($handler, $registerShutdown);
     }
 
