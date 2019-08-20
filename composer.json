@@ -20,7 +20,6 @@
         "alcaeus/mongo-php-adapter": "^1.1"
     },
     "suggest": {
-        "alcaeus/mongo-php-adapter": "If you want to use the MongoDB Session Handler.",
         "ext-mongodb": "If you want to use the MongoDB Session Handler.",
         "ext-redis": "If you want to use the Redis Session Handler."
     },
