@@ -1,6 +1,33 @@
 <?php
-class ExampleMiddleware
+declare(strict_types=1);
+/**
+ * Kooser Session - Securely manage and preserve session data.
+ * 
+ * @package Kooser\Session.
+ */
+
+namespace Kooser\Session\Middleware;
+
+/**
+ * Slim Framework Integration.
+ */
+class Slim
 {
+    /** @var array $options The session config options. */
+    private $options = [];
+
+    /**
+     * Construct this middleware.
+     *
+     * @param array $options The session config options.
+     *
+     * @return void Returns nothing.
+     */
+    public function __construct(array $options)
+    {
+        $this->options = $options;
+    }
+
     /**
      * Example middleware invokable class
      *
@@ -12,10 +39,8 @@ class ExampleMiddleware
      */
     public function __invoke($request, $response, $next)
     {
-        $response->getBody()->write('BEFORE');
+        SessionManager::start($this->options);
         $response = $next($request, $response);
-        $response->getBody()->write('AFTER');
-
         return $response;
     }
 }
