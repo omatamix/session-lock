@@ -12,8 +12,8 @@ services:
     - mysql
 before_install:
     - if [[ $DISABLE_XDEBUG == "true" ]]; then phpenv config-rm xdebug.ini; fi
-    - sudo redis-server /etc/redis/redis.conf --port 6379 --requirepass 'kooser'
-    - if [[ "$HANDLER" == "mysql" ]]; then mysql -e "create database IF NOT EXISTS test_db;" -uroot; fi
+    - sudo redis-server /etc/redis/redis.conf --port 6379 --requirepass 'kooser'before_install:
+    - mysql -e 'CREATE DATABASE test_db;'
 install:
     - echo "extension = mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
     - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
