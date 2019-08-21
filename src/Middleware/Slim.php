@@ -10,6 +10,8 @@ namespace Kooser\Session\Middleware;
 
 /**
  * Slim Framework Integration.
+ *
+ * @codeCoverageIgnore
  */
 class Slim
 {
