@@ -12,7 +12,7 @@ services:
     - mysql
 before_install:
     - if [[ $DISABLE_XDEBUG == "true" ]]; then phpenv config-rm xdebug.ini; fi
-    - sudo redis-server /etc/redis/redis.conf --port 6379 --requirepass 'kooser'before_install:
+    - sudo redis-server /etc/redis/redis.conf --port 6379 --requirepass 'kooser'
     - mysql -e 'CREATE DATABASE test_db;'
 install:
     - echo "extension = mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
