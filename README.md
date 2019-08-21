@@ -117,7 +117,7 @@ var_dump(SessionManager::exists());
 
 ```
 
-We support other session handlers like `database`, `mongodb`, `memcached`, and `redis`.
+We support other session handlers like `database`, `mongodb`, `wincache`, `memcached`, and `redis`.
 
 ### Session Variables
 
