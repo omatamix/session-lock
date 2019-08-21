@@ -39,7 +39,7 @@ class Slim
      */
     public function __invoke($request, $response, $next)
     {
-        SessionManager::start($this->options);
+        \Kooser\Session\SessionManager::start($this->options);
         $response = $next($request, $response);
         return $response;
     }
