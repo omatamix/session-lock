@@ -5,11 +5,8 @@
     "license": "MIT",
     "require": {
         "php": ">=7.3",
-        "kooser/directory": "^1.2",
-        "symfony/filesystem": "^4.3",
         "symfony/polyfill-php72": "^1.11",
         "symfony/polyfill-php73": "^1.11",
-        "psr/http-message": "*"
     },
     "autoload": {
         "psr-4": {
