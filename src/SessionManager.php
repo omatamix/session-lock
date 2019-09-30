@@ -232,13 +232,13 @@ final class SessionManager implements SessionManagerInterface
     {
         if ($this->options['session_lock_to_ip_address']) {
             $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : \null;
-            if (!$ip) {
+            if (!$ip && $this->exceptions) {
                 throw new Exception\IPAddressNotFoundException('The ip address could not be retrieved.');
             }
         }
         if ($this->options['session_lock_to_user_agent']) {
             $ua = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : \null;
-            if (!$ua) {
+            if (!$ua && $this->exceptions) {
                 throw new Exception\UserAgentNotFoundException('The user agent could not be retrieved.');
             }
         }
