@@ -8,6 +8,8 @@ declare(strict_types=1);
 
 namespace Kooser\Session;
 
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
 /**
  * Secure session management.
  *
@@ -23,198 +25,117 @@ final class SessionManager
     private static $sessionConfig = [];
 
     /**
-     * Starts or resumes a session in a way compatible to PHP's built-in `session_start()` function
+     * Construct a new session manager.
      *
-     * @param array $sessionConfig The session configuration.
+     * @param array $options    The session manager options.
+     * @param bool  $exceptions Should we utilize exceptions.
      *
-     * @return bool Returns TRUE on success or FALSE on failure.
-     *
-     * @see <https://www.php.net/manual/en/function.session-start.php>.
+     * @return void Returns nothing.
      */
-    public static function start(array $sessionConfig = [
-        'use_cookies' => \true,
-        'use_only_cookies' => \true,
-    ]): bool {
-        self::$sessionConfig = $sessionConfig;
-        $result = \session_start($sessionConfig);
-        if (!isset($sessionConfig['use_fingerprint']) || $sessionConfig['use_fingerprint']) {
-            if (!isset($sessionConfig['fingerprint_validators'])) {
-               $sessionConfig['fingerprint_validators'] = [];
-            }
-            $fpManager = new SessionFingerprintManager($sessionConfig['fingerprint_validators']);
-            if (self::has("session_fingerprint")) {
-                // @codeCoverageIgnoreStart
-                $fp = $fpManager->generate();
-                if (!\hash_equals(self::get("session_fingerprint"), $fp)) {
-                    self::destroy();
+    public function __construct(array $options = [], bool $exceptions = \true)
+    {
+        $this->setExceptions($exceptions);
+        $this->setOptions($options);
+    }
+    /**
+     * Set the session manager options.
+     *
+     * @param array $options The session manager options.
+     *
+     * @return \Kooser\Session\SessionManagerInterface Returns the session manager.
+     */
+    public function setOptions(array $options = []): SessionManagerInterface
+    {
+        $resolver = new OptionsResolver();
+        $this->configureOptions($resolver);
+        $this->options = $resolver->resolve($options);
+        return $this;
+    }
+
+    /**
+     * Set the exceptions param.
+     *
+     * @param bool $exceptions Should we utilize exceptions.
+     *
+     * @return \Kooser\Session\SessionManagerInterface Returns the session manager.
+     */
+    public function setExceptions(bool $exceptions = \true): SessionManagerInterface
+    {
+        $this->exceptions = $exceptions;
+        return $this;
+    }
+
+    /**
+     * Starts or resumes a session.
+     *
+     * @throws Exception\InvalidFingerprintException If the fingerprint from the user does not match the one
+     *                                               binded to the session.
+     *
+     * @return bool Returns true on success or false on failure.
+     */
+    public function start(): bool
+    {
+        $result = @\session_start($this->options['session_config']);
+        if ($this->options['session_fingerprint']) {
+            if (!$fingerprint = $this->get('kooser.session.fingerprint')) {
+                if (!\hash_equals($fingerprint, $this->getFingerprint())) {
+                    $this->stop();
+                    if ($this->exceptions) {
+                        throw new Exception\InvalidFingerprintException('The fingerprint supplied is invalid.');
+                    }
                 }
-                // @codeCoverageIgnoreEnd
             } else {
-                self::set("session_fingerprint", $fpManager->generate());
+                $this->put('kooser.session.fingerprint', $this->getFingerprint())
             }
-            $fpManager->clear();
         }
         return (bool) $result;
     }
 
     /**
-     * Get the session config.
+     * Stop a session and destroys all data.
      *
-     * @return array The session config.
-     *
-     * @codeCoverageIgnore
+     * @return bool Returns true on success or false on failure.
      */
-    public static function getSessionConfig(): array
-    {
-        return self::$sessionConfig;
-    }
-
-    /**
-     * Sets user-level session storage functions.
-     *
-     * @param \SessionHandlerInterface $handler          The session handler to use.
-     * @param bool                     $registerShutdown Should we use the register shutdown function.
-     *
-     * @return bool Returns TRUE on success or FALSE on failure.
-     *
-     * @see <https://www.php.net/manual/en/function.session-set-save-handler.php>.
-     */
-    public static function setSaveHandler(\SessionHandlerInterface $handler, bool $registerShutdown = \true): bool
-    {
-        return (bool) \session_set_save_handler($handler, $registerShutdown);
-    }
-
-    /**
-     * Get and/or set the current session save path.
-     *
-     * @param string $path Session data path. If specified, the path to which data is saved will be changed.
-     *                     session_save_path() needs to be called before session_start() for that purpose.
-     *
-     * @return string Returns the path of the current directory used for data storage.
-     *
-     * @see <https://www.php.net/manual/en/function.session-save-path.php>.
-     */
-    public static function setSavePath(string $path): string
-    {
-        return (string) \session_save_path($path);
-    }
-
-    /**
-     * Get or set the ID of the current session.
-     *
-     * @param string The session ID to create.
-     *
-     * @return string Returns the session ID or an empty string.
-     *
-     * @see <https://www.php.net/manual/en/function.session-id.php>.
-     */
-    public static function id(string $id = ""): string
-    {
-        if ($id == "") {
-            return (string) \session_id();
-        }
-        // @codeCoverageIgnoreStart
-        return (string) \session_id($id);
-        // @codeCoverageIgnoreEnd
-    }
-
-    /**
-     * Destroys all data registered to a session.
-     *
-     * @param bool $deleteCookie Should we delete the cookie header.
-     *
-     * @return bool Returns TRUE on success or FALSE on failure.
-     *
-     * @see <https://www.php.net/manual/en/function.session-destroy.php>.
-     */
-    public static function destroy(bool $deleteCookie = \true): bool
+    public function stop(): array
     {
         $_SESSION = array();
-        // @codeCoverageIgnoreStart
-        if (self::$sessionConfig["use_cookies"]) {
+        if ($this->options['session_config']["use_cookies"]) {
             $params = \session_get_cookie_params();
-            \setcookie(\session_name(), '', \time() - 42000, $params["path"], $params["domain"], $params["secure"], $params["httponly"]);
+            \setcookie(
+                \session_name(),
+                '',
+                \time() - 42000,
+                $params["path"],
+                $params["domain"],
+                $params["secure"],
+                $params["httponly"]
+            );
         }
-        // @codeCoverageIgnoreEnd
-        return (bool) \session_destroy();
-    }
-
-    /**
-     * Perform session data garbage collection.
-     *
-     * @return void Returns nothing.
-     *
-     * @see <https://www.php.net/manual/en/function.session-gc.php>.
-     */
-    public static function gc(): void
-    {
-        \session_gc();
-    }
-
-    /**
-     * Abort the session and discard any changes.
-     *
-     * @return bool Returns TRUE on success or FALSE on failure.
-     *
-     * @see <https://www.php.net/manual/en/function.session-abort.php>.
-     */
-    public static function abort(): bool
-    {
-        return (bool) \session_abort();
+        return (bool) @\session_destroy();
     }
 
     /**
      * Check to see if a session already exists.
      *
-     * @return bool Returns TRUE if one exists and FALSE if not.
-     *
-     * @see <https://www.php.net/manual/en/function.session-status.php>.
+     * @return bool Returns true if one exists and false if not.
      */
     public static function exists(): bool
     {
-        // @codeCoverageIgnoreStart
         if (\php_sapi_name() !== 'cli') {
             return (bool) (\session_status() === \PHP_SESSION_ACTIVE) ? \true : \false;
         }
         return (bool) \false;
-        // @codeCoverageIgnoreEnd
     }
 
     /**
-     * Write session data and end session.
-     *
-     * @return bool Returns TRUE on success or FALSE on failure.
-     *
-     * @see <https://www.php.net/manual/en/function.session-write-close.php>.
-     */
-    public static function commit(): bool
-    {
-        return (bool) \session_write_close();
-    }
-
-    /**
-     * Re-initialize session array with original values.
-     *
-     * @return bool Returns TRUE on success or FALSE on failure.
-     *
-     * @see <https://www.php.net/manual/en/function.session-reset.php>.
-     */
-    public static function reset(): bool
-    {
-        return (bool) \session_reset();
-    }
-
-    /**
-     * Re-generates the session ID in a way compatible to PHP's built-in
-     * `session_regenerate_id()` function.
+     * Regenerates the session.
      *
      * @param bool $deleteOldSession Whether to delete the old session or not.
      *
-     * @return bool Returns TRUE on success or FALSE on failure.
-     *
-     * @see <https://www.php.net/manual/en/function.session-regenerate-id.php>.
+     * @return bool Returns true on success or false on failure.
      */
-    public static function regenerate(bool $deleteOldSession = \true): bool {
+    public static function regenerate(bool $deleteOldSession = \true): bool
+    {
         return (bool) \session_regenerate_id($deleteOldSession);
     }
 
@@ -223,9 +144,9 @@ final class SessionManager
      *
      * @param string $key The key to check.
      *
-     * @return bool Returns TRUE if the key was found and FALSE if not.
+     * @return bool Returns true if the key was found and false if not.
      */
-    public static function has(string $key): bool
+    public function has(string $key): bool
     {
         return isset($_SESSION[$key]);
     }
@@ -281,7 +202,7 @@ final class SessionManager
      *
      * @return void Returns nothing.
      */
-    public static function set(string $key, $value): void
+    public static function put(string $key, $value): void
     {
         $_SESSION[$key] = $value;
     }
@@ -296,5 +217,58 @@ final class SessionManager
     public static function delete(string $key): void
     {
         unset($_SESSION[$key]);
+    }
+
+    /**
+     * Get the fingerprint from the current accessing user.
+     *
+     * @throws Exception\IPAddressNotFoundException If the ip address could not be retrieved.
+     * @throws Exception\UserAgentNotFoundException If the user agent could not be retrieved.
+     *
+     * @return string Returns the unique fingerprint.
+     */
+    private function getFingerprint(): string
+    {
+        if ($this->options['session_lock_to_ip_address']) {
+            $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : \null;
+            if (!$ip) {
+                throw new Exception\IPAddressNotFoundException('The ip address could not be retrieved.');
+            }
+        }
+        if ($this->options['session_lock_to_user_agent']) {
+            $ua = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : \null;
+            if (!$ua) {
+                throw new Exception\UserAgentNotFoundException('The user agent could not be retrieved.');
+            }
+        }
+        $raw_fingerprint = \sprintf(
+            '%s|%s',
+            $ip,
+            $ua
+        );
+        return (string) \hash_hmac($this->options['session_fingerprint_hash'], $raw_fingerprint, $this->options['session_security_code']);
+    }
+
+    /**
+     * Configure the hasher options.
+     *
+     * @param OptionsResolver The symfony options resolver.
+     *
+     * @return void Returns nothing.
+     */
+    private function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'session_fingerprint' => \true,
+            'session_fingerprint_hash' => 'sha512',
+            'session_lock_to_ip_address' => \true,
+            'session_lock_to_user_agent' => \true,
+        ]);
+        $resolver->setRequired('session_security_code');
+        $resolver->setAllowedTypes('session_fingerprint', 'bool');
+        $resolver->setAllowedTypes('session_fingerprint_hash', 'string');
+        $resolver->setAllowedTypes('session_lock_to_ip_address', 'bool');
+        $resolver->setAllowedTypes('session_lock_to_user_agent', 'bool');
+        $resolver->setAllowedTypes('session_security_code', 'string');
     }
 }
