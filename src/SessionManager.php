@@ -24,6 +24,9 @@ final class SessionManager implements SessionManagerInterface
     /** @var array $options The session manager options. */
     private $options;
 
+    /** @var bool $exceptions Should we utilize exceptions. */
+    private $exceptions;
+
     /**
      * Construct a new session manager.
      *
