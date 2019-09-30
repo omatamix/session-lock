@@ -1,5 +1,5 @@
-[![Travis (.org) branch](https://img.shields.io/travis/Kooser6/Session/master.svg?style=flat-square)](https://travis-ci.org/Kooser6/Session)
-[![Coveralls github branch](https://img.shields.io/coveralls/github/Kooser6/Session/master.svg?style=flat-square)](https://coveralls.io/github/Kooser6/Session?branch=master)
+[![Travis (.org) branch](https://img.shields.io/travis/Kooser6/Session/master.svg)](https://travis-ci.org/Kooser6/Session)
+[![Coveralls github branch](https://img.shields.io/coveralls/github/Kooser6/Session/master.svg)](https://coveralls.io/github/Kooser6/Session?branch=master)
 
 # Session
 
