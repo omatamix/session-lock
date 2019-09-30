@@ -89,7 +89,7 @@ final class SessionManager implements SessionManagerInterface
                     }
                 }
             } else {
-                $this->put('kooser.session.fingerprint', $this->getFingerprint())
+                $this->put('kooser.session.fingerprint', $this->getFingerprint());
             }
         }
         return (bool) $result;
