@@ -8,11 +8,11 @@ class SessionManagerTest extends TestCase
      */
     public function testSessions()
     {
-        $sessionManager = new \Kooser\Session\SessionManager();
         $options = [
-            'session_security_code' => 'testCode'
+            'session_security_code' => 'testCode',
         ];
-        $result = $sessionManager->start($options);
+        $sessionManager = new \Kooser\Session\SessionManager($options);
+        $result = $sessionManager->start();
         $this->assertTrue($result);
         $sessionManager->regenerate();
         $sessionManager->put('key1', 'Kooser6');
