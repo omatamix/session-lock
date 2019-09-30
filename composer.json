@@ -5,7 +5,7 @@
     "license": "MIT",
     "require": {
         "php": ">=7.3",
-        "paragonie/easydb": "^2",
+        "kooser/directory": "^1.2",
         "symfony/filesystem": "^4.3",
         "symfony/polyfill-php72": "^1.11",
         "symfony/polyfill-php73": "^1.11",
@@ -18,13 +18,7 @@
     },
     "require-dev": {
         "vimeo/psalm": "^3",
-        "phpunit/phpunit": "^8.2",
-        "alcaeus/mongo-php-adapter": "^1.1"
-    },
-    "suggest": {
-        "ext-pdo": "If you want to use the Database Session Handler.",
-        "ext-mongodb": "If you want to use the MongoDB Session Handler.",
-        "ext-redis": "If you want to use the Redis Session Handler."
+        "phpunit/phpunit": "^8.2"
     },
     "config": {
         "optimize-autoloader": true
