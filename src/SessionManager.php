@@ -233,12 +233,14 @@ final class SessionManager implements SessionManagerInterface
      */
     private function getFingerprint(): string
     {
+        $ip = 'null';
         if ($this->options['session_lock_to_ip_address']) {
             $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : \null;
             if (!$ip && $this->exceptions) {
                 throw new Exception\IPAddressNotFoundException('The ip address could not be retrieved.');
             }
         }
+        $ua = 'null';
         if ($this->options['session_lock_to_user_agent']) {
             $ua = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : \null;
             if (!$ua && $this->exceptions) {
