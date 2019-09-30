@@ -97,7 +97,7 @@ final class SessionManager implements SessionManagerInterface
      *
      * @return bool Returns true on success or false on failure.
      */
-    public function stop(): array
+    public function stop(): bool
     {
         $_SESSION = array();
         if ($this->options['session_config']["use_cookies"]) {
