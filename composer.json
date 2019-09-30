@@ -6,7 +6,7 @@
     "require": {
         "php": ">=7.3",
         "symfony/polyfill-php72": "^1.11",
-        "symfony/polyfill-php73": "^1.11",
+        "symfony/polyfill-php73": "^1.11"
     },
     "autoload": {
         "psr-4": {
