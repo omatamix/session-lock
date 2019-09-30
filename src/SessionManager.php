@@ -20,6 +20,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 final class SessionManager implements SessionManagerInterface
 {
+
+    /** @var array $options The session manager options. */
+    private $options;
+
     /**
      * Construct a new session manager.
      *
@@ -33,6 +37,7 @@ final class SessionManager implements SessionManagerInterface
         $this->setExceptions($exceptions);
         $this->setOptions($options);
     }
+
     /**
      * Set the session manager options.
      *
