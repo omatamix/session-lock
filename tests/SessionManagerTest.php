@@ -11,7 +11,7 @@ class SessionManagerTest extends TestCase
         $options = [
             'session_security_code' => 'testCode',
         ];
-        $sessionManager = new \Kooser\Session\SessionManager($options);
+        $sessionManager = new \Kooser\Session\SessionManager($options, \false);
         $result = $sessionManager->start();
         $this->assertTrue($result);
         $sessionManager->regenerate();
