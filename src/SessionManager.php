@@ -81,6 +81,7 @@ final class SessionManager implements SessionManagerInterface
     {
         $result = @\session_start($this->options['session_config']);
         if ($this->options['session_fingerprint']) {
+            // @codeCoverageIgnoreStart
             if ($fingerprint = $this->get('kooser.session.fingerprint')) {
                 if (!\hash_equals($fingerprint, $this->getFingerprint())) {
                     $this->stop();
@@ -91,6 +92,7 @@ final class SessionManager implements SessionManagerInterface
             } else {
                 $this->put('kooser.session.fingerprint', $this->getFingerprint());
             }
+            // @codeCoverageIgnoreEnd
         }
         return (bool) $result;
     }
@@ -122,6 +124,8 @@ final class SessionManager implements SessionManagerInterface
      * Check to see if a session already exists.
      *
      * @return bool Returns true if one exists and false if not.
+     *
+     * @codeCoverageIgnore
      */
     public static function exists(): bool
     {
@@ -237,14 +241,18 @@ final class SessionManager implements SessionManagerInterface
         if ($this->options['session_lock_to_ip_address']) {
             $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : 'null';
             if ($ip == 'null' && $this->exceptions) {
+                // @codeCoverageIgnoreStart
                 throw new Exception\IPAddressNotFoundException('The ip address could not be retrieved.');
+                // @codeCoverageIgnorEnd
             }
         }
         $ua = 'null';
         if ($this->options['session_lock_to_user_agent']) {
             $ua = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : 'null';
             if ($ua == 'null' && $this->exceptions) {
+                // @codeCoverageIgnoreStart
                 throw new Exception\UserAgentNotFoundException('The user agent could not be retrieved.');
+                // @codeCoverageIgnoreEnd
             }
         }
         $raw_fingerprint = \sprintf(
