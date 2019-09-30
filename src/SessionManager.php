@@ -81,7 +81,7 @@ final class SessionManager implements SessionManagerInterface
     {
         $result = @\session_start($this->options['session_config']);
         if ($this->options['session_fingerprint']) {
-            if (!$fingerprint = $this->get('kooser.session.fingerprint')) {
+            if ($fingerprint = $this->get('kooser.session.fingerprint')) {
                 if (!\hash_equals($fingerprint, $this->getFingerprint())) {
                     $this->stop();
                     if ($this->exceptions) {
