@@ -6,7 +6,7 @@ declare(strict_types=1);
  * @package Kooser\Session.
  */
 
-namespace KooserSession\Exception;
+namespace Kooser\Session\Exception;
 
 use Exception;
 
