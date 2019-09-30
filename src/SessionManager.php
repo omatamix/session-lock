@@ -18,12 +18,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  *
  * @class SessionManager.
  */
-final class SessionManager
+final class SessionManager implements SessionManagerInterface
 {
-
-    /** @var array $sessionConfig The session configuration. */
-    private static $sessionConfig = [];
-
     /**
      * Construct a new session manager.
      *
@@ -259,16 +255,24 @@ final class SessionManager
     private function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'session_fingerprint' => \true,
-            'session_fingerprint_hash' => 'sha512',
+            'session_fingerprint'        => \true,
+            'session_fingerprint_hash'   => 'sha512',
             'session_lock_to_ip_address' => \true,
             'session_lock_to_user_agent' => \true,
+            'session_config' => [
+                'use_cookies'      => \true,
+                'use_only_cookies' => \true,
+                'cookie_httponly'  => \true,
+                'cookie_samesite'  => 'Lax',
+                'use_strict_mode'  => \true,
+            ],
         ]);
         $resolver->setRequired('session_security_code');
         $resolver->setAllowedTypes('session_fingerprint', 'bool');
         $resolver->setAllowedTypes('session_fingerprint_hash', 'string');
         $resolver->setAllowedTypes('session_lock_to_ip_address', 'bool');
         $resolver->setAllowedTypes('session_lock_to_user_agent', 'bool');
+        $resolver->setAllowedTypes('session_config', 'array');
         $resolver->setAllowedTypes('session_security_code', 'string');
     }
 }
