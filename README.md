@@ -35,7 +35,7 @@ $secuirtyCode = '%someData%';
 
 // Set the session options.
 $options = [
-    'session_security_code' => $security,
+    'session_security_code' => $securityCode,
 ];
 
 // Create a session manager.
