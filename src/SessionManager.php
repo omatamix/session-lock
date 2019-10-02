@@ -215,6 +215,7 @@ final class SessionManager implements SessionManagerInterface
     private function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
+            'session_encrypt'            => \true,
             'session_fingerprint'        => \true,
             'session_fingerprint_hash'   => 'sha512',
             'session_lock_to_ip_address' => \true,
