@@ -21,7 +21,7 @@ class NativeSessionHandler extends SessionHandler
 {
 
     /** @var StoreInterface $storeType The default store type. */
-    private $storeType;
+    private $storeType = \null;
 
     /**
      * Set the store object.
