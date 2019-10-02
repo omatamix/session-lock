@@ -12,7 +12,7 @@ class SessionManagerTest extends TestCase
             'session_security_code' => 'testCode',
         ];
         $sessionManager = new \Kooser\Session\SessionManager($options, \false);
-        $sessionManager->setSaveHandler(new \Kooser\Session\NullSessionHandler())
+        $sessionManager->setSaveHandler(new \Kooser\Session\NullSessionHandler());
         $result = $sessionManager->start();
         $this->assertTrue($result);
         $sessionManager->regenerate();
