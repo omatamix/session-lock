@@ -8,6 +8,7 @@ class SessionManagerTest extends TestCase
      */
     public function testSessions()
     {
+        \session_set_save_handler(new \Kooser\Session\NullSessionHandler());
         $options = [
             'session_security_code' => 'testCode',
         ];
