@@ -13,6 +13,7 @@ use ParagonIE\ConstantTime\{
     Binary,
     Hex
 };
+use ParagonIE\Halite\Halite;
 use ParagonIE\Halite\Alerts\InvalidMessage;
 use ParagonIE\Halite\Symmetric\{
     Config as SymmetricConfig,
