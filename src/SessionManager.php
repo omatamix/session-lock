@@ -221,6 +221,7 @@ final class SessionManager implements SessionManagerInterface
             'session_fingerprint_hash'   => 'sha512',
             'session_lock_to_ip_address' => \true,
             'session_lock_to_user_agent' => \true,
+            'session_trusted_proxies'    => [],
             'session_config' => [
                 'use_cookies'      => \true,
                 'use_only_cookies' => \true,
@@ -235,6 +236,7 @@ final class SessionManager implements SessionManagerInterface
         $resolver->setAllowedTypes('session_fingerprint_hash', 'string');
         $resolver->setAllowedTypes('session_lock_to_ip_address', 'bool');
         $resolver->setAllowedTypes('session_lock_to_user_agent', 'bool');
+        $resolver->setAllowedTypes('session_trusted_proxies', 'array');
         $resolver->setAllowedTypes('session_config', 'array');
         $resolver->setAllowedTypes('session_security_code', 'string');
     }
