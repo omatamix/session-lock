@@ -12,6 +12,10 @@ use SessionHandlerInterface;
 
 /**
  * A null session handler for testing.
+ *
+ * @class NullSessionHandler.
+ *
+ * @codeCoverageIgnore
  */
 class NullSessionHandler implements SessionHandlerInterface
 {
