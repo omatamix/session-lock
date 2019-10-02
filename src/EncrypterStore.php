@@ -81,7 +81,7 @@ final class EncrypterStore implements StoreInterface
                 );
             }
             $v = Hex::decode(Binary::safeSubstr($stored, 0, 8));
-            $config SymmetricConfig::getConfig($v, 'encrypt');
+            $config = SymmetricConfig::getConfig($v, 'encrypt');
             $decrypted = Crypto::decrypt(
                 $stored,
                 $this->encryptionKey,
