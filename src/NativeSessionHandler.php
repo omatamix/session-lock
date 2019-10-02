@@ -44,6 +44,7 @@ class NativeSessionHandler extends SessionHandler
         if (!$data) {
             return "";
         } else {
+            /** @psalm-suppress PossiblyNullReference **/
             return $this->storeType->decrypt($data);
         }
     }
@@ -53,6 +54,7 @@ class NativeSessionHandler extends SessionHandler
      */
     public function write($id, $data)
     {
+        /** @psalm-suppress PossiblyNullReference **/
         $data = $this->storeType->encrypt($data);
         return parent::write($id, $data);
     }
