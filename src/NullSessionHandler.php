@@ -20,7 +20,7 @@ use SessionHandlerInterface;
 class NullSessionHandler implements SessionHandlerInterface
 {
 
-    /** @var StoreInterface $storeType The default store type. */
+    /** @var StoreInterface|null $storeType The default store type. */
     private $storeType = \null;
 
     /**
