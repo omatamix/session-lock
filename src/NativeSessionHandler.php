@@ -20,7 +20,7 @@ use SessionHandler;
 class NativeSessionHandler extends SessionHandler
 {
 
-    /** @var StoreInterface $storeType The default store type. */
+    /** @var StoreInterface|null $storeType The default store type. */
     private $storeType = \null;
 
     /**
