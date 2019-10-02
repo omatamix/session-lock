@@ -56,6 +56,8 @@ final class SessionManager implements SessionManagerInterface
         return $this;
     }
 
+    public function setSaveHandler(): void {}
+
     /**
      * {@inheritdoc}
      */
