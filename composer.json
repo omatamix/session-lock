@@ -17,7 +17,7 @@
     "suggest": {
         "symfony/cache": "If you are using a cache based session manager.",
         "kooser/directory": "If you are using a database based session manager."
-    }
+    },
     "require-dev": {
         "vimeo/psalm": "^3",
         "phpunit/phpunit": "^8.2"
