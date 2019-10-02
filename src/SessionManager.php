@@ -232,6 +232,7 @@ final class SessionManager implements SessionManagerInterface
             ],
         ]);
         $resolver->setRequired('session_security_code');
+        $resolver->setAllowedTypes('session_encrypt', 'bool');
         $resolver->setAllowedTypes('session_fingerprint', 'bool');
         $resolver->setAllowedTypes('session_fingerprint_hash', 'string');
         $resolver->setAllowedTypes('session_lock_to_ip_address', 'bool');
