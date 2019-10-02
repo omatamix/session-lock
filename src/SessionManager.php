@@ -248,7 +248,7 @@ final class SessionManager implements SessionManagerInterface
         }
         $ua = 'null';
         if ($this->options['session_lock_to_user_agent']) {
-            $ua = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : 'null';
+            $ua = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'null';
             if ($ua == 'null' && $this->exceptions) {
                 // @codeCoverageIgnoreStart
                 throw new Exception\UserAgentNotFoundException('The user agent could not be retrieved.');
