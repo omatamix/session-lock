@@ -70,9 +70,9 @@ final class SessionManager implements SessionManagerInterface
                     if ($this->exceptions) {
                         throw new Exception\InvalidFingerprintException('The fingerprint supplied is invalid.');
                     }
-                    \trigger_error(\E_USER_ERROR, [
+                    \trigger_error([
                         'The fingerprint supplied is invalid.'
-                    ]);
+                    ], \E_USER_ERROR);
                 }
             } else {
                 $this->put('kooser.session.fingerprint', $this->getFingerprint());
