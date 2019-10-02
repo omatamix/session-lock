@@ -68,25 +68,28 @@ final class EncrypterStore implements StoreInterface
      */
     public function decrypt($stored): bool
     {
-        $length = Binary::safeStrlen($stored);
-        if ($length < 8) {
-            throw new InvalidMessage('Encrypted hash string is way too short.');
-        }
-        if (\hash_equals(Binary::safeSubstr($stored, 0, 5), Halite::VERSION_PREFIX)) {
-            $decoded = Base64UrlSafe::decode($stored);
-            return SymmetricConfig::getConfig(
-                $decoded,
-                'encrypt'
+        if ($this->shouldEncrypt) {
+            $length = Binary::safeStrlen($stored);
+            if ($length < 8) {
+                throw new InvalidMessage('Encrypted hash string is way too short.');
+            }
+            if (\hash_equals(Binary::safeSubstr($stored, 0, 5), Halite::VERSION_PREFIX)) {
+                $decoded = Base64UrlSafe::decode($stored);
+                return SymmetricConfig::getConfig(
+                    $decoded,
+                    'encrypt'
+                );
+            }
+            $v = Hex::decode(Binary::safeSubstr($stored, 0, 8));
+            $config SymmetricConfig::getConfig($v, 'encrypt');
+            $decrypted = Crypto::decrypt(
+                $stored,
+                $this->encryptionKey,
+                $config->ENCODING
             );
+            return \json_decode($decrypted->getString(), \true);
         }
-        $v = Hex::decode(Binary::safeSubstr($stored, 0, 8));
-        $config SymmetricConfig::getConfig($v, 'encrypt');
-        $decrypted = Crypto::decrypt(
-            $stored,
-            $this->encryptionKey,
-            $config->ENCODING
-        );
-        return \json_decode($decrypted->getString(), \true);
+        return $stored;
     }
 
     /**
@@ -94,6 +97,9 @@ final class EncrypterStore implements StoreInterface
      */
     public function encrypt($store): bool
     {
-        return Crypto::encrypt(new HiddenString((string) \json_encode($store)), $this->encryptionKey);
+        if ($this->shouldEncrypt) {
+            return Crypto::encrypt(new HiddenString((string) \json_encode($store)), $this->encryptionKey);
+        }
+        return $store;
     }
 }
