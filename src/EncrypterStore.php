@@ -9,6 +9,19 @@ declare(strict_types=1);
 
 namespace Kooser\Session;
 
+use ParagonIE\ConstantTime\{
+    Base64UrlSafe,
+    Binary,
+    Hex
+};
+use ParagonIE\Halite\Alerts\InvalidMessage;
+use ParagonIE\Halite\Symmetric\{
+    Config as SymmetricConfig,
+    Crypto,
+    EncryptionKey
+};
+use ParagonIE\HiddenString\HiddenString;
+
 /**
  * Encrypter session store.
  *
