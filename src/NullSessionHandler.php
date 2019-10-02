@@ -20,6 +20,20 @@ use SessionHandlerInterface;
 class NullSessionHandler implements SessionHandlerInterface
 {
 
+    /** @var StoreInterface $storeType The default store type. */
+    private $storeType;
+
+    /**
+     * Construct a null session hanlder.
+     *
+     * @param StoreInterface $storeType The default store type.
+     *
+     * @return void Returns nothing.
+     */
+    public function __construct(StoreInterface $storeType)
+    {
+    }
+
     /**
      * {@inheritdoc}
      */
