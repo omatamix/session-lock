@@ -74,13 +74,14 @@ final class EncrypterStore implements StoreInterface
             }
             if (\hash_equals(Binary::safeSubstr($stored, 0, 5), Halite::VERSION_PREFIX)) {
                 $decoded = Base64UrlSafe::decode($stored);
-                return SymmetricConfig::getConfig(
+                $config = SymmetricConfig::getConfig(
                     $decoded,
                     'encrypt'
                 );
+            } else {
+                $v = Hex::decode(Binary::safeSubstr($stored, 0, 8));
+                $config = SymmetricConfig::getConfig($v, 'encrypt');
             }
-            $v = Hex::decode(Binary::safeSubstr($stored, 0, 8));
-            $config = SymmetricConfig::getConfig($v, 'encrypt');
             $decrypted = Crypto::decrypt(
                 $stored,
                 $this->encryptionKey,
