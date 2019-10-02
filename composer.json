@@ -16,7 +16,8 @@
     },
     "suggest": {
         "symfony/cache": "If you are using a cache based session manager.",
-        "kooser/directory": "If you are using a database based session manager."
+        "kooser/directory": "If you are using a database based session manager.",
+        "paragonie/halite": "If you are using encrypted sessions."
     },
     "require-dev": {
         "vimeo/psalm": "^3",
