@@ -24,14 +24,15 @@ class NullSessionHandler implements SessionHandlerInterface
     private $storeType;
 
     /**
-     * Construct a null session hanlder.
+     * Set the store object.
      *
      * @param StoreInterface $storeType The default store type.
      *
      * @return void Returns nothing.
      */
-    public function __construct(StoreInterface $storeType)
+    public function setStore(StoreInterface $storeType): void
     {
+        $this->storeType = $storeType;
     }
 
     /**
