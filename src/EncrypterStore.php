@@ -30,7 +30,7 @@ use ParagonIE\HiddenString\HiddenString;
 final class EncrypterStore implements StoreInterface
 {
 
-    /** @var mixed $encryptionKey The encryption key. */
+    /** @var \ParagonIE\Halite\Symmetric\EncryptionKey $encryptionKey The encryption key. */
     private $encryptionKey;
 
     /** @var bool $shouldEncrypt Should we encrypt/decrypt data. */
@@ -39,7 +39,7 @@ final class EncrypterStore implements StoreInterface
     /**
      * {@inheritdoc}
      */
-    public function __construct($encryptionKey, bool $shouldEncrypt = \true)
+    public function __construct(EncryptionKey $encryptionKey, bool $shouldEncrypt = \true)
     {
         $this->setEncryptionKey($encryptionKey);
         $this->setShouldEncrypt($shouldEncrypt);
@@ -48,7 +48,7 @@ final class EncrypterStore implements StoreInterface
     /**
      * {@inheritdoc}
      */
-    public function setEncryptionKey($encryptionKey): StoreInterface
+    public function setEncryptionKey(EncryptionKey $encryptionKey): StoreInterface
     {
         $this->encryptionKey = $encryptionKey;
         return $this;
