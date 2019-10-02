@@ -66,7 +66,7 @@ final class EncrypterStore implements StoreInterface
     /**
      * {@inheritdoc}
      */
-    public function decrypt($stored): bool
+    public function decrypt($stored)
     {
         if ($this->shouldEncrypt) {
             $length = Binary::safeStrlen($stored);
@@ -96,7 +96,7 @@ final class EncrypterStore implements StoreInterface
     /**
      * {@inheritdoc}
      */
-    public function encrypt($store): bool
+    public function encrypt($store)
     {
         if ($this->shouldEncrypt) {
             return Crypto::encrypt(new HiddenString((string) \json_encode($store)), $this->encryptionKey);
