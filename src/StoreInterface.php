@@ -14,7 +14,7 @@ use ParagonIE\Halite\Symmetric\EncryptionKey;
  *
  * @interface StoreInterface.
  */
-final class EncrypterStore implements StoreInterface
+interface StoreInterface
 {
 
     /**
