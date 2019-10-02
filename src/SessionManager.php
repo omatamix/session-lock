@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Kooser\Session;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use SessionHandlerInterface;
 
 /**
  * Secure session management.
@@ -56,7 +57,14 @@ final class SessionManager implements SessionManagerInterface
         return $this;
     }
 
-    public function setSaveHandler(): void {}
+    /**
+     * {@inheritdoc}
+     */
+    public function setSaveHandler(SessionHandlerInterface $sessionHanlder = (
+        new NativeSessionHandler(new EncrypterStore($this->options['session_encrypt_key'], $this->options['session_encrypt']))
+    )): void {
+        \session_set_save_handler($sessionHandler);
+    }
 
     /**
      * {@inheritdoc}
@@ -219,6 +227,7 @@ final class SessionManager implements SessionManagerInterface
     {
         $resolver->setDefaults([
             'session_encrypt'            => \false,
+            'session_encrypt_key'        => 'null',
             'session_fingerprint'        => \true,
             'session_fingerprint_hash'   => 'sha512',
             'session_lock_to_ip_address' => \true,
