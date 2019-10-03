@@ -76,7 +76,7 @@ class CacheSessionHandler implements SessionHandlerInterface
         if (!$sessionImport->isHit()) {
             return '';
         }
-        return $sessionImport->get();
+        return $this->storeType->decrypt($sessionImport->get());
     }
 
     /**
@@ -85,7 +85,7 @@ class CacheSessionHandler implements SessionHandlerInterface
     public function write($sessionId, $data)
     {
         $sessionImport = $this->cache->getItem($sessionId);
-        $sessionImport->set($data);
+        $sessionImport->set($this->storeType->encrypt($data));
         $this->cache->save($sessionImport);
         return \true;
     }
