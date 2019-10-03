@@ -34,6 +34,7 @@ final class SessionManager implements SessionManagerInterface
      */
     public function __construct(array $options = [], bool $exceptions = \true)
     {
+        $this->setSaveHandler();
         $this->setExceptions($exceptions);
         $this->setOptions($options);
     }
