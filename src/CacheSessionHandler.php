@@ -76,6 +76,7 @@ class CacheSessionHandler implements SessionHandlerInterface
         if (!$sessionImport->isHit()) {
             return '';
         }
+        /** @psalm-suppress PossiblyNullReference **/
         return $this->storeType->decrypt($sessionImport->get());
     }
 
@@ -85,6 +86,7 @@ class CacheSessionHandler implements SessionHandlerInterface
     public function write($sessionId, $data)
     {
         $sessionImport = $this->cache->getItem($sessionId);
+        /** @psalm-suppress PossiblyNullReference **/
         $sessionImport->set($this->storeType->encrypt($data));
         $this->cache->save($sessionImport);
         return \true;
