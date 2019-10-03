@@ -22,7 +22,8 @@
     "require-dev": {
         "vimeo/psalm": "^3",
         "phpunit/phpunit": "^8.2",
-        "paragonie/halite": "^4.6"
+        "paragonie/halite": "^4.6",
+        "symfony/cache": "^4.3"
     },
     "config": {
         "optimize-autoloader": true
