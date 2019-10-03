@@ -12,9 +12,9 @@ use SessionHandlerInterface;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 
 /**
- * A null session handler for testing.
+ * The cache session handler.
  *
- * @class NullSessionHandler.
+ * @class CacheSessionHandler.
  *
  * @codeCoverageIgnore
  */
