@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Kooser\Session;
 
 use SessionHandler;
+use SessionHandlerInterface;
 
 /**
  * The native session handler.
@@ -17,7 +18,7 @@ use SessionHandler;
  *
  * @codeCoverageIgnore
  */
-class NativeSessionHandler extends SessionHandler
+class NativeSessionHandler extends SessionHandler implements SessionHandlerInterface
 {
 
     /** @var StoreInterface|null $storeType The default store type. */
