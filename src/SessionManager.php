@@ -199,7 +199,11 @@ final class SessionManager implements SessionManagerInterface
     {
         $ip = 'null';
         if ($this->options['session_lock_to_ip_address']) {
-            $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : 'null';
+            $ip = $this->options['session_pass_ip_address'] == ''
+                      ? isset($_SERVER['REMOTE_ADDR']
+                          ? $_SERVER['REMOTE_ADDR']
+                          : 'null'
+                      : $this->options['session_pass_ip_address'];
             if ($ip == 'null' && $this->exceptions) {
                 // @codeCoverageIgnoreStart
                 throw new Exception\IPAddressNotFoundException('The ip address could not be retrieved.');
@@ -239,7 +243,7 @@ final class SessionManager implements SessionManagerInterface
             'session_fingerprint_hash'   => 'sha512',
             'session_lock_to_ip_address' => \true,
             'session_lock_to_user_agent' => \true,
-            'session_trusted_proxies'    => [],
+            'session_pass_ip_address'    => '',
             'session_config' => [
                 'use_cookies'      => \true,
                 'use_only_cookies' => \true,
@@ -254,7 +258,7 @@ final class SessionManager implements SessionManagerInterface
         $resolver->setAllowedTypes('session_fingerprint_hash', 'string');
         $resolver->setAllowedTypes('session_lock_to_ip_address', 'bool');
         $resolver->setAllowedTypes('session_lock_to_user_agent', 'bool');
-        $resolver->setAllowedTypes('session_trusted_proxies', 'array');
+        $resolver->setAllowedTypes('session_pass_ip_address', 'string');
         $resolver->setAllowedTypes('session_config', 'array');
         $resolver->setAllowedTypes('session_security_code', 'string');
     }
