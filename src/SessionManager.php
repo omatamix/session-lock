@@ -199,7 +199,7 @@ final class SessionManager implements SessionManagerInterface
     {
         $ip = 'null';
         if ($this->options['session_lock_to_ip_address']) {
-            $remoteIp = isset($_SERVER['REMOTE_ADDR']
+            $remoteIp = isset($_SERVER['REMOTE_ADDR'])
                 ? $_SERVER['REMOTE_ADDR']
                 : 'null';
             $ip = $this->options['session_pass_ip_address'] == ''
