@@ -60,8 +60,11 @@ final class SessionManager implements SessionManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function setSaveHandler(SessionHandlerInterface $sessionHandler = (new NativeSessionHandler)): void
+    public function setSaveHandler(SessionHandlerInterface $sessionHandler = \null): void
     {
+        if (\is_null($sessionHandler)) {
+            $sessionHandler = new NativeSessionHandler();
+        }
         /** @psalm-suppress UndefinedInterfaceMethod **/
         $sessionHandler->setStore(new EncrypterStore($this->options['session_encrypt_key'], $this->options['session_encrypt']));
         \session_set_save_handler($sessionHandler);
