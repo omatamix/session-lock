@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Kooser\Session;
 
+use ParagonIE\Halite\KeyFactory;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use SessionHandlerInterface;
 
@@ -231,7 +232,7 @@ final class SessionManager implements SessionManagerInterface
     {
         $resolver->setDefaults([
             'session_encrypt'            => \false,
-            'session_encrypt_key'        => 'null',
+            'session_encrypt_key'        => KeyFactory::generateEncryptionKey(),
             'session_fingerprint'        => \true,
             'session_fingerprint_hash'   => 'sha512',
             'session_lock_to_ip_address' => \true,
