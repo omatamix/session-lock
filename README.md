@@ -110,12 +110,12 @@ This session manager includes a built-in encryption system from the `paragonie/h
 
 $options = [
     'session_encrypt' => \true,
-    'session_fingerprint_hash' => YourHaliteEncryptionKey,
+    'session_encrypt_key' => KeyFactory::generateEncryptionKey(), // Don't generate a new encryption key on every request.
 ];
 
 ```
 
-Confused on how to generate an encryption key? https://github.com/paragonie/halite
+Confused on how to generate an encryption key? <https://github.com/paragonie/halite>
 
 ### Session Handlers
 
