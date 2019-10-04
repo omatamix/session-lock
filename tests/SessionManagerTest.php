@@ -10,6 +10,7 @@ class SessionManagerTest extends TestCase
     {
         $options = [
             'session_security_code' => 'testCode',
+            'session_encrypt'       => \true,
         ];
         $sessionManager = new \Kooser\Session\SessionManager($options, \false);
         $sessionManager->setSaveHandler(new \Kooser\Session\NullSessionHandler());
