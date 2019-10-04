@@ -28,14 +28,18 @@ use Kooser\Session\SessionManager;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+// Security code.
 $secuirtyCode = 'Your Security Code';
 
+// Set options.
 $options = [
     'session_security_code' => $securityCode,
 ];
 
+// Create session manager instance.
 $sessionManager = new SessionManager($options);
 
+// Start or resume a session.
 $sessionManager->start();
 
 // Do stuff
