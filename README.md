@@ -121,6 +121,16 @@ Confused on how to generate an encryption key? [Click here](https://github.com/p
 
 This session manager allows different session handlers to be implemented to alter how the data is stored.
 
+```php
+
+use Kooser\Session\NativeSessionHandler();
+
+$sessionManager->setSaveHandler(new NativeSessionHandler());
+
+```
+
+The native session handler is invoked automatically.
+
 ## Contributing
 
 All contributions are welcome! If you wish to contribute.
