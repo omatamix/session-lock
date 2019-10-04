@@ -13,6 +13,18 @@ class SessionManagerTest extends TestCase
             'session_encrypt'       => \true,
         ];
         $sessionManager = new \Kooser\Session\SessionManager($options, \false);
+        $result = $sessionManager->start();
+        $this->assertTrue($result);
+        $sessionManager->put('key1', 'Kooser6');
+        $sessionManager->put('key2', 'Kooser6Session');
+        $data1 = $sessionManager->get('key1', \null);
+        $data2 = $sessionManager->get('key2', \null);
+        $this->assertTrue(($data1 != \null));
+        $this->assertTrue(($data1 == 'Kooser6'));
+        $this->assertTrue(($data2 != \null));
+        $this->assertTrue(($data2 == 'Kooser6Session'));
+        $result = $sessionManager->stop();
+        $this->assertTrue($result);
         $sessionManager->setSaveHandler(new \Kooser\Session\NullSessionHandler());
         $result = $sessionManager->start();
         $this->assertTrue($result);
