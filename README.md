@@ -113,9 +113,9 @@ $options = [
     'session_fingerprint_hash' => YourHaliteEncryptionKey,
 ];
 
-https://github.com/paragonie/halite
-
 ```
+
+https://github.com/paragonie/halite
 
 ### Session Handlers
 
