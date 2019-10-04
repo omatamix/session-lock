@@ -110,8 +110,10 @@ This session manager includes a built-in encryption system from the `paragonie/h
 
 $options = [
     'session_encrypt' => \true,
-    'session_fingerprint_hash' => YourHaliteEncryptionKey, // https://github.com/paragonie/halite
+    'session_fingerprint_hash' => YourHaliteEncryptionKey,
 ];
+
+https://github.com/paragonie/halite
 
 ```
 
