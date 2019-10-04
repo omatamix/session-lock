@@ -106,6 +106,15 @@ $options = [
 
 This session manager includes a built-in encryption system from the `paragonie/halite` package.
 
+```php
+
+$options = [
+    'session_encrypt' => \true,
+    'session_fingerprint_hash' => YourHaliteEncryptionKey, // https://github.com/paragonie/halite
+];
+
+```
+
 ### Session Handlers
 
 This session manager allows different session handlers to be implemented to alter how the data is stored.
