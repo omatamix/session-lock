@@ -38,6 +38,13 @@ $sessionManager = new SessionManager($options);
 
 $sessionManager->start();
 
+// Do stuff
+
+// ...
+
+// I am ready to destroy session.
+$sessionManager->stop();
+
 // ...
 
 ```
@@ -100,6 +107,7 @@ This session manager includes automatic session fingerprinting.
 
 // ...
 
+// Session fingerprint options.
 $options = [
     'session_fingerprint' => \true,
     'session_fingerprint_hash' => 'sha512',
@@ -119,6 +127,7 @@ This session manager includes a built-in encryption system from the `paragonie/h
 
 // ...
 
+// Session encryption options.
 $options = [
     'session_encrypt' => \true,
     'session_encrypt_key' => KeyFactory::generateEncryptionKey(), // Don't generate a new encryption key on every request.
