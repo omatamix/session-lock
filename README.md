@@ -91,6 +91,17 @@ var_dump($exists);
 
 This session manager includes automatic session fingerprinting.
 
+```php
+
+$options = [
+    'session_fingerprint' => \true,
+    'session_fingerprint_hash' => 'sha512',
+    'session_lock_to_ip_address' => \true,
+    'session_lock_to_user_agent' => \true,
+];
+
+```
+
 ### Session Encryption
 
 This session manager includes a built-in encryption system from the `paragonie/halite` package.
