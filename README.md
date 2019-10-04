@@ -92,6 +92,9 @@ var_dump($exists);
 This session manager includes automatic session fingerprinting.
 
 ```php
+<?php
+
+// ...
 
 $options = [
     'session_fingerprint' => \true,
@@ -99,6 +102,8 @@ $options = [
     'session_lock_to_ip_address' => \true,
     'session_lock_to_user_agent' => \true,
 ];
+
+// ...
 
 ```
 
@@ -108,10 +113,14 @@ This session manager includes a built-in encryption system from the `paragonie/h
 
 ```php
 
+// ...
+
 $options = [
     'session_encrypt' => \true,
     'session_encrypt_key' => KeyFactory::generateEncryptionKey(), // Don't generate a new encryption key on every request.
 ];
+
+// ...
 
 ```
 
@@ -123,9 +132,15 @@ This session manager allows different session handlers to be implemented to alte
 
 ```php
 
+// ...
+
 use Kooser\Session\NativeSessionHandler();
 
+// ...
+
 $sessionManager->setSaveHandler(new NativeSessionHandler());
+
+// ...
 
 ```
 
