@@ -26,64 +26,68 @@ Using the session manager is extremely simple.
 
 use Kooser\Session\SessionManager;
 
-// Require the composer autoloader.
 require_once __DIR__ . '/vendor/autoload.php';
 
-// Generate a secret security code that will be used in binded
-// the user ip and user agent to the session.
-$secuirtyCode = '%someData%';
+$secuirtyCode = 'Your Security Code';
 
-// Set the session options.
 $options = [
     'session_security_code' => $securityCode,
 ];
 
-// Create a session manager.
 $sessionManager = new SessionManager($options);
 
-// Start the session.
 $sessionManager->start();
 
-// See if a session exists.
+// ...
+
+```
+
+### Session Status
+
+Here is how you see if the session is active or not.
+
+```php
+<?php
+
+// ...
+
+// See if this session manager exists.
 $exists = $sessionManager->exists();
-var_dump($exists);
+
+// ...
+```
+
+### Session Variables
+
+You might need to set session variables between requests.
+
+```php
+<?php
+
+// ...
 
 // Set a session variable.
 $sessionManager->put('kooser', 'session');
 
 // Get a session variable.
 $value = $sessionManager->get('kooser');
-var_dump($value);
 
 // Flash a session variable (deletes the variable after retrievable).
 $value = $sessionManager->flash('kooser');
-var_dump($value);
 
-// See if this session manager exists.
+// See if this session variable exists.
 $doWeHave = $sessionManager->has('kooser');
-var_dump($doWeHave);
 
 // Set a session variable.
 $sessionManager->put('kooser', 'session');
 
-// See if this session manager exists.
+// See if this session variable exists.
 $doWeHave = $sessionManager->has('kooser');
-var_dump($doWeHave);
 
 // Delete the session variable.
 $sessionManager->delete('kooser');
-$value = $sessionManager->get('kooser');
-var_dump($value);
 
-// Regenerate the session.
-$sessionManager->regenerate();
-
-// Delete the session.
-$sessionManager->stop();
-
-// See if a session exists.
-$exists = $sessionManager->exists();
-var_dump($exists);
+// ...
 
 ```
 
