@@ -87,7 +87,17 @@ var_dump($exists);
 
 ```
 
+### Session Fingerprinting
+
 This session manager includes automatic session fingerprinting.
+
+### Session Encryption
+
+This session manager includes a built-in encryption system from the `paragonie/halite` package.
+
+### Session Handlers
+
+This session manager allows different session handlers to be implemented to alter how the data is stored.
 
 ## Contributing
 
