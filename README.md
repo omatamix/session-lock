@@ -115,7 +115,7 @@ $options = [
 
 ```
 
-Confused on how to generate an encryption key? <https://github.com/paragonie/halite>
+Confused on how to generate an encryption key? [Click here](https://github.com/paragonie/halite)
 
 ### Session Handlers
 
