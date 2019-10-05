@@ -70,7 +70,7 @@ final class SessionManager implements SessionManagerInterface
         /** @psalm-suppress UndefinedInterfaceMethod **/
         /** @psalm-suppress PossiblyUndefinedMethod **/
         $sessionHandler->setStore(new EncrypterStore($this->options['session_encrypt_key'], $this->options['session_encrypt']));
-        \session_set_save_handler($sessionHandler);
+        \session_set_save_handler($sessionHandler, \true);
     }
 
     /**
