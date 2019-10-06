@@ -10,9 +10,9 @@ namespace Kooser\Session;
 
 use SessionHandlerInterface;
 use Kooser\Directory\ConnectionManager;
-use Kooser\Directory\ConnectionManagerInterface
+use Kooser\Directory\ConnectionManagerInterface;
 use Kooser\Directory\SQLDatabaseHandler;
-use Kooser\Directory\SQLDatabaseHandlerInterface
+use Kooser\Directory\SQLDatabaseHandlerInterface;
 
 /**
  * The database session handler.
