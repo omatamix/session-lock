@@ -27,11 +27,11 @@ class DatabaseSessionHandler implements SessionHandlerInterface
     /** @var StoreInterface|null $storeType The default store type. */
     private $storeType = \null;
 
-    /** @var \Kooser\Directory\ConnectionManager|null $connectionManager The connection manager. */
-    private $connectionManager = \null;
+    /** @var \Kooser\Directory\ConnectionManager $connectionManager The connection manager. */
+    private $connectionManager;
 
-    /** @var \Kooser\Directory\SQLDatabaseHandler|null $SQLManager The sql manager. */
-    private $SQLManager = \null;
+    /** @var \Kooser\Directory\SQLDatabaseHandler $SQLManager The sql manager. */
+    private $SQLManager;
 
     /** @var string $table The table to access. */
     private $table;
@@ -39,17 +39,15 @@ class DatabaseSessionHandler implements SessionHandlerInterface
     /**
      * Construct the database based session handler.
      *
-     * @param string                                            $table             The table to access.
-     * @param \Kooser\Directory\ConnectionManagerInterface|null $connectionManager The connection manager.
+     * @param string                                       $table             The table to access.
+     * @param \Kooser\Directory\ConnectionManagerInterface $connectionManager The connection manager.
      *
      * @return void Returns nothing.
      */
-    public function __construct(string $table = 'sessions', ConnectionManagerInterface $connectionManager = \null)
+    public function __construct(string $table = 'sessions', ConnectionManagerInterface $connectionManager)
     {
         $this->table = $table;
-        if (!\is_null($connectionManager)) {
-            $this->setConnectionManager($connectionManager);
-        }
+        $this->setConnectionManager($connectionManager);
     }
 
     /**
