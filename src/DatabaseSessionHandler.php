@@ -28,7 +28,7 @@ class DatabaseSessionHandler implements SessionHandlerInterface
     /** @var \Kooser\Directory\ConnectionManager $connectionManager The connection manager. */
     private $connectionManager;
 
-    /** @var \Kooser\Directory\CSQLDatabaseHandler $SQLManager The sql manager. */
+    /** @var \Kooser\Directory\SQLDatabaseHandler $SQLManager The sql manager. */
     private $SQLManager;
 
     /** @var string $table The table to access. */
@@ -37,6 +37,7 @@ class DatabaseSessionHandler implements SessionHandlerInterface
     /**
      * Construct the database based session handler.
      *
+     * @param string                                            $table             The table to access.
      * @param \Kooser\Directory\ConnectionManagerInterface|null $connectionManager The connection manager.
      *
      * @return void Returns nothing.
