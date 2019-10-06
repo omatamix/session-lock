@@ -10,7 +10,9 @@ namespace Kooser\Session;
 
 use SessionHandlerInterface;
 use Kooser\Directory\ConnectionManager;
+use Kooser\Directory\ConnectionManagerInterface
 use Kooser\Directory\SQLDatabaseHandler;
+use Kooser\Directory\SQLDatabaseHandlerInterface
 
 /**
  * The database session handler.
@@ -139,7 +141,7 @@ class DatabaseSessionHandler implements SessionHandlerInterface
     public function gc($lifetime)
     {
         $table = $this->table;
-        $this->SQLManager->delete("SELECT * FROM $table WHERE session_time >= :time", ['time' => $lifetime]);
+        $this->SQLManager->delete($table, "session_time >= :time", ['time' => $lifetime]);
         return \true;
     }
 }
