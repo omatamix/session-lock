@@ -27,7 +27,7 @@ class DatabaseSessionHandler implements SessionHandlerInterface
     /** @var StoreInterface|null $storeType The default store type. */
     private $storeType = \null;
 
-    /** @var \Kooser\Directory\ConnectionManager $connectionManager The connection manager. */
+    /** @var \Kooser\Directory\ConnectionManagerInterface $connectionManager The connection manager. */
     private $connectionManager;
 
     /** @var \Kooser\Directory\SQLDatabaseHandler $SQLManager The sql manager. */
