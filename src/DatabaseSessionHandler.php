@@ -77,6 +77,24 @@ class DatabaseSessionHandler implements SessionHandlerInterface
     }
 
     /**
+     * Create the table.
+     *
+     * @return bool Returns true after execution.
+     */
+    public function install(): bool
+    {
+        $link = $this->connectionManager->getConnectionString();
+        $link->query('CREATE TABLE IF NOT EXISTS ' . $this->table . ' (
+            id varchar(32) NOT NULL,
+            access int(10) unsigned DEFAULT NULL,
+            data text,
+            PRIMARY KEY (id)
+        ) ENGINE=InnoDB DEFAULT CHARSET=latin1;');
+        $link = \null;
+        return \true;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function open($savePath, $sessionName)
