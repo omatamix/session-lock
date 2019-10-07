@@ -85,9 +85,9 @@ class DatabaseSessionHandler implements SessionHandlerInterface
     {
         $link = $this->connectionManager->getConnectionString();
         $link->query('CREATE TABLE IF NOT EXISTS ' . $this->table . ' (
-            id varchar(32) NOT NULL,
-            access int(10) unsigned DEFAULT NULL,
-            data text,
+            session_id varchar(32) NOT NULL,
+            session_time int(10) unsigned DEFAULT NULL,
+            session_data text,
             PRIMARY KEY (id)
         ) ENGINE=InnoDB DEFAULT CHARSET=latin1;');
         $link = \null;
