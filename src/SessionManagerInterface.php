@@ -1,4 +1,4 @@
-  <?php declare(strict_types=1);
+<?php declare(strict_types=1);
 /**
  * Session - Securely manage and preserve session data.
  *
