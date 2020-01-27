@@ -1,18 +1,37 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /**
- * Kooser Session - Securely manage and preserve session data.
+ * Session - Securely manage and preserve session data.
+ *
+ * @license MIT License. (https://github.com/Commander-Ant-Screwbin-Games/session/blob/master/license)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * @package Kooser\Session.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * https://github.com/Commander-Ant-Screwbin-Games/firecms/tree/master/src/Core
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ * @package Commander-Ant-Screwbin-Games/session.
  */
 
-namespace Kooser\Session;
+namespace Session;
 
 use SessionHandlerInterface;
-use Kooser\Directory\ConnectionManager;
-use Kooser\Directory\ConnectionManagerInterface;
-use Kooser\Directory\SQLDatabaseHandler;
-use Kooser\Directory\SQLDatabaseHandlerInterface;
+use Directory\ConnectionManager;
+use Directory\ConnectionManagerInterface;
+use Directory\SQLDatabaseHandler;
+use Directory\SQLDatabaseHandlerInterface;
 
 /**
  * The database session handler.
@@ -27,10 +46,10 @@ class DatabaseSessionHandler implements SessionHandlerInterface
     /** @var StoreInterface|null $storeType The default store type. */
     private $storeType = \null;
 
-    /** @var \Kooser\Directory\ConnectionManagerInterface $connectionManager The connection manager. */
+    /** @var \Directory\ConnectionManagerInterface $connectionManager The connection manager. */
     private $connectionManager;
 
-    /** @var \Kooser\Directory\SQLDatabaseHandler $SQLManager The sql manager. */
+    /** @var \Directory\SQLDatabaseHandler $SQLManager The sql manager. */
     private $SQLManager;
 
     /** @var string $table The table to access. */
@@ -40,7 +59,7 @@ class DatabaseSessionHandler implements SessionHandlerInterface
      * Construct the database based session handler.
      *
      * @param string                                       $table             The table to access.
-     * @param \Kooser\Directory\ConnectionManagerInterface $connectionManager The connection manager.
+     * @param \Directory\ConnectionManagerInterface $connectionManager The connection manager.
      *
      * @return void Returns nothing.
      */
@@ -53,7 +72,7 @@ class DatabaseSessionHandler implements SessionHandlerInterface
     /**
      * Set the connection manager.
      *
-     * @param \Kooser\Directory\ConnectionManagerInterface $connectionManager The connection manager.
+     * @param \Directory\ConnectionManagerInterface $connectionManager The connection manager.
      *
      * @return \SessionHandlerInterface Return this class.
      */
