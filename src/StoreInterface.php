@@ -52,7 +52,7 @@ interface StoreInterface
      *
      * @param \ParagonIE\Halite\Symmetric\EncryptionKey $encryptionKey The encryption key.
      *
-     * @return \Kooser\Session\StoreInterface Returns the store method.
+     * @return \Session\StoreInterface Returns the store method.
      */
     public function setEncryptionKey(EncryptionKey $encryptionKey): StoreInterface;
 
@@ -61,7 +61,7 @@ interface StoreInterface
      *
      * @param bool $shouldEncrypt Should we encrypt/decrypt data.
      *
-     * @return \Kooser\Session\StoreInterface Returns the store method.
+     * @return \Session\StoreInterface Returns the store method.
      */
     public function setShouldEncrypt(bool $shouldEncrypt = \true): StoreInterface;
 
