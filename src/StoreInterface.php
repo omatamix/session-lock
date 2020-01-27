@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 /**
- * Directory - A PDO wrapper for secure connections.
+ * Session - Securely manage and preserve session data.
  *
- * @license MIT License. (https://github.com/Commander-Ant-Screwbin-Games/directory/blob/master/license)
+ * @license MIT License. (https://github.com/Commander-Ant-Screwbin-Games/session/blob/master/license)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * @package Commander-Ant-Screwbin-Games/directory.
+ * @package Commander-Ant-Screwbin-Games/session.
  */
 
 namespace Session;
