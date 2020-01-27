@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1)
+
 use PHPUnit\Framework\TestCase;
 
 class SessionManagerTest extends TestCase
@@ -12,7 +14,7 @@ class SessionManagerTest extends TestCase
             'session_security_code' => 'testCode',
             'session_encrypt'       => \true,
         ];
-        $sessionManager = new \Kooser\Session\SessionManager($options, \false);
+        $sessionManager = new \Session\SessionManager($options, \false);
         $result = $sessionManager->start();
         $this->assertTrue($result);
         $sessionManager->put('key1', 'Kooser6');
