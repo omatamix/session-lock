@@ -1,6 +1,6 @@
 # Session
 
-[![Travis (.org) branch](https://img.shields.io/travis/Kooser6/Session/master.svg)](https://travis-ci.org/Kooser6/Session)
+[![Build Status](https://travis-ci.org/Commander-Ant-Screwbin-Games/Session.svg?branch=master)](https://travis-ci.org/Commander-Ant-Screwbin-Games/Session)
 
 ## Installation
 
