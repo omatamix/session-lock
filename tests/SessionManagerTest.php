@@ -27,7 +27,7 @@ class SessionManagerTest extends TestCase
         $this->assertTrue(($data2 == 'Kooser6Session'));
         $result = $sessionManager->stop();
         $this->assertTrue($result);
-        $sessionManager->setSaveHandler(new \Kooser\Session\NullSessionHandler());
+        $sessionManager->setSaveHandler(new \Session\NullSessionHandler());
         $result = $sessionManager->start();
         $this->assertTrue($result);
         $sessionManager->regenerate();
