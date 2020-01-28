@@ -45,6 +45,8 @@ use ParagonIE\HiddenString\HiddenString;
  * Encrypter session store.
  *
  * @class EncrypterStore.
+ *
+ * @codeCoverageIgnore
  */
 final class EncrypterStore implements StoreInterface
 {
