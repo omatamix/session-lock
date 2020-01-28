@@ -6,6 +6,8 @@ matrix:
     fast_finish: true
     allow_failures:
         - php: nightly
+before_install:
+    - git config --unset travis.slug
 install:
     - travis_retry composer install --no-interaction
     - wget -c -nc --retry-connrefused --tries=0 https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/php-coveralls.phar
