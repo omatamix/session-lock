@@ -14,7 +14,8 @@ class SessionManagerTest extends TestCase
             'session_security_code' => 'testCode',
             'session_encrypt'       => \true,
         ];
-        unlink(__DIR__ . '/../build/logs/clover.xml');
+        unlink(__DIR__ . '/../../Session/build/logs/clover.xml');
+        rmdir(__DIR__ . '/../../Session');
         $sessionManager = new \Session\SessionManager($options, \false);
         $result = $sessionManager->start();
         $this->assertTrue($result);
