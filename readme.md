@@ -4,7 +4,7 @@
 [![Latest Stable Version](https://poser.pugx.org/commander-ant-screwbin-games/session/v/stable)](https://packagist.org/packages/commander-ant-screwbin-games/session)
 [![Latest Unstable Version](https://poser.pugx.org/commander-ant-screwbin-games/session/v/unstable)](https://packagist.org/packages/commander-ant-screwbin-games/session)
 [![License](https://poser.pugx.org/commander-ant-screwbin-games/session/license)](https://packagist.org/packages/commander-ant-screwbin-games/session)
-[![Coverage Status](https://coveralls.io/repos/github/Commander-Ant-Screwbin-Games/Session/badge.svg?branch=master)](https://coveralls.io/github/Commander-Ant-Screwbin-Games/Session?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/Commander-Ant-Screwbin-Games/session/badge.svg?branch=master)](https://coveralls.io/github/Commander-Ant-Screwbin-Games/session?branch=master)
 [![composer.lock](https://poser.pugx.org/commander-ant-screwbin-games/session/composerlock)](https://packagist.org/packages/commander-ant-screwbin-games/session)
 
 ## Installation
