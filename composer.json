@@ -1,32 +1,29 @@
 {
-    "name": "commander-ant-screwbin-games/session",
+    "name": "omatamix/session-lock",
     "description": "Securely manage and preserve session data.",
-    "homepage": "https://github.com/Commander-Ant-Screwbin-Games",
+    "homepage": "https://github.com/session-lock",
     "keywords": [],
     "license": "MIT",
     "require": {
         "php": ">=7.3",
-        "symfony/options-resolver": "^5.0",
-        "symfony/polyfill-mbstring": "^1.13",
-        "symfony/polyfill-php72": "^1.13",
-        "symfony/polyfill-php73": "^1.13"
+        "cakephp/database": "^4.1",
+        "defuse/php-encryption": "^2.2",
+        "symfony/cache": "^5.1",
+        "symfony/filesystem": "^5.1",
+        "symfony/options-resolver": "^5.1",
+        "symfony/polyfill-apcu": "^1.18",
+        "symfony/polyfill-ctype": "^1.18"
     },
     "require-dev": {
-        "vimeo/psalm": "^3",
-        "phpunit/phpunit": "^8.4",
-        "commander-ant-screwbin-games/directory": "^4.0",
-        "paragonie/halite": "^4.6",
-        "symfony/cache": "^5.0"
+        "phpunit/phpunit": "^9"
     },
     "autoload": {
         "psr-4": {
-            "Session\\": "./src"
+            "Omatamix\\SessionLock\\": "./src"
         }
     },
-    "suggest": {
-        "symfony/cache": "If you are using a cache based session manager.",
-        "commander-ant-screwbin-games/directory": "If you are using a database based session manager.",
-        "paragonie/halite": "If you are using encrypted sessions."
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     },
     "config": {
         "optimize-autoloader": true
