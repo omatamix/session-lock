@@ -12,6 +12,14 @@ class NullSessionHandler implements SessionHandlerInterface
     /**
      * {@inheritdoc}
      */
+    public function __construct(array $options = [])
+    {
+        //
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function open($savePath, $sessionName)
     {
         return \true;
