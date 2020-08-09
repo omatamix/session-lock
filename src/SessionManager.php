@@ -2,6 +2,7 @@
 
 namespace Omatamix\SessionLock;
 
+use Omatamix\RequestLock\RequestHandler;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use SessionHandlerInterface;
 
@@ -19,8 +20,9 @@ final class SessionManager implements SessionManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function __construct(array $options = [], bool $exceptions = \true)
+    public function __construct(RequestHandler $requestHandler, array $options = [], bool $exceptions = \true)
     {
+        $this->requestLock = $requestHandler;
         $this->setExceptions($exceptions);
         $this->setOptions($options);
     }
@@ -183,7 +185,6 @@ final class SessionManager implements SessionManagerInterface
     private function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'session_encrypt'            => \false,
             'session_fingerprint'        => \true,
             'session_fingerprint_hash'   => 'sha512',
             'session_lock_to_ip_address' => \true,
@@ -197,7 +198,6 @@ final class SessionManager implements SessionManagerInterface
             ],
         ]);
         $resolver->setRequired('session_security_code');
-        $resolver->setAllowedTypes('session_encrypt', 'bool');
         $resolver->setAllowedTypes('session_fingerprint', 'bool');
         $resolver->setAllowedTypes('session_fingerprint_hash', 'string');
         $resolver->setAllowedTypes('session_lock_to_ip_address', 'bool');
