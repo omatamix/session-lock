@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<psalm name="Session Psalm Configuration" useDocblockTypes="true">
-    <projectFiles>
-        <directory name="./src" />
-    </projectFiles>
-</psalm>
