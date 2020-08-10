@@ -21,18 +21,18 @@ interface StoreInterface
     /**
      * Decrypt the data.
      *
-     * @param mixed $stored The data to decrypt.
+     * @param mixed $data The data to decrypt.
      *
      * @return mixed Returns the decrypted data.
      */
-    public function decrypt($stored);
+    public function decrypt($data);
 
     /**
      * Encrypt the data.
      *
-     * @param mixed $store The data to store.
+     * @param mixed $data The data to store.
      *
      * @return mixed Returns the encrypted data.
      */
-    public function encrypt($store);
+    public function encrypt($data);
 }
