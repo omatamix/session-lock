@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
@@ -14,7 +13,8 @@ class SessionManagerTest extends TestCase
             'session_security_code' => 'testCode',
             'session_encrypt'       => \true,
         ];
-        $sessionManager = new \Session\SessionManager($options, \false);
+        $sessionManager = new \Omatamix\SessionLock\SessionManager();
+        $sessionManager->setSaveHandler(new \Omatamix\SessionLock\NullSessionHandler());
         $result = $sessionManager->start();
         $this->assertTrue($result);
         $sessionManager->put('key1', 'Kooser6');
@@ -27,7 +27,6 @@ class SessionManagerTest extends TestCase
         $this->assertTrue(($data2 == 'Kooser6Session'));
         $result = $sessionManager->stop();
         $this->assertTrue($result);
-        $sessionManager->setSaveHandler(new \Session\NullSessionHandler());
         $result = $sessionManager->start();
         $this->assertTrue($result);
         $sessionManager->regenerate();
