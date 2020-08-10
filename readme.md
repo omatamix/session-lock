@@ -1,4 +1,4 @@
-# PasswordLock
+# SessionLock
 
 ![PHP Composer](https://github.com/omatamix/session-lock/workflows/PHP%20Composer/badge.svg)
 [![Version](https://poser.pugx.org/omatamix/session-lock/version)](//packagist.org/packages/omatamix/password-lock)
