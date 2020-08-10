@@ -21,7 +21,7 @@
          timeoutForLargeTests="15"
          verbose="false">
     <testsuites>
-        <testsuite name="Session Test Suite">
+        <testsuite name="SessionLock Test Suite">
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
