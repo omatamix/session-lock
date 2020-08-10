@@ -1,4 +1,4 @@
-# How to contribute to Session
+# How to contribute to Session Lock
 
 ## Did you find a bug or an error or have a new feature idea?
 
@@ -10,7 +10,7 @@ If you have a fix or a feature you would like us to merge then you should click 
 
 ## Is there any coding style i should use?
 
-Yes we recomment you should follow `psr-2` coding standards, but it is not forced. As long as you code is neat and readable then it should be fine.
+Yes we recommend you should follow `psr-2` coding standards, but it is not forced. As long as you code is neat and readable then it should be fine.
 
 ## Anything else?
 
