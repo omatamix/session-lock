@@ -1,52 +1,22 @@
 <?php declare(strict_types=1);
-/**
- * Session - Securely manage and preserve session data.
- *
- * @license MIT License. (https://github.com/Commander-Ant-Screwbin-Games/session/blob/master/license)
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- * https://github.com/Commander-Ant-Screwbin-Games/firecms/tree/master/src/Core
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- * @package Commander-Ant-Screwbin-Games/session.
- */
 
 namespace Session;
 
 /**
  * Secure session management.
- *
- * You can start a session using the static method `SessionManager::start(...)` which
- * is compatible to PHP's built-in `session_start()` function.
- *
- * @interface SessionManagerInterface.
  */
 interface SessionManagerInterface
 {
-
     /**
      * Construct a new session manager.
      *
-     * @param array $options    The session manager options.
-     * @param bool  $exceptions Should we utilize exceptions.
+     * @param \Omatamix\RequestLock\RequestHandler $requestLock The request lock.
+     * @param array                                $options     The session manager options.
+     * @param bool                                 $exceptions  Should we utilize exceptions.
      *
      * @return void Returns nothing.
      */
-    public function __construct(array $options = [], bool $exceptions = \true);
+    public function __construct(RequestHandler $requestHandler, array $options = [], bool $exceptions = \true);
 
     /**
      * Set the session manager options.
@@ -88,7 +58,7 @@ interface SessionManagerInterface
      *
      * @return bool Returns true if one exists and false if not.
      */
-    public static function exists(): bool;
+    public function exists(): bool;
 
     /**
      * Regenerates the session.
@@ -97,7 +67,7 @@ interface SessionManagerInterface
      *
      * @return bool Returns true on success or false on failure.
      */
-    public static function regenerate(bool $deleteOldSession = \true): bool;
+    public function regenerate(bool $deleteOldSession = \true): bool;
 
     /**
      * Checks whether a value for the specified key exists in the session.
@@ -119,7 +89,7 @@ interface SessionManagerInterface
      * @return mixed Returns the requested value or the default
      *               value.
      */
-    public static function get(string $key, $defaultValue = \null);
+    public function get(string $key, $defaultValue = \null);
 
     /**
      * Returns the requested value and removes it from the session.
@@ -133,7 +103,7 @@ interface SessionManagerInterface
      *
      * @return mixed The requested value or the default value.
      */
-    public static function flash(string $key, $defaultValue = \null);
+    public function flash(string $key, $defaultValue = \null);
 
     /**
      * Sets the value for the specified key to the given value.
@@ -145,7 +115,7 @@ interface SessionManagerInterface
      *
      * @return void Returns nothing.
      */
-    public static function put(string $key, $value): void;
+    public function put(string $key, $value): void;
 
     /**
      * Removes the value for the specified key from the session.
@@ -154,5 +124,5 @@ interface SessionManagerInterface
      *
      * @return void Returns nothing.
      */
-    public static function delete(string $key): void;
+    public function delete(string $key): void;
 }
