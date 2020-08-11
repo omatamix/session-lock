@@ -102,7 +102,7 @@ final class SessionManager implements SessionManagerInterface
     /**
      * {@inheritdoc}
      */
-    public static function exists(): bool
+    public function exists(): bool
     {
         if (\php_sapi_name() !== 'cli') {
             return \session_status() === \PHP_SESSION_ACTIVE ? \true : \false;
@@ -113,7 +113,7 @@ final class SessionManager implements SessionManagerInterface
     /**
      * {@inheritdoc}
      */
-    public static function regenerate(bool $deleteOldSession = \true): bool
+    public function regenerate(bool $deleteOldSession = \true): bool
     {
         return (bool) \session_regenerate_id($deleteOldSession);
     }
