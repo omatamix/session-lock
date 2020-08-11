@@ -11,6 +11,9 @@ use SessionHandlerInterface;
  */
 final class SessionManager implements SessionManagerInterface
 {
+    /** @var \Omatamix\RequestLock\RequestHandler $requestLock The request lock. */
+    private $requestLock = [];
+
     /** @var array $options The session manager options. */
     private $options = [];
 
