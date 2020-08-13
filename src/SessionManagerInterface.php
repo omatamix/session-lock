@@ -2,8 +2,6 @@
 
 namespace Omatamix\SessionLock;
 
-use SessionManagerInterface;
-
 /**
  * Secure session management.
  */
