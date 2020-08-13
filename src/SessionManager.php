@@ -67,7 +67,7 @@ final class SessionManager implements SessionManagerInterface
                 }
                 \trigger_error('The fingerprint supplied is invalid.', \E_USER_ERROR);
             } else {
-                $this->put('session-lock.fingerprint');
+                $this->put('session-lock.fingerprint', 1);
             }
         }
         return $session;
