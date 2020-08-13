@@ -168,7 +168,7 @@ final class SessionManager implements SessionManagerInterface
     private function getFingerprint(): string
     {
         $ip = $ua = '';
-        if ($this->options['session_lock_to_ip_address'] && isset($_SERVER['REMOTE_ADDR']))
+        if ($this->options['session_lock_to_ip_address'] && isset($_SERVER['REMOTE_ADDR'])) {
             $ip = !is_null($this->options['session_pass_ip']) ? $this->options['session_pass_ip'] : $_SERVER['REMOTE_ADDR'];
         }
         if ($this->options['session_lock_to_user_agent'] && isset($_SERVER['HTTP_USER_AGENT'])) {
@@ -192,7 +192,8 @@ final class SessionManager implements SessionManagerInterface
             'session_fingerprint_hash'   => 'sha512',
             'session_lock_to_ip_address' => \true,
             'session_lock_to_user_agent' => \true,
-            'session_pass_ip' => \null
+            'session_pass_ip' => \null,
+            'session_security_code' => '',
             'session_config' => [
                 'use_cookies'      => \true,
                 'use_only_cookies' => \true,
@@ -201,7 +202,6 @@ final class SessionManager implements SessionManagerInterface
                 'use_strict_mode'  => \true,
             ],
         ]);
-        $resolver->setRequired('session_security_code');
         $resolver->setAllowedTypes('session_fingerprint', 'bool');
         $resolver->setAllowedTypes('session_fingerprint_hash', 'string');
         $resolver->setAllowedTypes('session_lock_to_ip_address', 'bool');
