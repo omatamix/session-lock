@@ -2,6 +2,8 @@
 
 namespace Omatamix\SessionLock;
 
+use SessionManagerInterface;
+
 /**
  * Secure session management.
  */
@@ -10,13 +12,12 @@ interface SessionManagerInterface
     /**
      * Construct a new session manager.
      *
-     * @param \Omatamix\RequestLock\RequestHandler $requestLock The request lock.
-     * @param array                                $options     The session manager options.
-     * @param bool                                 $exceptions  Should we utilize exceptions.
+     * @param array $options    The session manager options.
+     * @param bool  $exceptions Should we utilize exceptions.
      *
      * @return void Returns nothing.
      */
-    public function __construct(RequestHandler $requestHandler, array $options = [], bool $exceptions = \true);
+    public function __construct(array $options = [], bool $exceptions = \true);
 
     /**
      * Set the session manager options.
