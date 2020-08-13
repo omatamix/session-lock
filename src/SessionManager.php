@@ -2,7 +2,6 @@
 
 namespace Omatamix\SessionLock;
 
-use Omatamix\RequestLock\RequestHandler;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use SessionHandlerInterface;
 
@@ -11,9 +10,6 @@ use SessionHandlerInterface;
  */
 final class SessionManager implements SessionManagerInterface
 {
-    /** @var \Omatamix\RequestLock\RequestHandler $requestLock The request lock. */
-    private $requestLock = [];
-
     /** @var array $options The session manager options. */
     private $options = [];
 
@@ -23,9 +19,8 @@ final class SessionManager implements SessionManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function __construct(RequestHandler $requestHandler, array $options = [], bool $exceptions = \true)
+    public function __construct(array $options = [], bool $exceptions = \true)
     {
-        $this->requestLock = $requestHandler;
         $this->setExceptions($exceptions);
         $this->setOptions($options);
     }
@@ -172,8 +167,13 @@ final class SessionManager implements SessionManagerInterface
      */
     private function getFingerprint(): string
     {
-        $ua = $this->options['session_lock_to_ip_address'] ? $this->requestLock()->get('ipAddress') : 'null';
-        $ua = $this->options['session_lock_to_user_agent'] ? $this->requestLock()->get('userAgent') : 'null';
+        $ip = $ua = '';
+        if ($this->options['session_lock_to_ip_address'] && isset($_SERVER['REMOTE_ADDR']))
+            $ip = !is_null($this->options['session_pass_ip']) ? $this->options['session_pass_ip'] : $_SERVER['REMOTE_ADDR'];
+        }
+        if ($this->options['session_lock_to_user_agent'] && isset($_SERVER['HTTP_USER_AGENT'])) {
+            $ua = $_SERVER['HTTP_USER_AGENT'];
+        }
         $rawFingerprint = \sprintf('%s|%s', $ip, $ua);
         return \hash_hmac($this->options['session_fingerprint_hash'], $rawFingerprint, $this->options['session_security_code']);
     }
@@ -192,6 +192,7 @@ final class SessionManager implements SessionManagerInterface
             'session_fingerprint_hash'   => 'sha512',
             'session_lock_to_ip_address' => \true,
             'session_lock_to_user_agent' => \true,
+            'session_pass_ip' => \null
             'session_config' => [
                 'use_cookies'      => \true,
                 'use_only_cookies' => \true,
