@@ -9,12 +9,34 @@ use SessionHandlerInterface;
  */
 class NullSessionHandler implements SessionHandlerInterface
 {
+    /** @var array $options The session handler options. */
+    private $options;
+
     /**
-     * {@inheritdoc}
+     * Construct a new session handler.
+     *
+     * @param array $options The session handler options.
+     *
+     * @return void Returns nothing.
      */
     public function __construct(array $options = [])
     {
-        //
+        $this->setOptions($options);
+    }
+
+    /**
+     * Set the session handler options.
+     *
+     * @param array $options The session handler options.
+     *
+     * @return \SessionHandlerInterface Returns the session handler.
+     */
+    public function setOptions(array $options = []): SessionHandlerInterface
+    {
+        $resolver = new OptionsResolver();
+        $this->configureOptions($resolver);
+        $this->options = $resolver->resolve($options);
+        return $this;
     }
 
     /**
