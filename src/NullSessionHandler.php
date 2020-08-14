@@ -3,6 +3,7 @@
 namespace Omatamix\SessionLock;
 
 use SessionHandlerInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * A null session handler for testing.
