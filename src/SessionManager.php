@@ -169,7 +169,7 @@ final class SessionManager implements SessionManagerInterface
     {
         $ip = $ua = '';
         if ($this->options['session_lock_to_ip_address'] && isset($_SERVER['REMOTE_ADDR'])) {
-            $ip = !is_null($this->options['session_pass_ip']) ? $this->options['session_pass_ip'] : $_SERVER['REMOTE_ADDR'];
+            $ip = !\is_null($this->options['session_pass_ip']) ? $this->options['session_pass_ip'] : $_SERVER['REMOTE_ADDR'];
         }
         if ($this->options['session_lock_to_user_agent'] && isset($_SERVER['HTTP_USER_AGENT'])) {
             $ua = $_SERVER['HTTP_USER_AGENT'];
