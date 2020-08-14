@@ -179,7 +179,7 @@ final class SessionManager implements SessionManagerInterface
     }
 
     /**
-     * Configure the hasher options.
+     * Configure the session manager options.
      *
      * @param OptionsResolver The symfony options resolver.
      *
