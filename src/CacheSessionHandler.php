@@ -13,11 +13,14 @@ class CacheSessionHandler implements SessionHandlerInterface
     /** @var \Symfony\Component\Cache\Adapter\AdapterInterface $cache The cache adapter. */
     private $cache;
 
+    /** @var \Omatamix\SessionLock\EncryptionWrapper $encryptionWrapper The encryption wrapper. */
+    private $encryptionWrapper;
+
     /**
      * Construct the cache based session handler.
      *
      * @param \Symfony\Component\Cache\Adapter\AdapterInterface $cacheAdapter      The cache adapter.
-     * @param \Omatamix\SessionLock\EncryptionWrapper           $encryptionWrapper The cache adapter.
+     * @param \Omatamix\SessionLock\EncryptionWrapper           $encryptionWrapper The encryption wrapper.
      *
      * @return void Returns nothing.
      */
