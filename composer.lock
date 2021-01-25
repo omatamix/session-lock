@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "cakephp/core",
-            "version": "4.1.4",
+            "version": "4.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
-                "reference": "c7e88f1cd6dfe17065e71f1af305d415f155e97e"
+                "reference": "54d11c1356cea54623a3ec55530259d3c47153e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/core/zipball/c7e88f1cd6dfe17065e71f1af305d415f155e97e",
-                "reference": "c7e88f1cd6dfe17065e71f1af305d415f155e97e",
+                "url": "https://api.github.com/repos/cakephp/core/zipball/54d11c1356cea54623a3ec55530259d3c47153e0",
+                "reference": "54d11c1356cea54623a3ec55530259d3c47153e0",
                 "shasum": ""
             },
             "require": {
@@ -26,7 +26,8 @@
             },
             "suggest": {
                 "cakephp/cache": "To use Configure::store() and restore().",
-                "cakephp/event": "To use PluginApplicationInterface or plugin applications."
+                "cakephp/event": "To use PluginApplicationInterface or plugin applications.",
+                "league/container": "To use Container and ServiceProvider classes"
             },
             "type": "library",
             "autoload": {
@@ -54,20 +55,20 @@
                 "core",
                 "framework"
             ],
-            "time": "2020-08-13T23:43:58+00:00"
+            "time": "2020-12-29T02:05:46+00:00"
         },
         {
             "name": "cakephp/database",
-            "version": "4.1.4",
+            "version": "4.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/database.git",
-                "reference": "87489db357c4472e8a03acf0d2256d22a134c71e"
+                "reference": "8326f272a8e43c38c73c0b4a969f5c142428d8a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/database/zipball/87489db357c4472e8a03acf0d2256d22a134c71e",
-                "reference": "87489db357c4472e8a03acf0d2256d22a134c71e",
+                "url": "https://api.github.com/repos/cakephp/database/zipball/8326f272a8e43c38c73c0b4a969f5c142428d8a4",
+                "reference": "8326f272a8e43c38c73c0b4a969f5c142428d8a4",
                 "shasum": ""
             },
             "require": {
@@ -103,20 +104,20 @@
                 "database abstraction",
                 "pdo"
             ],
-            "time": "2020-08-30T12:31:16+00:00"
+            "time": "2021-01-21T15:09:57+00:00"
         },
         {
             "name": "cakephp/datasource",
-            "version": "4.1.4",
+            "version": "4.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/datasource.git",
-                "reference": "87fa1b40eb819bac382e93cf496db6321ae86e11"
+                "reference": "e2c8c895254837722a5a00609644b72ef01290a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/datasource/zipball/87fa1b40eb819bac382e93cf496db6321ae86e11",
-                "reference": "87fa1b40eb819bac382e93cf496db6321ae86e11",
+                "url": "https://api.github.com/repos/cakephp/datasource/zipball/e2c8c895254837722a5a00609644b72ef01290a0",
+                "reference": "e2c8c895254837722a5a00609644b72ef01290a0",
                 "shasum": ""
             },
             "require": {
@@ -155,20 +156,20 @@
                 "entity",
                 "query"
             ],
-            "time": "2020-08-26T08:52:15+00:00"
+            "time": "2021-01-01T07:34:22+00:00"
         },
         {
             "name": "cakephp/utility",
-            "version": "4.1.4",
+            "version": "4.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
-                "reference": "c65a5a169077c561b6e850e6d0ee85d9a54b6f5a"
+                "reference": "37d737eef64f3f09af871b70730a99912248d157"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/utility/zipball/c65a5a169077c561b6e850e6d0ee85d9a54b6f5a",
-                "reference": "c65a5a169077c561b6e850e6d0ee85d9a54b6f5a",
+                "url": "https://api.github.com/repos/cakephp/utility/zipball/37d737eef64f3f09af871b70730a99912248d157",
+                "reference": "37d737eef64f3f09af871b70730a99912248d157",
                 "shasum": ""
             },
             "require": {
@@ -208,7 +209,7 @@
                 "string",
                 "utility"
             ],
-            "time": "2020-08-12T08:25:29+00:00"
+            "time": "2020-12-29T02:05:46+00:00"
         },
         {
             "name": "defuse/php-encryption",
@@ -3095,12 +3096,12 @@
             "version": "1.9.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
+                "url": "https://github.com/webmozarts/assert.git",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "shasum": ""
             },
