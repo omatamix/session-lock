@@ -25,11 +25,6 @@
 
 namespace Omatamix\SessionLock\Encryption\Adapter;
 
-use ParagonIE\ConstantTime\Base64UrlSafe;
-use ParagonIE\ConstantTime\Binary;
-use ParagonIE\ConstantTime\Hex;
-use ParagonIE\Halite\Alerts\InvalidMessage;
-use ParagonIE\Halite\Halite;
 use ParagonIE\Halite\Symmetric\Crypto;
 use ParagonIE\Halite\Symmetric\EncryptionKey;
 use ParagonIE\HiddenString\HiddenString;
@@ -55,40 +50,18 @@ class Halite implements EncryptionAdapter
     }
 
     /**
-     * Make sure the key is not visible from `var_dump`.
-     * 
-     * @return array Returns the debug info.
-     */
-    public function __debugInfo()
-    {
-        return [
-            'key' => 'private'
-        ];
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function encrypt(string $value): string
     {
-        return Crypto::encrypt(new HiddenString(json_encode($value)), $this->key);
+        return Crypto::encrypt(new HiddenString($value), $this->key);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function decrypt(string $encrypted): string
+    public function decrypt(string $cipher): string
     {
-        $length = Binary::safeStrlen($encrypted);
-        if ($length < 8)
-            throw new InvalidMessage('Encrypted password hash is way too short.');
-        if (hash_equals(Binary::safeSubstr($encrypted, 0, 5), Halite::VERSION_PREFIX)) {
-            $decoded = Base64UrlSafe::decode($encrypted);
-            return SymmetricConfig::getConfig($decoded, 'encrypt');
-        }
-        $value = Hex::decode(Binary::safeSubstr($encrypted, 0, 8));
-        $config = SymmetricConfig::getConfig($value, 'encrypt');
-        $decrypted = Crypto::decrypt($encrypted, $this->key, $config->ENCODING);
-        return json_decode($decrypted->getString(), true);
+        return (Crypto::decrypt($cipher, $this->key))->getString();
     }
 }
