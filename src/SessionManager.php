@@ -174,7 +174,7 @@ final class SessionManager implements SessionManagerInterface
                 'use_strict_mode'  => true,
             ],
         ]);
-        $resolver->setAllowedTypes('fingerprint', 'bool');
+        $resolver->setAllowedTypes('fingerprinting', 'bool');
         $resolver->setAllowedTypes('fingerprint_hash', 'string');
         $resolver->setAllowedTypes('bind_ip_address', 'bool');
         $resolver->setAllowedTypes('bind_user_agent', 'bool');
