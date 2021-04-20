@@ -36,6 +36,14 @@ final class SessionManager implements SessionManagerInterface
     /**
      * {@inheritdoc}
      */
+    public function setSaveHandler(SessionHandlerInterface $sessionHandler): void
+    {
+        session_set_save_handler($sessionHandler, true);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function start(): bool
     {
         $session = session_start($this->options['config']);
