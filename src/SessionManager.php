@@ -154,7 +154,7 @@ final class SessionManager implements SessionManagerInterface
         if ($this->options['bind_user_agent'] && isset($_SERVER['HTTP_USER_AGENT'])) {
             $userAgent = $_SERVER['HTTP_USER_AGENT'];
         }
-        $rawFingerprint = sprintf('%s|%s', $remoteIp, $userAgent);
+        $fingerprint = sprintf('%s|%s', $remoteIp, $userAgent);
         return hash_hmac($this->options['fingerprint_hash'], $fingerprint, $this->options['security_code']);
     }
 
