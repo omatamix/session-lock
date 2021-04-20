@@ -1,10 +1,8 @@
 # SessionLock
 
-![PHP Composer](https://github.com/omatamix/session-lock/workflows/PHP%20Composer/badge.svg)
+[![Continuous Integration](https://github.com/omatamix/session-lock/actions/workflows/php.yml/badge.svg)](https://github.com/omatamix/session-lock/actions/workflows/php.yml)
 [![Version](https://poser.pugx.org/omatamix/session-lock/version)](//packagist.org/packages/omatamix/password-lock)
 [![Total Downloads](https://poser.pugx.org/omatamix/session-lock/downloads)](//packagist.org/packages/omatamix/password-lock)
-[![.gitattributes](https://poser.pugx.org/omatamix/session-lock/gitattributes)](//packagist.org/packages/omatamix/password-lock)
-[![composer.lock](https://poser.pugx.org/omatamix/session-lock/composerlock)](//packagist.org/packages/omatamix/password-lock)
 
 ## Installation
 
