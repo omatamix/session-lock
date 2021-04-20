@@ -78,6 +78,13 @@ $session = new SessionManager([
 ]);
 ```
 ### Session Handlers
+You can also set how you session information is stored using session handlers,
+```php
+use Omatamix\SessionLock\SessionHandlers\CacheSessionHandler;
+
+$session = new SessionManager();
+$session->setSaveHandler(new CacheSessionHandler(/** A `psr/cache` or `psr/simple-cache` pool. */));
+```
 ### Encryption Adapters
 ### Session Config
 
