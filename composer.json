@@ -7,13 +7,11 @@
     "require": {
         "php": "^7.3|^8.0",
         "ext-json": "*",
-        "cakephp/database": "^4.1",
         "psr/cache": "^1.0|^2.0|3.0",
         "psr/simple-cache": "^1.0",
-        "symfony/filesystem": "^5.1",
         "symfony/options-resolver": "^5.2",
-        "symfony/polyfill-apcu": "^1.18",
-        "symfony/polyfill-ctype": "^1.18"
+        "symfony/polyfill-apcu": "^1.22",
+        "symfony/polyfill-ctype": "^1.22"
     },
     "suggest": {
         "defuse/php-encryption": "To use the `defuse` encryption adapter (OpenSSL).",
