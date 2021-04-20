@@ -5,7 +5,7 @@
     "keywords": [],
     "license": "MIT",
     "require": {
-        "php": ">=7.3",
+        "php": ">=7.3|>=8.0",
         "ext-json": "*",
         "cakephp/database": "^4.1",
         "symfony/cache": "^5.1",
