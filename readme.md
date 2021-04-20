@@ -31,7 +31,7 @@ if ($session->exists()) {
 }
 ```
 The put method sets a session variable.
-'''php
+```php
 $session->put('hello', 'world');
 ```
 This checks to see if this session variable is set.
