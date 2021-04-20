@@ -16,10 +16,9 @@ composer require omatamix/session-lock
 ## Usage
 ### Session Manager
 The session manger comes with a simple api.<br />
-<hr />
 This checks to see if this session variable is set.
 <br />
-```SessionManager::has(string $key, mixed $defualtValue): mixed;```
+`SessionManager::has(string $key, mixed $defualtValue): mixed;`
 <br />
 The get method will try to get the session variables value and if not it returns the defualt value.
 <br />
