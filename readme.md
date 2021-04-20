@@ -44,6 +44,10 @@ The delete method deletes a session variable.
 ```php
 $session->delete('hello');
 ```
+The get method gets the session variables value.
+```php
+echo "Hello " . $session->get('hello') . "!";
+```
 The flash method does the same as get but flash will delete the session variable after retrievale.
 ```php
 echo "Hello " . $session->flash('hello') . "!";
@@ -86,7 +90,30 @@ $session = new SessionManager();
 $session->setSaveHandler(new CacheSessionHandler(/** A `psr/cache` or `psr/simple-cache` pool. */));
 ```
 ### Encryption Adapters
+This library also include encrypted session handlers.
+```php
+use Defuse\Crypto\Key;
+use Omatamix\SessionLock\Encryption\Adapter\Defuse;
+use Omatamix\SessionLock\Encryption\Encrypted;
+
+$session = new SessionManager();
+$session->setSaveHandler(new Encrypeted(new CacheSessionHandler(/** A `psr/cache` or `psr/simple-cache` pool. */), new Defuse(Key::createNewRandomKey()));
+
+// All session data will now be encrpyted using the `defuse` adapter.
+```
 ### Session Config
+You can also pass session configuration through the session manager constructor method.
+```php
+$session = new SessionManager([
+    'config' => [
+        'use_cookies'      => true,
+        'use_only_cookies' => true,
+        'cookie_httponly'  => true,
+        'cookie_samesite'  => 'Lax',
+        'use_strict_mode'  => true,
+    ]
+]);
+```
 
 ## Security Vulnerabilities
 
