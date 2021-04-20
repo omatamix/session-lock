@@ -89,7 +89,7 @@ class Encrypted implements SessionHandlerInterface
      */
     public function destroy($sessionId)
     {
-        return $this->handler->destroy();;
+        return $this->handler->destroy();
     }
 
     /**
@@ -97,6 +97,6 @@ class Encrypted implements SessionHandlerInterface
      */
     public function gc($lifetime)
     {
-        return $this->handler->gc();;
+        return $this->handler->gc($lifetime);
     }
 }
