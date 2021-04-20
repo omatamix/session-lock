@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+use Omatamix\SessionLock\SessionHandlers\NullSessionHandler;
+use Omatamix\SessionLock\SessionManager;
 use PHPUnit\Framework\TestCase;
 
 class SessionManagerTest extends TestCase
@@ -11,19 +13,19 @@ class SessionManagerTest extends TestCase
     {
         $options = [
             'session_security_code' => 'testCode',
-            'session_encrypt'       => \true,
+            'session_encrypt'       => true,
         ];
-        $sessionManager = new \Omatamix\SessionLock\SessionManager();
-        $sessionManager->setSaveHandler(new \Omatamix\SessionLock\NullSessionHandler());
+        $sessionManager = new SessionManager();
+        $sessionManager->setSaveHandler(new NullSessionHandler());
         $result = $sessionManager->start();
         $this->assertTrue($result);
         $sessionManager->put('key1', 'Kooser6');
         $sessionManager->put('key2', 'Kooser6Session');
-        $data1 = $sessionManager->get('key1', \null);
-        $data2 = $sessionManager->get('key2', \null);
-        $this->assertTrue(($data1 != \null));
+        $data1 = $sessionManager->get('key1', null);
+        $data2 = $sessionManager->get('key2', null);
+        $this->assertTrue(($data1 != null));
         $this->assertTrue(($data1 == 'Kooser6'));
-        $this->assertTrue(($data2 != \null));
+        $this->assertTrue(($data2 != null));
         $this->assertTrue(($data2 == 'Kooser6Session'));
         $result = $sessionManager->stop();
         $this->assertTrue($result);
@@ -32,25 +34,25 @@ class SessionManagerTest extends TestCase
         $sessionManager->regenerate();
         $sessionManager->put('key1', 'Kooser6');
         $sessionManager->put('key2', 'Kooser6Session');
-        $data1 = $sessionManager->get('key1', \null);
-        $data2 = $sessionManager->get('key2', \null);
-        $this->assertTrue(($data1 != \null));
+        $data1 = $sessionManager->get('key1', null);
+        $data2 = $sessionManager->get('key2', null);
+        $this->assertTrue(($data1 != null));
         $this->assertTrue(($data1 == 'Kooser6'));
-        $this->assertTrue(($data2 != \null));
+        $this->assertTrue(($data2 != null));
         $this->assertTrue(($data2 == 'Kooser6Session'));
-        $data3 = $sessionManager->get('key3', \null);
-        $data4 = $sessionManager->get('key4', \null);
-        $this->assertTrue(($data3 === \null));
-        $this->assertTrue(($data4 === \null));
+        $data3 = $sessionManager->get('key3', null);
+        $data4 = $sessionManager->get('key4', null);
+        $this->assertTrue(($data3 === null));
+        $this->assertTrue(($data4 === null));
         $sessionManager->delete('key1');
         $sessionManager->delete('key2');
         $sessionManager->put('key1', 'Kooser6');
         $sessionManager->put('key2', 'Kooser6Session');
-        $result1 = $sessionManager->flash('key1', \null);
-        $result2 = $sessionManager->flash('key2', \null);
-        $this->assertTrue(($result1 != \null));
+        $result1 = $sessionManager->flash('key1', null);
+        $result2 = $sessionManager->flash('key2', null);
+        $this->assertTrue(($result1 != null));
         $this->assertTrue(($result1 == 'Kooser6'));
-        $this->assertTrue(($result2 != \null));
+        $this->assertTrue(($result2 != null));
         $this->assertTrue(($result2 == 'Kooser6Session'));
         $result3 = $sessionManager->has('key1');
         $result4 = $sessionManager->has('key2');
