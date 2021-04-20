@@ -92,7 +92,7 @@ interface SessionManagerInterface
      * @return mixed Returns the requested value or the default
      *               value.
      */
-    public function get(string $key, $defaultValue = \null);
+    public function get(string $key, $defaultValue = null);
 
     /**
      * Returns the requested value and removes it from the session.
