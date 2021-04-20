@@ -15,6 +15,14 @@ composer require omatamix/session-lock
 
 ## Usage
 ### Session Manager
+The session manger comes with a simple api.
+**```SessionManager::get(string $key, mixed $defualtValue): mixed;```**
+```SessionManager::get(string $key, mixed $defualtValue): mixed;```
+```SessionManager::flash(string $key, mixed $defualtValue): mixed;```
+```SessionManager::put(string $key, mixed $value): void;```
+```SessionManager::delete(string $key): voif;```
+
+
 ### Session Regeneration
 It is very easy to update the current session id with a newly generated one.
 ```php
