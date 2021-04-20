@@ -19,37 +19,38 @@ The session manger comes with a simple api.
 ```php
 // Construct a new session manager.
 $session = new SessionManager();
-
-// Start or resume a session.
+```
+Start or resume a session.
+```php
 $session->start();
-
-// Check to see if our session is running.
+```
+Check to see if our session is running.
+```php
 if ($session->exists()) {
     echo "The session is running!";
 }
-
-// The put method sets a session variable.
+```
+The put method sets a session variable.
+'''php
 $session->put('hello', 'world');
-
-// This checks to see if this session variable is set.
+```
+This checks to see if this session variable is set.
+```php
 if ($session->has('hello')) {
-
-    // The get method will try to get the session variables value and if not it returns the defualt value.
-    echo "Hello " . $session->get('hello') . "!";
+    echo "The session variable exists.";
 }
-
-// The delete method deletes a session variable.
+```
+The delete method deletes a session variable.
+```php
 $session->delete('hello');
-
-// Reset the variable.
-$session->put('hello', 'world');
-
-// The flash method does the same as get but flash will delete the session variable after retrievale.
+```
+The flash method does the same as get but flash will delete the session variable after retrievale.
+```php
 echo "Hello " . $session->flash('hello') . "!";
-
-// Stop a session.;
-$session->stop()
-
+```
+Stop a session.
+```php
+$session->stop();
 ```
 ### Session Regeneration
 It is very easy to update the current session id with a newly generated one.
