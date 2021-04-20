@@ -1,6 +1,8 @@
 # SessionLock
 
-<div style="text-align:center">[![Continuous Integration](https://github.com/omatamix/session-lock/actions/workflows/php.yml/badge.svg)](https://github.com/omatamix/session-lock/actions/workflows/php.yml)</div>
+<center>
+[![Continuous Integration](https://github.com/omatamix/session-lock/actions/workflows/php.yml/badge.svg)](https://github.com/omatamix/session-lock/actions/workflows/php.yml)
+</center>
 
 ## Installation
 
