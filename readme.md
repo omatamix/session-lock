@@ -1,7 +1,8 @@
 
-<center><img src="https://raw.githubusercontent.com/omatamix/session-lock/master/bin/session-lock.png" alt="SessionLock" /></center>
+
 
 <p align="center">
+<img src="https://raw.githubusercontent.com/omatamix/session-lock/master/bin/session-lock.png" alt="SessionLock" />
 <a href="https://github.com/omatamix/session-lock/actions/workflows/php.yml"><img src="https://github.com/omatamix/session-lock/actions/workflows/php.yml/badge.svg" alt="Build Status" /></a>
 </p>
 
