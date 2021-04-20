@@ -16,9 +16,33 @@ composer require omatamix/session-lock
 ## Usage
 ### Session Manager
 ### Session Regeneration
+It is very easy to update the current session id with a newly generated one.
+```php
+$session->regerate();
+```
 ### Session Fingerprinting
+This session manager comes with a built-in session fingerprinting which in a way improves session security. When you create a session handler instance, session fingerprinting is enabled by defualt, it binds your remote ip and user agent. If you do not want this enabled you can turn it off with.
+```php
+$session = new SessionManager([
+    'fingerprinting' => false,
+]);
+```
+You can also disable binding the remote ip or user agent like this.
+```php
+$session = new SessionManager([
+    'bind_ip_address' => false, // If set to true we will bind the ip address else dont.
+    'bind_user_agent' => false, // If set to true we will bind the user agent else dont.
+]);
+```
+If you are using a trusted proxy you can set the remote ip with this.
+```php
+$session = new SessionManager([
+    'use_ip' => 127.0.0.1,
+]);
+```
 ### Session Handlers
 ### Encryption Adapters
+### Session Config
 
 ## Security Vulnerabilities
 
