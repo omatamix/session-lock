@@ -89,7 +89,7 @@ class Encrypted implements SessionHandlerInterface
      */
     public function destroy($sessionId)
     {
-        return $this->handler->destroy();
+        return $this->handler->destroy($sessionId);
     }
 
     /**
