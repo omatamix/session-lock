@@ -13,6 +13,13 @@ The best way to install SessionLock is through composer. If you do not have comp
 composer require omatamix/session-lock
 ```
 
+## Usage
+### Session Manager
+### Session Regeneration
+### Session Fingerprinting
+### Session Handlers
+### Encryption Adapters
+
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within Session Lock, please send an e-mail to Nicholas via [omatamix@gmail.com](mailto:omatamix@gmail.com). All security vulnerabilities will be promptly addressed.
