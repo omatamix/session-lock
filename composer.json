@@ -7,7 +7,7 @@
     "require": {
         "php": ">=7.3",
         "cakephp/database": "^4.1",
-        "defuse/php-encryption": "^2.2",
+        "defuse/php-encryption": "^2.3",
         "symfony/cache": "^5.1",
         "symfony/filesystem": "^5.1",
         "symfony/options-resolver": "^5.1",
