@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-namespace Omatamix\SessionLock;
+namespace Omatamix\SessionLock\SessionHandlers;
 
 use SessionHandlerInterface;
 
