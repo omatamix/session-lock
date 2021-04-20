@@ -1,7 +1,7 @@
 {
     "name": "omatamix/session-lock",
     "description": "Securely manage and preserve session data.",
-    "homepage": "https://github.com/session-lock",
+    "homepage": "https://omatamix.github.io/session-lock/",
     "keywords": [],
     "license": "MIT",
     "require": {
