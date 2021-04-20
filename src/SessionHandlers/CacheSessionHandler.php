@@ -54,8 +54,8 @@ class CacheSessionHandler implements SessionHandlerInterface
         if ($pool instanceof CacheItemPoolInterface) {
             $pool = new SimpleCacheBridge($pool);
         }
-        $this->cache = $pool
-        $this->ttl = $ttl
+        $this->cache = $pool;
+        $this->ttl = $ttl;
     }
     /**
      * {@inheritdoc}
