@@ -73,7 +73,7 @@ final class SessionManager implements SessionManagerInterface
                 $params["secure"], $params["httponly"]
             );
         }
-        session_destroy();
+        return session_destroy();
     }
 
     /**
