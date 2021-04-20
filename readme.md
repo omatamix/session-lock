@@ -17,16 +17,23 @@ composer require omatamix/session-lock
 ### Session Manager
 The session manger comes with a simple api.<br />
 <hr />
-This checks to see if this session variable is set.<br />
-```SessionManager::has(string $key, mixed $defualtValue): mixed;```<br />
-The get method will try to get the session variables value and if not it returns the defualt value.<br />
-```SessionManager::get(string $key, mixed $defualtValue): mixed;```<br />
+This checks to see if this session variable is set.
+<br />
+```SessionManager::has(string $key, mixed $defualtValue): mixed;```
+<br />
+The get method will try to get the session variables value and if not it returns the defualt value.
+<br />
+```SessionManager::get(string $key, mixed $defualtValue): mixed;```
+<br />
 The flash method does the same as get but flash will delete the session variable after retrievale.<br />
-```SessionManager::flash(string $key, mixed $defualtValue): mixed;```<br />
+```SessionManager::flash(string $key, mixed $defualtValue): mixed;```
+<br />
 The put method sets a session variable.
-```SessionManager::put(string $key, mixed $value): void;```<br />
+```SessionManager::put(string $key, mixed $value): void;```
+<br />
 The delete method deletes a session variable.
-```SessionManager::delete(string $key): void;```<br />
+```SessionManager::delete(string $key): void;```
+<br />
 
 ### Session Regeneration
 It is very easy to update the current session id with a newly generated one.
