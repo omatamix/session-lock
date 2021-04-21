@@ -80,7 +80,7 @@ $session = new SessionManager([
 If you are using a trusted proxy you can set the remote ip with this.
 ```php
 $session = new SessionManager([
-    'use_ip' => 127.0.0.1,
+    'use_ip' => '127.0.0.1',
 ]);
 ```
 ### Session Handlers
