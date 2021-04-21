@@ -123,8 +123,8 @@ $session->setSaveHandler(new CacheSessionHandler(/** A `psr/cache` or `psr/simpl
 
 #### Supported
 
-- `CacheSessionHandler::class`
-- `NullSessionHanlder::class`
+- `Omatamix\SessionLock\SessionHandlers\CacheSessionHandler::class`
+- `Omatamix\SessionLock\SessionHandlers\NullSessionHanlder::class`
 
 ### Encryption Adapters
 
@@ -140,6 +140,11 @@ $session->setSaveHandler(new Encrypeted(new CacheSessionHandler(/** A `psr/cache
 
 // All session data will now be encrpyted using the `defuse` adapter.
 ```
+
+#### Supported
+
+- `Omatamix\SessionLock\Encryption\Adapter\Defuse::class`
+- `Omatamix\SessionLock\Encryption\Adapter\Halite::class`
 
 ### Session Config
 
