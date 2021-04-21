@@ -117,7 +117,7 @@ final class SessionManager implements SessionManagerInterface
     public function flash(string $key, $defaultValue = null)
     {
         $value = $this->get($key, $defaultValue);
-        unset($_SESSION[$key]);
+        $this->delete($key);
         return $value;
     }
 
