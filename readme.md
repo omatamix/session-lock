@@ -17,6 +17,8 @@ composer require omatamix/session-lock
 ### Session Manager
 The session manger comes with a simple api.
 ```php
+use Omatamix\SessionLock\SessionManager;
+
 // Construct a new session manager.
 $session = new SessionManager();
 ```
