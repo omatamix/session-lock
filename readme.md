@@ -91,6 +91,9 @@ use Omatamix\SessionLock\SessionHandlers\CacheSessionHandler;
 $session = new SessionManager();
 $session->setSaveHandler(new CacheSessionHandler(/** A `psr/cache` or `psr/simple-cache` pool. */));
 ```
+#### Supported
+- `CacheSessionHandler::class`
+- `NullSessionHanlder::class`
 ### Encryption Adapters
 This library also include encrypted session handlers.
 ```php
@@ -116,7 +119,6 @@ $session = new SessionManager([
     ]
 ]);
 ```
-
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within Session Lock, please send an e-mail to Nicholas via [omatamix@gmail.com](mailto:omatamix@gmail.com). All security vulnerabilities will be promptly addressed.
