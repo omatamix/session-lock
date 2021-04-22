@@ -171,7 +171,7 @@ final class SessionManager implements SessionManagerInterface
             'fingerprint_hash' => 'sha512',
             'bind_ip_address'  => true,
             'bind_user_agent'  => true,
-            'use_ip'           => null,
+            'use_ip'           => '',
             'security_code'    => '',
             'config'           => [
                 'use_cookies'      => true,
