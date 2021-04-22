@@ -128,7 +128,7 @@ $session->setSaveHandler(new CacheSessionHandler(/** A `psr/cache` or `psr/simpl
 
 ### Encryption Adapters
 
-This library also include encrypted session handlers.
+This library also includes encrypted session handlers.
 
 ```php
 use Defuse\Crypto\Key;
