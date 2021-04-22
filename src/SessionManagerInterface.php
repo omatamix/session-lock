@@ -25,6 +25,8 @@
 
 namespace Omatamix\SessionLock;
 
+use SessionHandlerInterface;
+
 /**
  * Secure session management.
  */
@@ -38,6 +40,24 @@ interface SessionManagerInterface
      * @return void Returns nothing.
      */
     public function __construct(array $options = []);
+
+    /**
+     * Set the sessions name.
+     *
+     * @param string $name The name of the session to set.
+     *
+     * @return string|false Returns the sessions name or false on failure.
+     */
+    public function setSessionName(string $name);
+
+    /**
+     * Set the sessions save handler.
+     *
+     * @param \SessionHandlerInterface $sessionHandler The session handler.
+     *
+     * @return void Returns nothing.
+     */
+    public function setSaveHandler(SessionHandlerInterface $sessionHandler): void;
 
     /**
      * Starts or resumes a session.
