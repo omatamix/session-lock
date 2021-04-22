@@ -185,6 +185,7 @@ final class SessionManager implements SessionManagerInterface
         $resolver->setAllowedTypes('fingerprint_hash', 'string');
         $resolver->setAllowedTypes('bind_ip_address', 'bool');
         $resolver->setAllowedTypes('bind_user_agent', 'bool');
+        $resolver->setAllowedTypes('use_ip', 'string');
         $resolver->setAllowedTypes('security_code', 'string');
         $resolver->setAllowedTypes('config', 'array');
     }
