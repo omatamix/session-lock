@@ -56,6 +56,14 @@ final class SessionManager implements SessionManagerInterface
         return $this;
     }
 
+     /**
+     * {@inheritdoc}
+     */
+    public function setSessionName(string $name)
+    {
+        return session_name($name);
+    }
+
     /**
      * {@inheritdoc}
      */
