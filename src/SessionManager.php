@@ -172,8 +172,6 @@ final class SessionManager implements SessionManagerInterface
      * Get the fingerprint from the current accessing user.
      *
      * @return string Returns the session fingerprint.
-     *
-     * @see <https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Session_Management_Cheat_Sheet.md#binding-the-session-id-to-other-user-properties>
      */
     private function getFingerprint(): string
     {
