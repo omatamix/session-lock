@@ -124,6 +124,8 @@ $session->setSaveHandler(new CacheSessionHandler(/** A `psr/cache` or `psr/simpl
 #### Supported
 
 - `Omatamix\SessionLock\SessionHandlers\CacheSessionHandler::class`
+- `Omatamix\SessionLock\SessionHandlers\CookieSessionHandler::class`
+- `Omatamix\SessionLock\SessionHandlers\DatabaseSessionHandler::class`
 - `Omatamix\SessionLock\SessionHandlers\NullSessionHandler::class`
 
 ### Encryption Adapters
