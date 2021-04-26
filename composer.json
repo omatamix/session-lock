@@ -4,6 +4,10 @@
     "homepage": "https://omatamix.github.io/session-lock/",
     "keywords": [],
     "license": "MIT",
+    "support": {
+        "issues": "https://github.com/omatamix/session-lock/issues",
+        "source": "https://github.com/omatamix/session-lock"
+    },
     "require": {
         "php": "^7.3|^8.0",
         "ext-json": "*",
@@ -30,8 +34,7 @@
     "scripts": {
         "test": "vendor/bin/phpunit"
     },
-    "config": {
-        "optimize-autoloader": true
-    },
+    "minimum-stability": "dev",
     "prefer-stable": true
+}
 }
