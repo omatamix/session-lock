@@ -198,7 +198,7 @@ final class SessionManager implements SessionManagerInterface
     private function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'fingerprinting'   => \true,
+            'fingerprinting'   => true,
             'fingerprint_hash' => 'sha512',
             'bind_ip_address'  => true,
             'bind_user_agent'  => true,
