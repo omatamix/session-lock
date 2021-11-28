@@ -26,6 +26,10 @@ declare(strict_types=1);
  * SOFTWARE.
  */
 
+if (!function_exists('app')) {
+    throw new RuntimeException('Unable to locate a container.');
+}
+
 if (!function_exists('session')) {
     function session(): SessionManager
     {
