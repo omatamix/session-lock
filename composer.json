@@ -24,7 +24,7 @@
         "paragonie/halite": "To use the `halite` encryption adapter (Sodium)."
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^11.2"
     },
     "autoload": {
         "psr-4": {
