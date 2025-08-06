@@ -30,33 +30,47 @@ namespace Cytrenna\Session;
  */
 class SessionMiddleware
 {
-    /** @var \Cytrenna\Session\SessionManager $sessionManager The session manager. */
+    /** @var \Cytrenna\Session\SessionManager $session The session manager. */
     protected SessionManager $session;
 
     /**
      * Construct the session middleware.
      *
-     * @param \Cytrenna\Session\SessionManager $sessionManager The session manager.
+     * @param \Cytrenna\Session\SessionManager $session The session manager.
      *
      * @return void Returns nothing.
      */
     public function __construct(SessionManager $session)
     {
-        $this->sessionManager = $sessionManager;
+        $this->session = $session;
     }
 
     public function handle(callable $next)
     {
         // Start the session if not already started.
         try {
-            $session->isRunning();
+            $this->session->isRunning();
         } catch (SessionClosedException $e) {
-            if ($this->fingerprintEnabled()) {
-                $fingerprint = $this->generateUniqueFingerprint();
+            // Validate the session fingerprint.
+            if ($this->session->fingerprintEnabled()) {
+                $fingerprint = $this->session->generateUniqueFingerprint();
+                if ($this->session->has('cytrenna.fingerprint')) {
+                    if (!hash_equals($this->has('cytrenna.fingerprint'), $fingerprint)) {
+                        $this->stopSession();
+                        throw new InvalidFingerprintException('The fingerprint supplied is invalid.');
+                    }
+                } else {
+                    $this->put('cytrenna.fingerprint', $fingerprint);
+                }
             }
-            
+            // Prevent AJAX requests.
+            if ($this->session->disallowAjaxRequests()) {
+                if ($this->isAjaxRequest()) {
+                    throw new AjaxRestrictedException('This application does not allow ajax requests.');
+                }
+            }
+            // Start the session.
         }
-        
         // Call the next middleware or controller.
         $response = $next();
         // Returned the response.
