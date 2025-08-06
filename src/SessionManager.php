@@ -94,17 +94,23 @@ final class SessionManager implements SessionManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function stop(): bool
+    public function stopSession(): bool
     {
         // Attempt to destory the session if running.
         try {
             $this->isRunning();
         } catch (SessionRunningException $e) {
+            // Clear all session variables
             $this->clear();
+            // Void the session cookie
             $this->voidSessionCookie();
+            // Free the session ID.
+            $this->freeSessionID();
+            // Destroy the session.
+            return $this->destroySession();
+        } catch (SessionClosedException $e) {
+            return true;
         }
-        $this->freeSessionID();
-        $this->destroySession();
     }
 
     /**
