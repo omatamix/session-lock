@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-namespace Cytrenna\SessionLock\Exception;
+namespace Cytrenna\Session\Exception;
 
 use Throwable;
 
