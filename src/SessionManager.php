@@ -176,6 +176,7 @@ final class SessionManager implements SessionManagerInterface
      */
     public function has(string $key): bool
     {
+        // Check to see if the session variable is set.
         return isset($_SESSION[$key]);
     }
 
@@ -192,8 +193,11 @@ final class SessionManager implements SessionManagerInterface
      */
     public function flash(string $key, $defaultValue = null)
     {
+        // Retrieve the session variable.
         $value = $this->get($key, $defaultValue);
+        // Unset the session variable.
         $this->delete($key);
+        // Return the value.
         return $value;
     }
 
@@ -202,7 +206,11 @@ final class SessionManager implements SessionManagerInterface
      */
     public function put(string $key, $value): void
     {
-        $_SESSION[$key] = $value;
+        // Check to see if the session is running.
+        if ($this->isRunning()) {
+            // Set a seasion variable.
+            $_SESSION[$key] = $value;
+        }
     }
 
     /**
