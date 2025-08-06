@@ -55,12 +55,12 @@ class SessionMiddleware
             if ($this->session->fingerprintEnabled()) {
                 $fingerprint = $this->session->generateUniqueFingerprint();
                 if ($this->session->has('cytrenna.fingerprint')) {
-                    if (!hash_equals($this->has('cytrenna.fingerprint'), $fingerprint)) {
-                        $this->stopSession();
+                    if (!hash_equals($this->session->has('cytrenna.fingerprint'), $fingerprint)) {
+                        $this->session->stopSession();
                         throw new InvalidFingerprintException('The fingerprint supplied is invalid.');
                     }
                 } else {
-                    $this->put('cytrenna.fingerprint', $fingerprint);
+                    $this->session->put('cytrenna.fingerprint', $fingerprint);
                 }
             }
             // Prevent AJAX requests.
