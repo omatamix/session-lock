@@ -30,10 +30,25 @@ namespace Cytrenna\Session;
  */
 class SessionMiddleware
 {
+    /** @var \Cytrenna\Session\SessionManager $sessionManager The session manager. */
+    protected SessionManager $session;
+
+    /**
+     * Construct the session middleware.
+     *
+     * @param \Cytrenna\Session\SessionManager $sessionManager The session manager.
+     *
+     * @return void Returns nothing.
+     */
+    public function __construct(SessionManager $session)
+    {
+        $this->sessionManager = $sessionManager;
+    }
+
     public function handle(callable $next)
     {
         // Start the session if not already started.
-
+        
         // Call the next middleware or controller.
         $response = $next();
         // Returned the response.
