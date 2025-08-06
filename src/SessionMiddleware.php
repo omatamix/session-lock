@@ -65,7 +65,7 @@ class SessionMiddleware
             }
             // Prevent AJAX requests.
             if ($this->session->disallowAjaxRequests()) {
-                if ($this->isAjaxRequest()) {
+                if ($this->session->isAjaxRequest()) {
                     throw new AjaxRestrictedException('This application does not allow ajax requests.');
                 }
             }
