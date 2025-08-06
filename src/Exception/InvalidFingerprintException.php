@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-namespace Omatamix\SessionLock\Exception;
+namespace Cytrenna\Session\Exception;
 
 use Exception;
 
