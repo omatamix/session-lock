@@ -50,7 +50,8 @@ class SessionMiddleware
         // Start the session if not already started.
         try {
             $session->isRunning();
-        } catch ( $e) {
+        } catch (SessionClosedException $e) {
+            $fingerprint = $this->generateUniqueFingerprint();
             
         }
         
