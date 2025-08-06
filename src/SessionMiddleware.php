@@ -30,4 +30,13 @@ namespace Cytrenna\Session;
  */
 class SessionMiddleware
 {
+    public function handle(callable $next)
+    {
+        // Start the session if not already started.
+
+        // Call the next middleware or controller.
+        $response = $next();
+        // Returned the response.
+        return $response;
+    }
 }
