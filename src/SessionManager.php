@@ -137,6 +137,43 @@ final class SessionManager implements SessionManagerInterface
     /**
      * {@inheritdoc}
      */
+    public function clear(): bool
+    {
+        // Clear all session variable.
+        $_SESSION = array();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function voidSessionCookie(): bool
+    {
+        // Void the session cookie.
+        if (ini_get("session.use_cookies") && isset($_COOKIE[session_name()])) {
+            // Get the cookie params.
+            $params = session_get_cookie_params();
+            // Delete the cookie.
+            setcookie(session_name(), '', time() - 42000,
+                $params["path"] ?? '/',
+                $params["domain"] ?? '',
+                $params["secure"] ?? false,
+                $params["httponly"] ?? false
+            );
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function freeSessionID(): bool
+    {
+        // Free the session ID.
+        session_unset();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function has(string $key): bool
     {
         return isset($_SESSION[$key]);
