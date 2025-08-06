@@ -70,6 +70,7 @@ class SessionMiddleware
                 }
             }
             // Start the session.
+            $this->session->start();
         }
         // Call the next middleware or controller.
         $response = $next();
