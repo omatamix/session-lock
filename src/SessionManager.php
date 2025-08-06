@@ -96,15 +96,15 @@ final class SessionManager implements SessionManagerInterface
      */
     public function stop(): bool
     {
-        $_SESSION = array();
-        if (ini_get("session.use_cookies")) {
-            $params = session_get_cookie_params();
-            setcookie(session_name(), '', time() - 42000,
-                $params["path"], $params["domain"],
-                $params["secure"], $params["httponly"]
-            );
+        // Attempt to destory the session if running.
+        try {
+            $this->isRunning();
+        } catch (SessionRunningException $e) {
+            $this->clear();
+            $this->voidSessionCookie();
         }
-        return session_destroy();
+        $this->freeSessionID();
+        $this->destroySession();
     }
 
     /**
