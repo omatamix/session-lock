@@ -48,6 +48,11 @@ class SessionMiddleware
     public function handle(callable $next)
     {
         // Start the session if not already started.
+        try {
+            $session->isRunning();
+        } catch ( $e) {
+            
+        }
         
         // Call the next middleware or controller.
         $response = $next();
