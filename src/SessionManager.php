@@ -118,8 +118,10 @@ final class SessionManager implements SessionManagerInterface
      */
     public function isRunning(): bool
     {
+        // Return false on the command line cli.
         if (PHP_SAPI === 'cli' || PHP_SAPI === 'phpdbg')
             return false;
+        // Return the current session status.
         return session_status() === PHP_SESSION_ACTIVE;
     }
 
@@ -128,6 +130,7 @@ final class SessionManager implements SessionManagerInterface
      */
     public function regenerateSessionID(bool $deleteOldSession = true): bool
     {
+        // Regenerate the session ID.
         return session_regenerate_id($deleteOldSession);
     }
 
