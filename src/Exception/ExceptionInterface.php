@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-namespace Omatamix\SessionLock\Exception;
+namespace Cytrenna\SessionLock\Exception;
 
 use Throwable;
 
