@@ -51,7 +51,9 @@ class SessionMiddleware
         try {
             $session->isRunning();
         } catch (SessionClosedException $e) {
-            $fingerprint = $this->generateUniqueFingerprint();
+            if ($this->fingerprintEnabled()) {
+                $fingerprint = $this->generateUniqueFingerprint();
+            }
             
         }
         
