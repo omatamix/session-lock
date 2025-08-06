@@ -116,12 +116,14 @@ final class SessionManager implements SessionManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function exists(): bool
+    public function isRunning(): void
     {
         if (php_sapi_name() !== 'cli') {
-            return session_status() === PHP_SESSION_ACTIVE ? true : false;
+            if (session_status() === PHP_SESSION_ACTIVE) {
+                throw SessionRunningException('The session is running.');
+            }
         }
-        return false;
+        throw SessionClosedException('The session is closed.);
     }
 
     /**
