@@ -94,42 +94,39 @@ final class SessionManager implements SessionManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function stopSession(): bool
+    public function stopSession(bool $logout = false): bool
     {
         // Attempt to destory the session if running.
-        try {
-            $this->isRunning();
-        } catch (SessionRunningException $e) {
+        if ($this->isRunning()) {
             // Clear all session variables
             $this->clear();
             // Void the session cookie
             $this->voidSessionCookie();
             // Free the session ID.
             $this->freeSessionID();
+            // Regenerate session ID.
+            if ($logout)
+                $this->regenerateSessionID();
             // Destroy the session.
             return $this->destroySession();
-        } catch (SessionClosedException $e) {
-            return true;
         }
+        return true;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function isRunning(): void
+    public function isRunning(): bool
     {
-        if (php_sapi_name() !== 'cli') {
-            if (session_status() === PHP_SESSION_ACTIVE) {
-                throw SessionRunningException('The session is running.');
-            }
-        }
-        throw SessionClosedException('The session is closed.);
+        if (PHP_SAPI === 'cli' || PHP_SAPI === 'phpdbg')
+            return false;
+        return session_status() === PHP_SESSION_ACTIVE;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function regenerate(bool $deleteOldSession = true): bool
+    public function regenerateSessionID(bool $deleteOldSession = true): bool
     {
         return session_regenerate_id($deleteOldSession);
     }
