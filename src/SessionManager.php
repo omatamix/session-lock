@@ -218,7 +218,11 @@ final class SessionManager implements SessionManagerInterface
      */
     public function delete(string $key): void
     {
-        unset($_SESSION[$key]);
+        // Check to see if the session is running.
+        if ($this->isRunning()) {
+            // Unset the session variable.
+            unset($_SESSION[$key]);
+        }
     }
 
     /**
