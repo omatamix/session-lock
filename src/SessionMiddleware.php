@@ -2,7 +2,7 @@
 /**
  * MIT License
  * 
- * Copyright (c) 2021 Nicholas English
+ * Copyright (c) 2026 Nicholas English
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,9 +48,7 @@ class SessionMiddleware
     public function handle(callable $next)
     {
         // Start the session if not already started.
-        try {
-            $this->session->isRunning();
-        } catch (SessionClosedException $e) {
+        if ($this->session->isRunning()) {
             // Validate the session fingerprint.
             if ($this->session->fingerprintEnabled()) {
                 $fingerprint = $this->session->generateUniqueFingerprint();
